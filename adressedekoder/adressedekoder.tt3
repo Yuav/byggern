@@ -1,0 +1,15 @@
+#$ TOOL ispLEVER Classic 1.3.00.09.29.09
+#$ DATE Mon Sep 14 10:21:46 2009
+#$ MODULE adresse
+#$ DEVICE p16v8
+#$ PINS 3 sel:1 cs_ram-:15 cs_adc-:16
+.i 1 
+.o 2 
+.type fr
+.ilb sel
+.ob cs_ram cs_adc
+.phase 11
+.p 2
+1 01
+0 10
+.e

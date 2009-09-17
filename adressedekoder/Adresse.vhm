@@ -1,0 +1,129 @@
+--
+-- Written by Synplicity
+-- Product Version "C-2009.03LC"
+-- Program "Synplify", Mapper "map400lat, Build 070R"
+-- Mon Sep 14 10:21:41 2009
+--
+
+--
+-- Written by Synplify version Build 070R
+-- Mon Sep 14 10:21:41 2009
+--
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity IBUF is
+port(
+  O :  out std_logic;
+  I0 :  in std_logic);
+end IBUF;
+
+architecture beh of IBUF is
+  signal VCC : std_logic ;
+  signal GND : std_logic ;
+begin
+O <= I0;
+VCC <= '1';
+GND <= '0';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity INV is
+port(
+O :  out std_logic;
+I0 :  in std_logic);
+end INV;
+
+architecture beh of INV is
+signal VCC : std_logic ;
+signal GND : std_logic ;
+begin
+O <= not I0;
+VCC <= '1';
+GND <= '0';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity OBUF is
+port(
+O :  out std_logic;
+I0 :  in std_logic);
+end OBUF;
+
+architecture beh of OBUF is
+signal VCC : std_logic ;
+signal GND : std_logic ;
+begin
+O <= I0;
+VCC <= '1';
+GND <= '0';
+end beh;
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+
+entity Adresse is
+port(
+sel :  in std_logic;
+cs_ram :  out std_logic;
+cs_adc :  out std_logic);
+end Adresse;
+
+architecture beh of Adresse is
+signal SEL_I : std_logic ;
+signal SEL_C : std_logic ;
+signal GND : std_logic ;
+signal VCC : std_logic ;
+component IBUF
+port(
+O :  out std_logic;
+I0 :  in std_logic  );
+end component;
+component OBUF
+port(
+O :  out std_logic;
+I0 :  in std_logic  );
+end component;
+component INV
+port(
+O :  out std_logic;
+I0 :  in std_logic  );
+end component;
+begin
+SEL_CZ: IBUF port map (
+O => SEL_C,
+I0 => sel);
+CS_RAM_CZ: OBUF port map (
+O => cs_ram,
+I0 => SEL_I);
+CS_ADC_CZ: OBUF port map (
+O => cs_adc,
+I0 => SEL_C);
+SEL_I_CZ: INV port map (
+O => SEL_I,
+I0 => SEL_C);
+GND <= '0';
+VCC <= '1';
+end beh;
+

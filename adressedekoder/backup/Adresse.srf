@@ -1,0 +1,26 @@
+#Build: Synplify for Lattice C-2009.03LC, Build 085R, May 27 2009
+#install: C:\ISPLEVER\SYNPBASE
+#OS: Windows XP 5.1
+#Hostname: SANNTID16
+
+#Implementation: adressedekoder
+
+#Mon Sep 14 10:16:54 2009
+
+$ Start of Compile
+#Mon Sep 14 10:16:54 2009
+
+Synopsys VHDL Compiler, version comp350rcp1, Build 081R, built May 27 2009
+Copyright (C) 1994-2009, Synopsys Inc.  All Rights Reserved
+
+@N: CD720 :"C:\ISPLEVER\SYNPBASE\lib\vhd\std.vhd":123:18:123:21|Setting time resolution to ns
+@N:"C:\documents and settings\hovdsvee\my documents\adressedekoder\adressedekoder.vhd":6:7:6:13|Top entity is set to Adresse.
+@E: CS187 :"C:\documents and settings\hovdsvee\my documents\adressedekoder\adressedekoder.vhd":9:22:9:22|Expecting .
+@E: CD213 :"C:\documents and settings\hovdsvee\my documents\adressedekoder\adressedekoder.vhd":16:1:16:6|Undefined identifier
+2 errors parsing file C:\documents and settings\hovdsvee\my documents\adressedekoder\adressedekoder.vhd
+@END
+@E|Parse errors encountered - exiting
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Mon Sep 14 10:16:55 2009
+
+###########################################################]

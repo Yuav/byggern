@@ -1,0 +1,36 @@
+Running in Lattice mode
+
+
+Starting:    C:\ISPLEVER\SYNPBASE\bin\mbin\synbatch.exe
+Install:     C:\ISPLEVER\SYNPBASE
+Date:        Mon Sep 14 10:21:39 2009
+Version:     C-2009.03LC
+
+
+Arguments:   -product synplify  -batch c:/documents and settings/hovdsvee/my documents/adressedekoder\Adresse.prj
+ProductType: synplify
+
+
+
+
+
+Running synthesis on Adresse:adressedekoder
+
+log file: "C:\documents and settings\hovdsvee\my documents\adressedekoder\Adresse.srf"
+
+
+Running Vhdl Compiler...
+
+Vhdl Compiler Completed
+Return Code: 0
+
+
+Running ispGAL Mapper...
+
+ispGAL Mapper Completed
+Return Code: 0
+
+
+exit status=0
+
+

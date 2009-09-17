@@ -1,0 +1,11 @@
+Section Cross Reference File
+Design 'Adresse' created Mon Sep 14 10:21:46 2009
+   Type              New Name                               Original Name
+// ----------------------------------------------------------------------
+End
+Section Type      Name
+// ----------------------------------------------------------------------
+        Input     sel
+        Output     cs_ram
+        Output     cs_adc
+End

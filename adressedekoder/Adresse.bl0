@@ -1,0 +1,17 @@
+#$ DATE Mon Sep 14 10:21:46 2009
+#$ TOOL EDIF2BLIF version IspLever 1.0 
+#$ MODULE adresse
+#$ PINS 3 sel cs_ram cs_adc
+#$ NODES 2 sel_i sel_c 
+.model adresse
+.inputs sel.BLIF sel_i.BLIF sel_c.BLIF  
+.outputs cs_ram cs_adc sel_i sel_c
+.names  sel.BLIF sel_c
+1 1
+.names  sel_i.BLIF cs_ram
+1 1
+.names  sel_c.BLIF cs_adc
+1 1
+.names  sel_c.BLIF sel_i
+0 1
+.end

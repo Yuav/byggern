@@ -1,0 +1,85 @@
+(edif Adresse
+  (edifVersion 2 0 0)
+  (edifLevel 0)
+  (keywordMap (keywordLevel 0))
+  (status
+    (written
+      (timeStamp 2009 9 14 10 21 41)
+      (author "Synplicity, Inc.")
+      (program "Synplify" (version "C-2009.03LC, mapper map400lat, Build 070R"))
+     )
+   )
+  (external mach
+    (edifLevel 0)
+    (technology (numberDefinition ))
+    (cell IBUF (cellType GENERIC)
+       (view prim (viewType NETLIST)
+         (interface
+           (port O (direction OUTPUT))
+           (port I0 (direction INPUT))
+         )
+       )
+    )
+    (cell INV (cellType GENERIC)
+       (view prim (viewType NETLIST)
+         (interface
+           (port O (direction OUTPUT))
+           (port I0 (direction INPUT))
+         )
+       )
+    )
+    (cell OBUF (cellType GENERIC)
+       (view prim (viewType NETLIST)
+         (interface
+           (port O (direction OUTPUT))
+           (port I0 (direction INPUT))
+         )
+       )
+    )
+  )
+  (library work
+    (edifLevel 0)
+    (technology (numberDefinition ))
+    (cell Adresse (cellType GENERIC)
+       (view behavioral (viewType NETLIST)
+         (interface
+           (port sel (direction INPUT))
+           (port cs_ram (direction OUTPUT))
+           (port cs_adc (direction OUTPUT))
+         )
+         (contents
+          (instance sel (viewRef prim (cellRef IBUF (libraryRef mach)))          )
+          (instance cs_ram (viewRef prim (cellRef OBUF (libraryRef mach)))          )
+          (instance cs_adc (viewRef prim (cellRef OBUF (libraryRef mach)))          )
+          (instance sel_i (viewRef prim (cellRef INV (libraryRef mach)))          )
+          (net sel_i (joined
+           (portRef O (instanceRef sel_i))
+           (portRef I0 (instanceRef cs_ram))
+          ))
+          (net sel_c (joined
+           (portRef O (instanceRef sel))
+           (portRef I0 (instanceRef sel_i))
+           (portRef I0 (instanceRef cs_adc))
+          ))
+          (net sel (joined
+           (portRef sel)
+           (portRef I0 (instanceRef sel))
+          ))
+          (net cs_ram (joined
+           (portRef O (instanceRef cs_ram))
+           (portRef cs_ram)
+          ))
+          (net cs_adc (joined
+           (portRef O (instanceRef cs_adc))
+           (portRef cs_adc)
+          ))
+          (net GND (joined
+          ))
+          (net VCC (joined
+          ))
+         )
+       )
+    )
+  )
+  (design Adresse (cellRef Adresse (libraryRef work)))
+)
