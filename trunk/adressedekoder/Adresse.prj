@@ -1,0 +1,32 @@
+#-- Lattice Semiconductor Corporation Ltd.
+#-- Synplify OEM project file c:/documents and settings/hovdsvee/my documents/adressedekoder\Adresse.prj
+#-- Written on Mon Sep 14 10:21:39 2009
+
+
+#device options
+set_option -technology ispGAL
+
+#compilation/mapping options
+
+#map options
+
+#simulation options
+set_option -write_verilog true
+set_option -write_vhdl true
+
+#timing analysis options
+
+#-- add_file options
+add_file -vhdl -lib work "adressedekoder.vhd"
+
+#-- top module name
+set_option -top_module Adresse
+
+#-- set result format/file last
+project -result_file "Adresse.edi"
+
+#-- error message log file
+project -log_file Adresse.srf
+
+#-- run Synplify
+project -run

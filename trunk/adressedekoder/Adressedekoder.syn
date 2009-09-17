@@ -1,0 +1,10 @@
+JDF B
+// Created by Version 1.3 
+PROJECT Adressedekoder
+DESIGN adressedekoder Normal
+DEVKIT GAL16V8D-15QP
+ENTRY Pure VHDL
+MODULE adressedekoder.vhd
+MODSTYLE Adresse Normal
+SYNTHESIS_TOOL Synplify
+TOPMODULE Adresse

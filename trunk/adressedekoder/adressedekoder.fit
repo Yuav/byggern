@@ -1,0 +1,4 @@
+$DEVICE         P16V8AS    fit adressedekoder.tt3
+$PINS    3  cs_adc:16   cs_ram:15   sel:1   
+--------------------------------------------------------------
+

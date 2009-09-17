@@ -1,0 +1,100 @@
+//
+// Written by Synplify
+// Product Version "C-2009.03LC"
+// Program "Synplify", Mapper "map400lat, Build 070R"
+// Mon Sep 14 10:21:41 2009
+//
+// Source file index table:
+// Object locations will have the form <file>:<line>
+// file 0 "noname"
+// file 1 "\c:\isplever\synpbase\lib\vhd\std.vhd "
+// file 2 "\c:\documents and settings\hovdsvee\my documents\adressedekoder\adressedekoder.vhd "
+// file 3 "\c:\isplever\synpbase\lib\vhd\std1164.vhd "
+// file 4 "\c:\isplever\synpbase\lib\vhd\arith.vhd "
+// file 5 "\c:\isplever\synpbase\lib\vhd\unsigned.vhd "
+
+`timescale 100 ps/100 ps
+module IBUF (
+  O,
+  I0
+)
+;
+output O ;
+input I0 ;
+wire O ;
+wire I0 ;
+wire VCC ;
+wire GND ;
+  assign #(1)  O = I0;
+  assign VCC = 1'b1;
+  assign GND = 1'b0;
+endmodule /* IBUF */
+
+module OBUF (
+  O,
+  I0
+)
+;
+output O ;
+input I0 ;
+wire O ;
+wire I0 ;
+wire VCC ;
+wire GND ;
+  assign #(1)  O = I0;
+  assign VCC = 1'b1;
+  assign GND = 1'b0;
+endmodule /* OBUF */
+
+module INV (
+  O,
+  I0
+)
+;
+output O ;
+input I0 ;
+wire O ;
+wire I0 ;
+wire VCC ;
+wire GND ;
+  assign #(1)  O = ~ I0;
+  assign VCC = 1'b1;
+  assign GND = 1'b0;
+endmodule /* INV */
+
+module Adresse (
+  sel,
+  cs_ram,
+  cs_adc
+)
+;
+input sel ;
+output cs_ram ;
+output cs_adc ;
+wire sel ;
+wire cs_ram ;
+wire cs_adc ;
+wire sel_i ;
+wire sel_c ;
+wire GND ;
+wire VCC ;
+  IBUF sel_cZ (
+	.O(sel_c),
+	.I0(sel)
+);
+  OBUF cs_ram_cZ (
+	.O(cs_ram),
+	.I0(sel_i)
+);
+  OBUF cs_adc_cZ (
+	.O(cs_adc),
+	.I0(sel_c)
+);
+  INV sel_i_cZ (
+	.O(sel_i),
+	.I0(sel_c)
+);
+  assign GND = 1'b0;
+  assign VCC = 1'b1;
+endmodule /* Adresse */
+

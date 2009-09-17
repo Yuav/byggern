@@ -1,0 +1,15 @@
+#$ TOOL ispLEVER Classic 1.3.00.09.29.09
+#$ DATE Mon Sep 14 10:21:46 2009
+#$ MODULE Adresse
+#$ PINS 3 sel cs_ram cs_adc
+
+.model adresse
+.inputs sel.BLIF
+.outputs cs_ram cs_adc
+.names sel.BLIF cs_ram
+0 1
+1 0
+.names sel.BLIF cs_adc
+1 1
+0 0
+.end

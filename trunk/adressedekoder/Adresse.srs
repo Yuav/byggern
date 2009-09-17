@@ -1,0 +1,58 @@
+%%% protect protected_file
+@E
+@ 
+#
+#
+#
+# Created by Synplify VHDL Compiler version comp350rcp1, Build 081R from Synplicity, Inc.
+# Copyright 1994-2009 Synopsys, Inc. , All rights reserved.
+# Synthesis Netlist written on Mon Sep 14 10:21:40 2009
+#
+#
+#OPTIONS:"|-top|Adresse|-dfltencoding|sequential|-encrypt|-lite|-ll|2000|-ui|-fid2|-ram|-sharing|on|-autosm|-ignore_undefined_lib|-lib|work"
+#CUR:"C:\\ISPLEVER\\SYNPBASE\\bin\\c_vhdl.exe":1243440274
+#CUR:"C:\\ISPLEVER\\SYNPBASE\\lib\\vhd\\location.map":1216910970
+#CUR:"C:\\ISPLEVER\\SYNPBASE\\lib\\vhd\\std.vhd":1243440172
+#CUR:"C:\\documents and settings\\hovdsvee\\my documents\\adressedekoder\\adressedekoder.vhd":1252916495
+#CUR:"C:\\ISPLEVER\\SYNPBASE\\lib\\vhd\\std1164.vhd":1243440172
+#CUR:"C:\\ISPLEVER\\SYNPBASE\\lib\\vhd\\arith.vhd":1243440172
+#CUR:"C:\\ISPLEVER\\SYNPBASE\\lib\\vhd\\unsigned.vhd":1243440172
+f "C:\ISPLEVER\SYNPBASE\lib\vhd\std.vhd"; # file 0
+af .is_vhdl 1;
+f "C:\documents and settings\hovdsvee\my documents\adressedekoder\adressedekoder.vhd"; # file 1
+af .is_vhdl 1;
+f "C:\ISPLEVER\SYNPBASE\lib\vhd\std1164.vhd"; # file 2
+af .is_vhdl 1;
+f "C:\ISPLEVER\SYNPBASE\lib\vhd\arith.vhd"; # file 3
+af .is_vhdl 1;
+f "C:\ISPLEVER\SYNPBASE\lib\vhd\unsigned.vhd"; # file 4
+af .is_vhdl 1;
+@E
+@ 
+ftell;
+@E@MR@n4::n(::R4dI	FsRsq8CC##RELCNFPHs;ND
+RNP3PH#ER8D4N;
+PHR3#E_P84DR;P
+NR$3#Ml_VN"bRI	FsRB\":8\\FlOkC#M0\MRN8#\RCH00M\o#\PEF8C#PCl\\$8\RFlOkC#M0\8\Ns#C#C	8CFs8C\8\Ns#C#C	8CFs8C38PE\""
+;
+
+
+
+@HR@(4::((::#gRC#DRC
+D;N3HRs_0DFosHMCNlRC"#D
+";
+@FR@U4::Un::R44Os#_NOlR#N_slN;
+HsR30FD_sMHoNRlC"_O#s"Nl;
+
+
+
+@FR@g4::gn::R44ON#_8OOR#8_NON;
+HsR30FD_sMHoNRlC"_O#N"8O;R
+b@:@4(::((R:gLRkVON#_8OOR#8_NOCR#Db;
+R4@@::46444:6(:4RPHMR_O#sRNlOs#_N#lRC
+D;b@R@j::44::4.sR0k0CRsRkC0Csk;R
+b@:@j4::44R:.V#NDCNRVDR#CV#NDCC;
+;
+
+
+

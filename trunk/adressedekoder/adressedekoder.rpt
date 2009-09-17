@@ -1,0 +1,156 @@
+
+
+                                                                      Page 1
+ispLEVER Classic 1.3.00.09.29.09  -  Device Utilization Chart         Mon Sep 14 10:21:48 2009
+
+
+
+--------------------------------------------------------------------------------
+
+Module                   : 'adresse'
+
+--------------------------------------------------------------------------------
+
+Input files:
+
+    ABEL PLA file        : adressedekoder.tt3
+    Device library       : P16V8AS.dev
+
+Output files:
+
+    Report file          : adressedekoder.rpt
+    Programmer load file : adressedekoder.jed
+
+--------------------------------------------------------------------------------
+
+
+                                                                      Page 2
+ispLEVER Classic 1.3.00.09.29.09  -  Device Utilization Chart         Mon Sep 14 10:21:48 2009
+
+P16V8AS Programmed Logic:
+--------------------------------------------------------------------------------
+
+
+
+cs_ram     = !(  sel );
+
+cs_adc     = !(  !sel );
+
+
+
+                                                                      Page 3
+ispLEVER Classic 1.3.00.09.29.09  -  Device Utilization Chart         Mon Sep 14 10:21:48 2009
+
+P16V8AS Chip Diagram:
+--------------------------------------------------------------------------------
+
+
+
+
+                                   P16V8AS
+
+                         +---------\       /---------+
+                         |          \     /          |
+                         |           -----           |
+                     sel |  1                    20  | Vcc                     
+                         |                           |
+                         |  2                    19  |                         
+                         |                           |
+                         |  3                    18  |                         
+                         |                           |
+                         |  4                    17  |                         
+                         |                           |
+                         |  5                    16  | !cs_adc                 
+                         |                           |
+                         |  6                    15  | !cs_ram                 
+                         |                           |
+                         |  7                    14  |                         
+                         |                           |
+                         |  8                    13  |                         
+                         |                           |
+                         |  9                    12  |                         
+                         |                           |
+                     GND | 10                    11  |                         
+                         |                           |
+                         |                           |
+                         `---------------------------'
+
+                        SIGNATURE: N/A
+
+
+                                                                      Page 4
+ispLEVER Classic 1.3.00.09.29.09  -  Device Utilization Chart         Mon Sep 14 10:21:48 2009
+
+P16V8AS Resource Allocations:
+--------------------------------------------------------------------------------
+
+
+
+        Device        | Resource  |   Design    |
+       Resources      | Available | Requirement | Unused
+======================|===========|=============|==============
+                      |           |             |
+Input Pins:           |           |             |
+                      |           |             |
+          Input:      |     10    |      1      |    9 ( 90 %)
+                      |           |             |
+Output Pins:          |           |             |
+                      |           |             |
+          In/Out:     |      6    |      0      |    6 (100 %)
+          Output:     |      2    |      2      |    0 (  0 %)
+                      |           |             |
+Buried Nodes:         |           |             |
+                      |           |             |
+          Input Reg:  |      -    |      -      |    -
+            Pin Reg:  |      -    |      -      |    -
+          Buried Reg: |      -    |      -      |    -
+
+
+                                                                      Page 5
+ispLEVER Classic 1.3.00.09.29.09  -  Device Utilization Chart         Mon Sep 14 10:21:48 2009
+
+P16V8AS Product Terms Distribution:
+--------------------------------------------------------------------------------
+
+
+
+            Signal                       |    Pin   | Terms | Terms | Terms
+             Name                        | Assigned | Used  |  Max  | Unused
+=========================================|==========|=======|=======|=======
+cs_ram                                   |   15     |   1   |   8   |   7
+cs_adc                                   |   16     |   1   |   8   |   7
+
+
+     ==== List of Inputs/Feedbacks ====
+
+Signal Name                              | Pin      | Pin Type
+=========================================|==========|=========
+sel                                      |    1     | INPUT
+
+
+                                                                      Page 6
+ispLEVER Classic 1.3.00.09.29.09  -  Device Utilization Chart         Mon Sep 14 10:21:48 2009
+
+P16V8AS Unused Resources:
+--------------------------------------------------------------------------------
+
+
+
+ Pin   |  Pin   |   Product   | Flip-flop
+Number |  Type  |   Terms     |   Type
+=======|========|=============|==========
+    2  |  INPUT |      -      |    -   
+    3  |  INPUT |      -      |    -   
+    4  |  INPUT |      -      |    -   
+    5  |  INPUT |      -      |    -   
+    6  |  INPUT |      -      |    -   
+    7  |  INPUT |      -      |    -   
+    8  |  INPUT |      -      |    -   
+    9  |  INPUT |      -      |    -   
+   11  |  INPUT |      -      |    -   
+   12  |  BIDIR | NORMAL  8   |    -   
+   13  |  BIDIR | NORMAL  8   |    -   
+   14  |  BIDIR | NORMAL  8   |    -   
+   17  |  BIDIR | NORMAL  8   |    -   
+   18  |  BIDIR | NORMAL  8   |    -   
+   19  |  BIDIR | NORMAL  8   |    -   
