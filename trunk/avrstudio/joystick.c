@@ -20,23 +20,19 @@ int8_t read_axis(char axis) {
 	if(axis == 'x'){
 		adc_address[0] = 0x04;
 		loop_until_bit_is_clear(PINB, 0);
-		//_delay_ms(2);
-		//printf("%c\n", (char)*adc_address);
-		return (int8_t)eeprom_read_byte((uint8_t)*adc_address);
+		return (int8_t)eeprom_read_byte((uint8_t*)*adc_address);
 	}
 	else if(axis == 'y'){
 		adc_address[0] = 0x06;
 		loop_until_bit_is_clear(PINB, 0);
-		//_delay_ms(2);
-		//printf("%c\n", *adc_address);
-		return (int8_t)eeprom_read_byte((uint8_t)*adc_address+256s);
+		return (int8_t)eeprom_read_byte((uint8_t*)(*adc_address+256));
 	}
 	return -1;
 	//evt. korrigering
 }
 
 inline uint8_t read_buttons(){
-	return PINB & 0x6;
+	return (PINB & 0x6) >> 1;
 }
 
 /*

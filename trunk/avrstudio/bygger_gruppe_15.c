@@ -23,7 +23,7 @@ int main(void) {
 
 
 
-	//init_joystick();
+	init_joystick();
 
 //joystick
 
@@ -35,11 +35,11 @@ int main(void) {
 	while(1){
 	
 		
-	//	printf("X-akse: %x Y-akse: %x\n", read_axis('x'), read_axis('y'));
+	printf("X-akse: %d Y-akse: %d Knapp1: %d knapp2: %d\n", read_axis('x'), read_axis('y'), (read_buttons()&1), ((read_buttons()>>1)&1));
 	
 	//	read_axis('x');
 	//	read_axis('y');
-	//	_delay_ms(500);
+		_delay_ms(100);
 		
 
 	
