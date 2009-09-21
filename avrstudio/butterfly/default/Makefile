@@ -1,11 +1,11 @@
 ###############################################################################
-# Makefile for the project bygger_gruppe_15
+# Makefile for the project butterfly
 ###############################################################################
 
 ## General Flags
-PROJECT = bygger_gruppe_15
-MCU = atmega162
-TARGET = bygger_gruppe_15.elf
+PROJECT = butterfly
+MCU = atmega169
+TARGET = butterfly.elf
 CC = avr-gcc
 
 CPP = avr-g++
@@ -15,7 +15,7 @@ COMMON = -mmcu=$(MCU)
 
 ## Compile options common for all C compilation units.
 CFLAGS = $(COMMON)
-CFLAGS += -Wall -gdwarf-2 -std=gnu99 -O0 -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
+CFLAGS += -Wall -gdwarf-2 -Os -std=gnu99 -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
 CFLAGS += -MD -MP -MT $(*F).o -MF dep/$(@F).d 
 
 ## Assembly specific flags
@@ -25,7 +25,7 @@ ASMFLAGS += -x assembler-with-cpp -Wa,-gdwarf2
 
 ## Linker flags
 LDFLAGS = $(COMMON)
-LDFLAGS +=  -Wl,-Map=bygger_gruppe_15.map
+LDFLAGS +=  -Wl,-Map=butterfly.map
 
 
 ## Intel Hex file production flags
@@ -37,34 +37,22 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 ## Objects that must be built in order to link
-OBJECTS = bygger_gruppe_15.o uart.o sram.o joystick.o LCD_driver.o LCD_functions.o BCD.o 
+OBJECTS = LCD_driver.o butterfly.o LCD_functions.o 
 
 ## Objects explicitly added by the user
 LINKONLYOBJECTS = 
 
 ## Build
-all: $(TARGET) bygger_gruppe_15.hex bygger_gruppe_15.eep bygger_gruppe_15.lss size
+all: $(TARGET) butterfly.hex butterfly.eep butterfly.lss size
 
 ## Compile
-bygger_gruppe_15.o: ../bygger_gruppe_15.c
+LCD_driver.o: ../LCD_driver.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-uart.o: ../uart.c
+butterfly.o: ../butterfly.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
-sram.o: ../sram.c
-	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
-
-joystick.o: ../joystick.c
-	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
-
-LCD_driver.o: ../../../../AVRButterfly_application_rev07/LCD_driver.c
-	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
-
-LCD_functions.o: ../../../../AVRButterfly_application_rev07/LCD_functions.c
-	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
-
-BCD.o: ../../../../AVRButterfly_application_rev07/BCD.c
+LCD_functions.o: ../LCD_functions.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 ##Link
@@ -87,7 +75,7 @@ size: ${TARGET}
 ## Clean target
 .PHONY: clean
 clean:
-	-rm -rf $(OBJECTS) bygger_gruppe_15.elf dep/* bygger_gruppe_15.hex bygger_gruppe_15.eep bygger_gruppe_15.lss bygger_gruppe_15.map
+	-rm -rf $(OBJECTS) butterfly.elf dep/* butterfly.hex butterfly.eep butterfly.lss butterfly.map
 
 
 ## Other dependencies
