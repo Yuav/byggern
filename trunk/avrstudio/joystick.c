@@ -1,6 +1,7 @@
 #include "settings.h"
 #include <avr/io.h>
 #include "joystick.h"
+#include <avr/eeprom.h>
 
 
 #include <util/delay.h>
@@ -13,25 +14,22 @@ void init_joystick(){
 	PORTB = 0xFF; //Pull-ups
 }
 
-int read_axis(char axis) {
+int8_t read_axis(char axis) {
 	volatile uint8_t *adc_address = (uint8_t *) 0x1800;
 	
 	if(axis == 'x'){
-		//printf("INTr1: %x\n", PINB);
-		//DDRD = 0x00;
-		adc_address[255] = 0x04;
-		//loop_until_bit_is_clear(PINB, 0);
-		_delay_ms(2);
-		printf("%c\n", (char)*adc_address);
-		return (int)*adc_address;;
+		adc_address[0] = 0x04;
+		loop_until_bit_is_clear(PINB, 0);
+		//_delay_ms(2);
+		//printf("%c\n", (char)*adc_address);
+		return (int8_t)eeprom_read_byte((uint8_t)*adc_address);
 	}
 	else if(axis == 'y'){
-		//DDRD = 0x02;
-		adc_address[255] = 0x06;
-		//loop_until_bit_is_clear(PINB, 0);
-		_delay_ms(2);
-		printf("%c\n", *adc_address);
-		return (int)*adc_address;
+		adc_address[0] = 0x06;
+		loop_until_bit_is_clear(PINB, 0);
+		//_delay_ms(2);
+		//printf("%c\n", *adc_address);
+		return (int8_t)eeprom_read_byte((uint8_t)*adc_address+256s);
 	}
 	return -1;
 	//evt. korrigering
