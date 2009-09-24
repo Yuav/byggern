@@ -9,7 +9,7 @@
 unsigned char buffer_start;
 unsigned char buffer_stop;
 unsigned char buffer_used;
-
+*/
 
 int init_UART(unsigned int baud){
 	
@@ -20,10 +20,10 @@ int init_UART(unsigned int baud){
 	ubrr0 = (FOSC/(16*ubrr0)) - 1;
 	
 	unsigned char ucsr0c = 0;
-
+/*
 	buffer_start = 0;
 	buffer_stop = 0;
-	buffer_used = 0;
+	buffer_used = 0;*/
 
 	/* Sette baud rate */
 	UBRR0H = (unsigned char)(ubrr0>>8);

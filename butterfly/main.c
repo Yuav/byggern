@@ -15,6 +15,7 @@
 #include "lcd_functions.h"
 #include "lcd_driver.h"
 #include "uart.h"
+#include "spi.h"
 
 #define pLCDREG_test (*(char *)(0xEC))
 
@@ -33,13 +34,19 @@
 *****************************************************************************/
 int main(void)
 {    
-//	init_UART;
+
+	SPI_SlaveInit();
+	
+	 
+	
+	
 //	while(1) printf("Hallo\n");
 	// mt static char __flash *statetext;
-	PGM_P statetext;
+	//PGM_P statetext;
 	
 	// Initial state variables
-	statetext = "Morra di er mann";
+	char *statetext = "\0";
+	
 
 	// Program initalization
     Initialization();
@@ -48,13 +55,11 @@ int main(void)
 	for (;;)            // Main loop
     {
 		//LCD_Clear();
+		*statetext = SPI_SlaveReceive();
 		
-		if (statetext)
-        {
-			LCD_puts(statetext, 1);
-			LCD_Colon(0);
-			statetext = NULL;   
-		}
+		LCD_puts(statetext, 1);
+		LCD_Colon(0);  
+	
     } //End Main loop
 	
 	return 0;
