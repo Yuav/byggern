@@ -1,9 +1,3 @@
-
-//  mt - This code has only been used for debugging 
-//  It may not be up-to-date. Please refert to the
-//  Current LCD-driver code can be found in the
-//  application's gcc-port.
-
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <avr/pgmspace.h>
@@ -21,7 +15,7 @@
 
 #define pLCDREG_test (*(char *)(0xEC))
 
-// extern unsigned int LCD_character_table[] PROGMEM;
+char pinb, pine;
 
 /*****************************************************************************
 *
@@ -35,28 +29,22 @@
 *
 *****************************************************************************/
 int main(void)
-{    
+{   
+	// general integer for use in for-loops, etc. 
 	int i;
+	// general char for use in loops, etc.
 	char c;
-	SPI_SlaveInit();
-	
-	 
-	
-	
-//	while(1) printf("Hallo\n");
-	// mt static char __flash *statetext;
-	//PGM_P statetext;
+
+	// Program initalization
+    Initialization();
 	
 	// Initial state variables
 	char *statetext = malloc(TEXTBUFFER_SIZE);
 	statetext[0] = '\0';
 	statetext[30] = '\0';
-
-	// Program initalization
-    Initialization();
-    sei(); // mt __enable_interrupt();
 	
-	for (;;)            // Main loop
+	// Main loop
+	for (;;)
     {
 		
 
@@ -64,17 +52,21 @@ int main(void)
 			
 			c = SPI_SlaveReceive();
 			
-			//hvis tegn = poll joypad: poll joypad og send tilbake
+			// poll joypad position if a '.' is received
 			if(c == '.'){
 				check_joypad();
 				i--;
 			}
-			//hvis tegn = \0; putt i string, break loop
+			// check if dummy char received
+			else if(c == '@'){
+				i--;
+			}
+			//end of string
 			else if (c == '\0') {
 				statetext[i] = c;
 				break;
 			}
-			//else putt tegn i string
+			//regular char of the string received
 			else {
 				statetext[i] = c;
 			}
@@ -82,8 +74,9 @@ int main(void)
 		}
 	
 	
-	
+		// Puts string on LCD
 		LCD_puts(statetext, 1);
+		// Turns LCD colon sign off
 		LCD_Colon(0);  
 	
     } //End Main loop
@@ -104,39 +97,111 @@ int main(void)
 *****************************************************************************/
 void Initialization(void)
 {
-	/*
-	CLKPR = (1<<CLKPCE);        // set Clock Prescaler Change Enable
 
-    // set prescaler = 8, Inter RC 8Mhz / 8 = 1Mhz
-    CLKPR = (1<<CLKPS1) | (1<<CLKPS0);
+	// Initializing SPI-interface
+	SPI_SlaveInit();
 
-    // Disable Analog Comparator (power save)
-    ACSR = (1<<ACD);
+	// Initializing joypad
+	Joypad_Init();
+ 
+    // Initialize the LCD           
+    LCD_Init();                 
 
-    // Disable Digital input on PF0-2 (power save)
-    DIDR1 = (7<<ADC0D);
-	*/
+	// Interrupt enable
+	sei();
+}
 
-    // mt PORTB = (15<<PORTB0);       // Enable pullup on 
-//	PORTB = (0x0F<<PB0);       // Enable pullup on 
-    // mt PORTE = (15<<PORTE4);
-//	PORTE = (15<<PE4);
+/*****************************************************************************
+*
+*   Function name : Joypad_Init
+*
+*   Returns :       None
+*
+*   Parameters :    None
+*
+*   Purpose :       Initializate the joypad
+*
+*****************************************************************************/
 
-  
-  PORTB = PORTB | 0b11010000; 
-    DDRB = DDRB & 0b00101111; 
-	PORTE = PORTE | 0b00001100; 
-      DDRE = DDRE & 0b11110011; 
-//	sbi(DDRB, 5);               // set OC1A as output
-  //  sbi(PORTB, 5);              // set OC1A high
-	
-                
-    LCD_Init();                 // initialize the LCD
+void Joypad_Init(void){
+	// Representations of joypad input pins
+ 	pinb = (char)0;
+	pine = (char)0;
+
+  	// Port PB4, PB6 and PB7:
+  	// Internal pullups
+ 	PORTB = PORTB | 0b11010000;
+	// Data direction in
+    DDRB = DDRB & 	0b00101111; 
+
+	// Port PE2 and PE3:
+	// Internal pullups
+	PORTE = PORTE | 0b00001100;
+	// Data direction in
+    DDRE = DDRE &	0b11110011;
+
+	// Port PE4 as external interrupt to node1 (output from Butterfly)
+	DDRE = DDRE |	0b00010000;
+
+	// Enable interrupts
+	// Mask ports: PB4, PB6, PB7 enabled
+	PCMSK1 = 0 | (1<<PCINT12) | (1<<PCINT14) | (1<<PCINT15);
+	// Mask ports: PE2, PE3 enabled, PE4 disabled
+	PCMSK0 = (PCMSK0 & 0b11101111) | (1<<PCINT2) | (1<<PCINT3);
+	// Enable pin change interrupts
+	EIMSK = EIMSK | (1<<PCIE0) | (1<<PCIE1);
+
+
+
 }
 
 
+/*****************************************************************************
+*
+*   Function name : Joypad_Init
+*
+*   Returns :       None
+*
+*   Parameters :    None
+*
+*   Purpose :       Check joypad
+*
+*****************************************************************************/
+
 void check_joypad(void){
+//	PORTE = PORTE & !(1<<PE4);
+
+	if (!(pinb & (1<<PB4))){	
+		SPI_SlaveTransmit('e');
+		return;
+	}
+	if (!(pinb & (1<<PB6))){	
+		SPI_SlaveTransmit('u');
+		return;
+	}
+	if (!(pinb & (1<<PB7))){	
+		SPI_SlaveTransmit('d');
+		return;
+	}
+	if (!(pine & (1<<PE2))){	
+		SPI_SlaveTransmit('l');
+		return;
+	}
+	if (!(pine & (1<<PE3))){	
+		SPI_SlaveTransmit('r');
+		return;
+	}
+	SPI_SlaveTransmit('0');
 	return;
 }
 
+SIGNAL(SIG_PIN_CHANGE0) {
+	pine = (char)PINE;
+	PORTE = PORTE | (1<<PE4);
+}
+
+SIGNAL(SIG_PIN_CHANGE1) {
+	pinb = (char)PINB;
+	PORTE = PORTE | (1<<PE4);
+}
 

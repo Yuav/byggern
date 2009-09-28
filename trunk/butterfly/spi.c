@@ -16,3 +16,12 @@ char SPI_SlaveReceive(void)
 	/* Return data register */
 	return SPDR;
 }
+
+void SPI_SlaveTransmit(char cData)
+{
+	/* Start transmission */
+	SPDR = cData;
+	/* Wait for transmission complete */
+	while(!(SPSR & (1<<SPIF)))
+		;
+}
