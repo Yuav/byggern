@@ -9,4 +9,5 @@
 #define AUTO    3
 
 void Initialization(void);
+void check_joypad(void);
 
