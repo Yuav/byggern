@@ -17,3 +17,12 @@ void SPI_MasterTransmit(char cData)
 	while(!(SPSR & (1<<SPIF)))
 		;
 }
+
+void SPI_MasterTransmitString(char* str) {
+	int i = 0;
+	while (str[i] != '\0'){
+		SPI_MasterTransmit(str[i]);
+		i++;
+	}
+	SPI_MasterTransmit('\0');
+}

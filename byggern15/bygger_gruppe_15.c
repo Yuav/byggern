@@ -37,13 +37,13 @@ int main(void) {
 	while(1){
 	
 	
-	SPI_MasterTransmit('5');
+	SPI_MasterTransmitString("Hei paa deg");
 		
 	//printf("X-akse: %d Y-akse: %d Knapp1: %d knapp2: %d\n", read_axis('x'), read_axis('y'), (read_buttons()&1), ((read_buttons()>>1)&1));
 	
 	//	read_axis('x');
 	//	read_axis('y');
-				
+	_delay_ms(5000);	
 
 	
 	}

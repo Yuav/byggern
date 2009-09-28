@@ -10,12 +10,14 @@
 #include <avr/sleep.h>
 #include <inttypes.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "main.h"
 #include "lcd_functions.h"
 #include "lcd_driver.h"
 #include "uart.h"
 #include "spi.h"
+
 
 #define pLCDREG_test (*(char *)(0xEC))
 
@@ -34,7 +36,8 @@
 *****************************************************************************/
 int main(void)
 {    
-
+	int i;
+	char c;
 	SPI_SlaveInit();
 	
 	 
@@ -45,8 +48,9 @@ int main(void)
 	//PGM_P statetext;
 	
 	// Initial state variables
-	char *statetext = "\0";
-	
+	char *statetext = malloc(TEXTBUFFER_SIZE);
+	statetext[0] = '\0';
+	statetext[30] = '\0';
 
 	// Program initalization
     Initialization();
@@ -54,9 +58,31 @@ int main(void)
 	
 	for (;;)            // Main loop
     {
-		//LCD_Clear();
-		*statetext = SPI_SlaveReceive();
 		
+
+		for (i = 0; i < TEXTBUFFER_SIZE-1; i++){
+			
+			c = SPI_SlaveReceive();
+			
+			//hvis tegn = poll joypad: poll joypad og send tilbake
+			if(c == '.'){
+				check_joypad();
+				i--;
+			}
+			//hvis tegn = \0; putt i string, break loop
+			else if (c == '\0') {
+				statetext[i] = c;
+				break;
+			}
+			//else putt tegn i string
+			else {
+				statetext[i] = c;
+			}
+		
+		}
+	
+	
+	
 		LCD_puts(statetext, 1);
 		LCD_Colon(0);  
 	
@@ -89,20 +115,28 @@ void Initialization(void)
 
     // Disable Digital input on PF0-2 (power save)
     DIDR1 = (7<<ADC0D);
+	*/
 
     // mt PORTB = (15<<PORTB0);       // Enable pullup on 
-	PORTB = (15<<PB0);       // Enable pullup on 
+//	PORTB = (0x0F<<PB0);       // Enable pullup on 
     // mt PORTE = (15<<PORTE4);
-	PORTE = (15<<PE4);
+//	PORTE = (15<<PE4);
 
-    sbi(DDRB, 5);               // set OC1A as output
-    sbi(PORTB, 5);              // set OC1A high
-	*/
+  
+  PORTB = PORTB | 0b11010000; 
+    DDRB = DDRB & 0b00101111; 
+	PORTE = PORTE | 0b00001100; 
+      DDRE = DDRE & 0b11110011; 
+//	sbi(DDRB, 5);               // set OC1A as output
+  //  sbi(PORTB, 5);              // set OC1A high
+	
                 
     LCD_Init();                 // initialize the LCD
 }
 
 
-
+void check_joypad(void){
+	return;
+}
 
 
