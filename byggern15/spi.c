@@ -26,3 +26,15 @@ void SPI_MasterTransmitString(char* str) {
 	}
 	SPI_MasterTransmit('\0');
 }
+
+char SPI_MasterReceive(void)
+{
+	//send dummy char, to shift the SPDR
+	SPI_MasterTransmit('@');
+	
+	/* Wait for reception complete */
+	while(!(SPSR & (1<<SPIF)));
+		
+	/* Return data register */
+	return SPDR;
+}
