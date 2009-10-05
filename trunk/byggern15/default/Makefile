@@ -37,7 +37,7 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 ## Objects that must be built in order to link
-OBJECTS = bygger_gruppe_15.o uart.o sram.o joystick.o spi.o 
+OBJECTS = bygger_gruppe_15.o uart.o sram.o joystick.o spi.o can.o 
 
 ## Objects explicitly added by the user
 LINKONLYOBJECTS = 
@@ -59,6 +59,9 @@ joystick.o: ../joystick.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 spi.o: ../spi.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+
+can.o: ../can.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 ##Link
