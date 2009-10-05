@@ -8,7 +8,7 @@ spi.o: ../spi.c \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/common.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/version.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/fuse.h \
-  c:/program\ files/winavr/lib/gcc/../../avr/include/avr/lock.h
+  c:/program\ files/winavr/lib/gcc/../../avr/include/avr/lock.h ../spi.h
 
 c:/program\ files/winavr/lib/gcc/../../avr/include/avr/io.h:
 
@@ -29,3 +29,5 @@ c:/program\ files/winavr/lib/gcc/../../avr/include/avr/version.h:
 c:/program\ files/winavr/lib/gcc/../../avr/include/avr/fuse.h:
 
 c:/program\ files/winavr/lib/gcc/../../avr/include/avr/lock.h:
+
+../spi.h:
