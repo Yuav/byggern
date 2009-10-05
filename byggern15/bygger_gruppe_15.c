@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "settings.h"
 #include "uart.h"
+#include "spi.h"
 #include <avr/interrupt.h>
 
 
@@ -23,20 +24,13 @@ int main(void) {
 	SPI_MasterInit();	
 
 
-//joystick
-
-
-
-//ya1 = -128/()
-
-
 
 	char last_dir;
 	printf("Start\n");
 
 //interrupt init
-	PORTD = PORTD | 0b00000100;
-	DDRB = DDRB & 	0b11111011;
+	//PORTD = PORTD | 0b00000100;
+	DDRD = DDRD & 	0b11111011;
 	MCUCR = MCUCR | (1<<ISC01) | (1<<ISC00);
 	GICR = GICR | (1<<INT0);
 	sei();
@@ -58,38 +52,48 @@ int main(void) {
 }
 
 SIGNAL(SIG_INTERRUPT0) {
+	printf("interrupt\n");
 	SPI_MasterTransmit('.');
+	printf("master transmit . done \n");
 	_delay_ms(1);
 	char dir = SPI_MasterReceive();
+	printf("receive done\n");
 	
 	switch(dir) {
 		case 'l':
-			SPI_MasterTransmitString("left");
 			printf("left\n");
+			SPI_MasterTransmitString("left");
+			
 			break;
 		case 'r':
-			SPI_MasterTransmitString("right");
 			printf("right\n");
+			SPI_MasterTransmitString("right");
+			
 			break;
 		case 'u':
-			SPI_MasterTransmitString("up");
 			printf("up\n");
+			SPI_MasterTransmitString("up");
+			
 			break;
 		case 'd':
-			SPI_MasterTransmitString("down");
 			printf("down\n");
+			SPI_MasterTransmitString("down");
+			
 			break;
 		case 'e':
-			SPI_MasterTransmitString("enter");
 			printf("enter\n");
+			SPI_MasterTransmitString("enter");
+			
 			break;
 		case '0':
-			SPI_MasterTransmitString("center12");
 			printf("center\n");
+			SPI_MasterTransmitString("center12");
+			
 			break;
 		default:
-			SPI_MasterTransmitString("error");
 			printf("error: %c\n", dir);
+			SPI_MasterTransmitString("error");
+			
 			break;
 	}
 	

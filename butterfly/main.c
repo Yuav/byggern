@@ -169,7 +169,7 @@ void Joypad_Init(void){
 *****************************************************************************/
 
 void check_joypad(void){
-//	PORTE = PORTE & !(1<<PE4);
+	PORTE = PORTE & ~(1<<PE4);
 
 	if (!(pinb & (1<<PB4))){	
 		SPI_SlaveTransmit('e');
