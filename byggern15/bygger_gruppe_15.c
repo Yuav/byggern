@@ -2,6 +2,7 @@
 #include "settings.h"
 #include "uart.h"
 #include "spi.h"
+#include "can.h"
 #include <avr/interrupt.h>
 
 
@@ -23,10 +24,12 @@ int main(void) {
 	
 	SPI_MasterInit();	
 
-
+	CAN_init();
 
 	char last_dir;
 	printf("Start\n");
+
+	printf("CAN_test: %d", CAN_test());
 
 //interrupt init
 	//PORTD = PORTD | 0b00000100;
