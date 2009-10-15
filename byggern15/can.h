@@ -16,11 +16,15 @@
 #define MODE_LOOPBACK	0b01000000
 #define MODE_LISTEN		0b01100000
 #define MODE_CONFIG		0b10000000
+#define MODE_NO_FILTER  0b01100000 //receive filter: no filter (all messages accepted)
 
 #define MASK_MODE		0b11100000
 #define MASK_DLC		0b00001111 //mask for data length in TXn control register
 #define MASK_SIDL		0b11100000 //mask for bits in id low register
 #define MASK_TXREQ0		0b00000100 //transmit request: 1 for unsent message
+#define MASK_CANINTF_RX0IF	0b00000001 //data received in receive buffer 0
+#define MASK_RECEIVE_FILTER 0b01100000 
+
 
 #define CANCTRL			0x0F	   //control register for CAN
 
@@ -30,11 +34,14 @@
 #define TXB0DLC			0x00110101 //transmit buffer 0 data length code
 #define TXB0D0			0x00110110 //data byte 0 for TX0
 
+#define RXB0CTRL		0x01100000 //Receive buffer 0 control register
+
+//MASK_RECEIVE_FILTER, MODE_NO_FILTER)
 
 void CAN_init(void);
 int CAN_send(int id, char* data, int n);
 int CAN_test(void);
-
+int CAN_receive(char * data, int rx);
 
 
 
