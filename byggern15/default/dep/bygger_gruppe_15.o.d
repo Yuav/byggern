@@ -17,7 +17,7 @@ bygger_gruppe_15.o: ../bygger_gruppe_15.c \
   c:/program\ files/winavr/lib/gcc/../../avr/include/util/delay.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/util/delay_basic.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/eeprom.h \
-  ../sram.h ../joystick.h
+  ../sram.h ../joystick.h ../butterfly_interface.h
 
 c:/program\ files/winavr/lib/gcc/../../avr/include/stdio.h:
 
@@ -64,3 +64,5 @@ c:/program\ files/winavr/lib/gcc/../../avr/include/avr/eeprom.h:
 ../sram.h:
 
 ../joystick.h:
+
+../butterfly_interface.h:

@@ -35,12 +35,3 @@ inline uint8_t read_buttons(){
 	return (PINB & 0x6) >> 1;
 }
 
-/*
-adc_address : er en adresse(peker), inneholder verdien 0x1800
-*adc_address : er INNHOLDET i adc_address, altså dataen i minneadresse 0x1800
-
-adc_address er definert til å være en adresse som inneholder en uint8_t
-*adc_address er dermed definert til å være en uint8_t
-
-
-*/
