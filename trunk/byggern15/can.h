@@ -1,5 +1,7 @@
 #include <avr/io.h>
 
+#define OUR_ADDRESS		15
+
 #define INS_RESET 		0b11000000
 #define INS_READ		0b00000011
 #define INS_READ_RX		0b10010000 //10010nm0
@@ -16,25 +18,31 @@
 #define MODE_LOOPBACK	0b01000000
 #define MODE_LISTEN		0b01100000
 #define MODE_CONFIG		0b10000000
-#define MODE_NO_FILTER  0b01100000 //receive filter: no filter (all messages accepted)
 
-#define MASK_MODE		0b11100000
-#define MASK_DLC		0b00001111 //mask for data length in TXn control register
-#define MASK_SIDL		0b11100000 //mask for bits in id low register
-#define MASK_TXREQ0		0b00000100 //transmit request: 1 for unsent message
-#define MASK_CANINTF_RX0IF	0b00000001 //data received in receive buffer 0
-#define MASK_RECEIVE_FILTER 0b01100000 
+#define ID_TYPE_NONE		0b01100000 //no ID type filter (all messages accepted)
+#define ID_TYPE_STANDARD	0b00100000 //receive only messages with standard ID
+#define ID_TYPE_EXTENDED	0b01000000 //receive only messages with extended ID
+#define ID_TYPE_BOTH 	 	0b00000000 //receive messages with both types of ID
+
+#define MASK_MODE				0b11100000
+#define MASK_DLC				0b00001111 //mask for data length in TXn control register
+#define MASK_SIDL				0b11100000 //mask for bits in id low register
+#define MASK_TXREQ0				0b00000100 //transmit request: 1 for unsent message
+#define MASK_CANINTF_RX0IF		0b00000001 //data received in receive buffer 0
+#define MASK_RECEIVE_ID_TYPE 	0b01100000 //
 
 
 #define CANCTRL			0x0F	   //control register for CAN
 
-//#define TXB0CTRL		0x00110000 //control register for TX0
-#define TXB0SIDH		0x00110001 //transmit buffer 0 standard identifier high
-#define TXB0SIDL		0x00110010 //transmit buffer 0 standard identifier low
-#define TXB0DLC			0x00110101 //transmit buffer 0 data length code
-#define TXB0D0			0x00110110 //data byte 0 for TX0
+//#define TXB0CTRL		0b00110000 //control register for TX0
+#define TXB0SIDH		0b00110001 //transmit buffer 0 standard identifier high
+#define TXB0SIDL		0b00110010 //transmit buffer 0 standard identifier low
+#define TXB0DLC			0b00110101 //transmit buffer 0 data length code
+#define TXB0D0			0b00110110 //data byte 0 for TX0
+#define RXB0D0			0b01100110 //data byte 0 for RX0
+#define RXB1D0			0b01110110 //data byte 0 for RX1
 
-#define RXB0CTRL		0x01100000 //Receive buffer 0 control register
+#define RXB0CTRL		0b01100000 //Receive buffer 0 control register
 
 //MASK_RECEIVE_FILTER, MODE_NO_FILTER)
 

@@ -1,4 +1,4 @@
-sram.o: ../sram.c \
+sram.o: ../sram.c ../settings.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/stdio.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/inttypes.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/stdint.h \
@@ -15,6 +15,8 @@ sram.o: ../sram.c \
   c:/program\ files/winavr/lib/gcc/../../avr/include/util/delay.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/util/delay_basic.h \
   ../sram.h
+
+../settings.h:
 
 c:/program\ files/winavr/lib/gcc/../../avr/include/stdio.h:
 
