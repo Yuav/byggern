@@ -1,5 +1,6 @@
 #include <avr/io.h>
 
+// Initialize SPI as slave
 void SPI_SlaveInit(void)
 {
 	/* Set MISO output, all others input */
@@ -8,6 +9,7 @@ void SPI_SlaveInit(void)
 	SPCR = (1<<SPE);
 }
 
+// Receive data over SPI
 char SPI_SlaveReceive(void)
 {
 	/* Wait for reception complete */
@@ -17,6 +19,7 @@ char SPI_SlaveReceive(void)
 	return SPDR;
 }
 
+// Send data over SPI
 void SPI_SlaveTransmit(char cData)
 {
 	/* Start transmission */

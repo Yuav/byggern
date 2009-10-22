@@ -99,14 +99,68 @@ void start_game(enum menu_state_enum menu_state){
 			butterfly_print("enspiller evig");
 			break;
 		case START_MP_POINTS: 	
-			butterfly_print("flerspiller poeng");
+			butterfly_print("versus poeng");
 			break;
 		case START_MP_ETERNAL: 	
-			butterfly_print("flerspiller evig");	
+			butterfly_print("versus evig");	
 			break;
 		default:			
 			return;
 	}
-	_delay_ms(5000);
+	_delay_ms(2000);
 }
 
+//non working interrupt logic 
+/*
+
+
+//interrupt init
+	PORTD = PORTD | 0b00000100;
+	DDRD = DDRD & 	0b11111011;
+	MCUCR = MCUCR | (1<<ISC01) | (1<<ISC00);
+	GICR = GICR | (1<<INT0);
+	sei();
+
+
+SIGNAL(SIG_INTERRUPT0) {
+	printf("interrupt\n");
+	SPI_MasterTransmit('.'); //Poll for data
+	printf("master transmit . done \n");
+	_delay_ms(1);
+	char dir = SPI_MasterReceive();
+	printf("receive done\n");
+	
+	switch(dir) {
+		case 'l': butterfly_print("left");
+			printf("left\n");
+			break;
+		case 'r':
+			butterfly_print("right");
+			printf("right\n");
+			break;
+		case 'u':
+			butterfly_print("up");
+			printf("up\n");
+			break;
+		case 'd':
+			butterfly_print("down");
+			printf("down\n");
+			break;
+		case 'e':
+			butterfly_print("enter");
+			printf("enter\n");
+			break;
+		case '0':
+			butterfly_print("center12");
+			printf("center\n");
+			break;
+		default:
+			butterfly_print("error");
+			printf("error: %c\n", dir);
+			break;
+	}
+	// Disable interrupt again?
+
+}
+
+*/
