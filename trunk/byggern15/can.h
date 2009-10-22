@@ -49,21 +49,21 @@
 typedef struct {
 	unsigned int id;
 	uint8_t length;
-	uint8_t data[8];
+	char *data;
 } CAN_message;
 
 void CAN_init(void);
-int CAN_send(int id, char* data, int n);
+int CAN_send(CAN_message*);
 int CAN_test(void);
-int CAN_receive(char * data, int rx);
+int CAN_receive(CAN_message*, int);
 
 
 
 void CAN_reset(void);
-void CAN_read(char*, uint8_t, int);
-void CAN_read_rx(char*, uint8_t, int);
+void CAN_read(char* data, uint8_t address , int data_count);
+void CAN_read_rx(CAN_message*, uint8_t);
 void CAN_write(char*, uint8_t, int);
-void CAN_load_tx(char*, uint8_t, int);
+void CAN_load_tx(CAN_message*, uint8_t);
 void CAN_rts(uint8_t);
 uint8_t CAN_read_status(void);
 uint8_t CAN_rx_status(void);
