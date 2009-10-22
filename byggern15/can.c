@@ -3,6 +3,7 @@
 #include "settings.h"
 #include <util/delay.h>
 
+//Initialize the CAN bus
 void CAN_init(void){
 
 	CAN_reset();
@@ -12,31 +13,42 @@ void CAN_init(void){
 		
 }
 
+// Test send and recieve in loopback mode, verify result from UART
 int CAN_test(void){
+	printf("CAN_test started\n");
+	
 	char received[9];
 	char read[9];
-	read[8] = '\0';
 	int i;
 	
+	char *send = "test1234";
+
+	// Reset will move into configuration mode
+	CAN_reset();
+	CAN_bit_modify(CANCTRL, MASK_MODE, MODE_LOOPBACK); //set loopback mode
+
+	// Blanking out recieved buffer (really needed??)
 	for (i = 0;(i < 9); i++)
 		received[i] = '\0';	
 
-
-	if (CAN_send(0, "aaaaaaaa", 8) != 0){
+	// Sending data in CAN bus
+	printf("Sending string: %s", send);
+	if (CAN_send(0, send, 8) != 0){
 		return -1;
 	}
 
-	_delay_ms(100);
-		
+	// Receiving data on CAN bus
+	printf("Received: ");
 	CAN_receive(received, 0); //rxbuffer 0
-
 	for (i = 0;(i < 9); i++)
-		printf("0x%x ", (uint8_t)received[i]);
-	printf("\n");
+		read[i] = received[i];
+	
+	printf("%s\n", read);
 
 	return 0;
 }
 
+// Send string using CAN bus
 int CAN_send(int id, char* data, int n){
 	
 	unsigned int i;
@@ -55,8 +67,9 @@ int CAN_send(int id, char* data, int n){
 	return 0;
 }
 
+// Recieve string from CAN recieve buffer
 int CAN_receive(char * data, int rx){
-	//FILHIT for å sjekke type beskjed
+	//FILHIT to check message type
 	
 	while((CAN_read_status() & MASK_CANINTF_RX0IF) == 0); // loop until data received
 	CAN_read_rx(data, rx, 8);
@@ -65,14 +78,14 @@ int CAN_receive(char * data, int rx){
 
 }
 
-
-
+// Reset the CAN chip
 void CAN_reset(void){
 	SPI_SelectSlave(SPI_CAN);
 	SPI_MasterTransmit(INS_RESET);
 	SPI_NoSlave();
 }
 
+// Read
 void CAN_read(char* data, uint8_t address , int data_count){
 	int i;
 	SPI_SelectSlave(SPI_CAN);	
@@ -126,7 +139,7 @@ void CAN_load_tx(char* data, uint8_t tx, int data_count){
 	
 	SPI_MasterTransmit(INS_LOAD_TX | tx);
 	for(i = 0; i < data_count; i++){
-		printf("%c", data[i]);
+		//printf("%c", data[i]);
 		SPI_MasterTransmit(data[i]);
 	}
 
@@ -141,7 +154,7 @@ void CAN_rts(uint8_t tx){
 	else return;
 	
 	SPI_SelectSlave(SPI_CAN);
-	printf("Rts: 0x%x\n", (INS_RTS | tx));
+	//printf("Rts: 0x%x\n", (INS_RTS | tx));
 	SPI_MasterTransmit(INS_RTS | tx);
 
 	SPI_NoSlave();

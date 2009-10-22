@@ -7,13 +7,14 @@
 #include <util/delay.h>
 
 
-
+// Initialize the joystick
 void init_joystick(){
-	// sett opp port B: inn
+	// set port B: in
 	DDRB = 0x00; //inputs
 	PORTB = 0xFF; //Pull-ups
 }
 
+// Read joystick position, returns int8
 int8_t read_axis(char axis) {
 	volatile uint8_t *adc_address = (uint8_t *) 0x1800;
 	
@@ -31,7 +32,13 @@ int8_t read_axis(char axis) {
 	//evt. korrigering
 }
 
+
+// Read joystick buttons (Can be optimised with interrupt)
 inline uint8_t read_buttons(){
 	return (PINB & 0x6) >> 1;
 }
 
+	//printf("X-akse: %d Y-akse: %d Knapp1: %d knapp2: %d\n", read_axis('x'), read_axis('y'), (read_buttons()&1), ((read_buttons()>>1)&1));
+	
+		//	read_axis('x');
+		//	read_axis('y');	

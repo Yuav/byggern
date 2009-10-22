@@ -1,6 +1,7 @@
 #include <avr/io.h>
 #include "spi.h"
 
+// Initialize the SPI Master interface
 void SPI_MasterInit(void)
 {
 	/* Set MOSI and SCK output, all others input */
@@ -10,6 +11,7 @@ void SPI_MasterInit(void)
 	SPI_NoSlave();
 }
 
+// Transmit char over SPI
 void SPI_MasterTransmit(char cData)
 {
 	/* Start transmission */
@@ -18,6 +20,7 @@ void SPI_MasterTransmit(char cData)
 	while(!(SPSR & (1<<SPIF)));
 }
 
+// Recieve char over SPI
 char SPI_MasterReceive(void)
 {
 	//send dummy char, to shift the SPDR
@@ -32,6 +35,7 @@ char SPI_MasterReceive(void)
 	return SPDR;
 }
 
+// Select SPI slave to send data to
 void SPI_SelectSlave(char slave){
 
 	/* Slave select */
@@ -41,6 +45,7 @@ void SPI_SelectSlave(char slave){
 		PORTB = PORTB & ~(1<<DDB4) ; // set SS for CAN low 
 }
 
+// Disable chipselect on all SPI slaves (select no slave)
 void SPI_NoSlave(void){
 	/* Set SS high */	
 	PORTB = PORTB | (1<<DDB4) | (1<<DDB3);

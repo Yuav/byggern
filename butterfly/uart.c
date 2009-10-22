@@ -11,6 +11,7 @@ unsigned char buffer_stop;
 unsigned char buffer_used;
 */
 
+//Initialize UART
 int init_UART(unsigned int baud){
 	
 	//Enable Interrupts. Macro.
@@ -25,7 +26,7 @@ int init_UART(unsigned int baud){
 //	buffer_stop = 0;
 //	buffer_used = 0;
 
-	/* Sette baud rate */
+	/* Set baud rate */
 	UBRRH = (unsigned char)(ubrr>>8);
 	UBRRL = (unsigned char)ubrr;
 	
@@ -33,12 +34,12 @@ int init_UART(unsigned int baud){
 	UCSRB = (1<<RXEN)|(1<<TXEN);
 	
 	
-	/*UCSRC har inneholder settings for frame format*/
+	/*UCSRC has settings for frame format*/
 	
-	/*USBS: 0 for 1 stoppbit, 1 for 2 stoppbit*/
+	/*USBS: 0 for 1 stopbit, 1 for 2 stopbit*/
 	ucsrc = ucsrc | (0<<USBS);
 
-	/*UCSZ1:0 antall databits i payload: 011 for 8 bits. S. 192 i datablad */
+	/*UCSZ1:0 number of databits in payload: 011 for 8 bits. S. 192 in datasheet */
 	ucsrc = ucsrc | (1<<UCSZ1) | (1<<UCSZ0);	
 	
 	/*UPM1:0 definerer pairty bit. 00 = parity off, 10 = parity even, 11 parity odd*/
@@ -55,6 +56,7 @@ int init_UART(unsigned int baud){
 
 } 
 
+// Send char over UART (blocking, can be optimised with interrupt)
 int UART_put_char(char c, FILE* dummy){
 	if (c == '\n') UART_put_char('\r', dummy);
 	loop_until_bit_is_set(UCSRA, UDRE); 
@@ -63,6 +65,7 @@ int UART_put_char(char c, FILE* dummy){
 	return 0;
 }
 
+// Read char over UART (blocking, can be optimised with interrupt)
 int UART_get_char(FILE* dummy){
 	loop_until_bit_is_set(UCSRA, RXC);
 	//while ( !(UCSRA & (1<<RXC)) );
@@ -71,6 +74,7 @@ int UART_get_char(FILE* dummy){
 	return (int) UDR;
 }
 
+// Send char over UART with interrupt (disabled for debugging purposes)
 /*int UART_put_char(char c, FILE* dummy){
 
 	if (c == '\n') UART_put_char('\r', dummy);

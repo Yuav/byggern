@@ -46,6 +46,12 @@
 
 //MASK_RECEIVE_FILTER, MODE_NO_FILTER)
 
+typedef struct {
+	unsigned int id;
+	uint8_t length;
+	uint8_t data[8];
+} CAN_message;
+
 void CAN_init(void);
 int CAN_send(int id, char* data, int n);
 int CAN_test(void);

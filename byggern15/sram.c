@@ -3,6 +3,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "sram.h"
+
 //Initialize the extended RAM
 void init_SRAM(void)
 {
