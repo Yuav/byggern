@@ -17,45 +17,50 @@ void CAN_init(void){
 int CAN_test(void){
 	printf("CAN_test started\n");
 	
-	char received[9];
-	char read[9];
+	CAN_message received;
+	received.data = "\0\0\0\0\0\0\0\0";
+
 	int i;
+
+	CAN_message message;
+	message.id = 0;
+	message.length = 8;
+	message.data = "hall";
 	
-	char *send = "test1234";
 
 	// Reset will move into configuration mode
 	CAN_reset();
 	CAN_bit_modify(CANCTRL, MASK_MODE, MODE_LOOPBACK); //set loopback mode
 
-	// Blanking out recieved buffer (really needed??)
+	/*// Blanking out recieved buffer (really needed??)
 	for (i = 0;(i < 9); i++)
-		received[i] = '\0';	
+		received[i] = '\0';	*/
 
 	// Sending data in CAN bus
-	printf("Sending string: %s", send);
-	if (CAN_send(0, send, 8) != 0){
+	printf("Sending string: %s", message.data);
+	if (CAN_send(&message) != 0){
 		return -1;
 	}
 
 	// Receiving data on CAN bus
 	printf("Received: ");
-	CAN_receive(received, 0); //rxbuffer 0
-	for (i = 0;(i < 9); i++)
-		read[i] = received[i];
+	CAN_receive(&received, 0); //rxbuffer 0
+	//for (i = 0;(i < 9); i++)
+	//	read[i] = received[i];
 	
-	printf("%s\n", read);
+	printf("%s\n", received.data);
 
 	return 0;
 }
 
 // Send string using CAN bus
-int CAN_send(int id, char* data, int n){
+int CAN_send(CAN_message* msg){
 	
 	unsigned int i;
-	CAN_bit_modify(TXB0SIDH, 0xFF, (id<<13)); //transmit buffer 0 id high
-	CAN_bit_modify(TXB0SIDL, MASK_SIDL, (id<<5));//transmit buffer 0 id low
-	CAN_write((char *)&n, TXB0DLC, 1);	// data length (as char pointer)
-	CAN_load_tx(data, 0, n); //load transmit buffer
+	CAN_bit_modify(TXB0SIDH, 0xFF, (msg->id<<13)); //transmit buffer 0 id high
+	CAN_bit_modify(TXB0SIDL, MASK_SIDL, (msg->id<<5));//transmit buffer 0 id low
+	CAN_write(msg->length, TXB0DLC, 1);	// data length
+	CAN_load_tx(msg, 0); //load transmit buffer from channel 0
 	CAN_rts(0); //request to send
 	
 
@@ -68,11 +73,11 @@ int CAN_send(int id, char* data, int n){
 }
 
 // Recieve string from CAN recieve buffer
-int CAN_receive(char * data, int rx){
+int CAN_receive(CAN_message* msg, int rx){
 	//FILHIT to check message type
 	
 	while((CAN_read_status() & MASK_CANINTF_RX0IF) == 0); // loop until data received
-	CAN_read_rx(data, rx, 8);
+	CAN_read_rx(msg, rx);
 	
 	return 0;
 
@@ -100,17 +105,17 @@ void CAN_read(char* data, uint8_t address , int data_count){
 
 }
 
-void CAN_read_rx(char* data, uint8_t rx, int data_count){
+void CAN_read_rx(CAN_message* msg, uint8_t rx){
 	int i;
-	if (rx>1 || data_count > 8)
+	if (rx>1)
 		return;
 	if(rx == 0) rx = 1; //decode rx0 to word for "read from rxb0", standard frame
 	else if(rx == 1) rx = 3; //decode rx1 to intruction for "read from rxb1", standard frame
 	
 	SPI_SelectSlave(SPI_CAN);	
 	SPI_MasterTransmit(INS_READ_RX | (rx<<1));
-	for (i = 0; i < data_count; i++){
-		data[i] = SPI_MasterReceive();
+	for (i = 0; i < 8; i++){
+		msg->data[i] = SPI_MasterReceive();
 	}
 	
 	SPI_NoSlave();
@@ -130,17 +135,17 @@ void CAN_write(char* data, uint8_t address, int data_count){
 
 }
 //tx = "modul" (3 output "kanaler")
-void CAN_load_tx(char* data, uint8_t tx, int data_count){
+void CAN_load_tx(CAN_message* msg, uint8_t tx){
 	int i;
-	if (tx>2 || data_count > 8)
+	if (tx>2 || msg->length > 8)
 		return;
 	tx = (tx+1)*2 - 1; //convert to abc-format as explained in table 12-5
 	SPI_SelectSlave(SPI_CAN);
 	
 	SPI_MasterTransmit(INS_LOAD_TX | tx);
-	for(i = 0; i < data_count; i++){
+	for(i = 0; i < msg->length; i++){
 		//printf("%c", data[i]);
-		SPI_MasterTransmit(data[i]);
+		SPI_MasterTransmit(msg->data[i]);
 	}
 
 	SPI_NoSlave();
