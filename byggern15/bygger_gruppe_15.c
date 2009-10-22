@@ -21,6 +21,9 @@ int main(void) {
 	init_joystick();
 	SPI_MasterInit();	
 	CAN_init();
+
+
+
 	printf("Initialization complete\n");
 
 
@@ -36,7 +39,6 @@ int main(void) {
 	return 0;	
 	
 }
-
 
 
 
