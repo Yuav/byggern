@@ -30,7 +30,8 @@
 #define MASK_TXREQ0				0b00000100 //transmit request: 1 for unsent message
 #define MASK_CANINTF_RX0IF		0b00000001 //data received in receive buffer 0
 #define MASK_RECEIVE_ID_TYPE 	0b01100000 //
-
+#define MASK_B0BFE			 	0b00000100 //Bit Function Enable (to enable buffer full interrupt on output pin)
+#define MASK_B0BFM			 	0b00000001 //Bit Function Mode (1 in this bit sets the Bit Function Mode to interrupt)
 
 #define CANCTRL			0x0F	   //control register for CAN
 
@@ -41,6 +42,7 @@
 #define TXB0D0			0b00110110 //data byte 0 for TX0
 #define RXB0D0			0b01100110 //data byte 0 for RX0
 #define RXB1D0			0b01110110 //data byte 0 for RX1
+#define BFPCTRL			0b00001100 //BFPCTRL
 
 #define RXB0CTRL		0b01100000 //Receive buffer 0 control register
 
@@ -53,9 +55,10 @@ typedef struct {
 } CAN_message;
 
 void CAN_init(void);
-int CAN_send(CAN_message*);
+int CAN_send(char*, int);
 int CAN_test(void);
 int CAN_receive(CAN_message*, int);
+void CAN_init_interrupt(void);
 
 
 

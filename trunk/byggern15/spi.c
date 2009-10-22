@@ -1,4 +1,5 @@
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include "spi.h"
 
 // Initialize the SPI Master interface
@@ -37,7 +38,6 @@ char SPI_MasterReceive(void)
 
 // Select SPI slave to send data to
 void SPI_SelectSlave(char slave){
-
 	/* Slave select */
 	if (slave == SPI_BUTTERFLY)
 		PORTB = PORTB & ~(1<<DDB3) ; // set SS for butterfly low

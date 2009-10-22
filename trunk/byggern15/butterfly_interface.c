@@ -4,6 +4,8 @@
 #include "game.h"
 #include <util/delay.h>
 
+#include <avr/interrupt.h>
+
 #define TEXTBUFFER_SIZE 25
 
 char butterfly_poll_joystick(void);
@@ -71,6 +73,7 @@ void butterfly_joystick_test(){
 
 void butterfly_print(char * str){
 	int i;
+	cli(); //disable interrupts to protect SPI-communication
 	SPI_SelectSlave(SPI_BUTTERFLY);
 	for (i = 0; i < TEXTBUFFER_SIZE-1; i++){ 
 		if (str[i] == '\0') break;
@@ -78,15 +81,22 @@ void butterfly_print(char * str){
 	}
 	SPI_MasterTransmit('\0');
 	SPI_NoSlave();
+	
+
+	sei(); //enable interrupts again
 }
 
 char butterfly_poll_joystick(){
 	char button;	
+
+	cli(); //disable interrupts to protect SPI-communication
 	SPI_SelectSlave(SPI_BUTTERFLY);
 	SPI_MasterTransmit('.');
 	_delay_ms(10);
 	button = SPI_MasterReceive();
 	SPI_NoSlave();
+
+	sei(); //enable interrupts again
 	return button;
 }
 
