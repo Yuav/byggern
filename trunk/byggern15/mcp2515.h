@@ -49,6 +49,16 @@
 
 #define RXB0CTRL		0b01100000 //Receive buffer 0 control register
 
+
+#define RXF0			0b00000000 //Receive filter addresses
+#define RXF1			0b00000100
+#define RXF2			0b00001000
+#define RXF3			0b00010000
+#define RXF4			0b00010100
+#define RXF5			0b00011000
+
+#define MASK_RXF0		0b00100000 //Receive mask addresses
+#define MASK_RXF1		0b00100100
 //MASK_RECEIVE_FILTER, MODE_NO_FILTER)
 
 typedef struct {
