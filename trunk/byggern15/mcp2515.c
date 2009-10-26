@@ -51,17 +51,17 @@ void CAN_write(char data, uint8_t address){
 
 }
 //tx = "modul" (3 output "kanaler")
-void CAN_load_tx(CAN_message* msg, uint8_t tx){
+void CAN_load_tx(char* msg, uint8_t tx){
 	int i;
-	if (tx>2 || msg->length > 8)
+	if (tx>2)
 		return;
 	tx = (tx+1)*2 - 1; //convert to abc-format as explained in table 12-5
 	SPI_SelectSlave(SPI_CAN);
 	
 	SPI_MasterTransmit(INS_LOAD_TX | tx);
-	for(i = 0; i < msg->length; i++){
+	for(i = 0; i < 8; i++){
 		//printf("%c", data[i]);
-		SPI_MasterTransmit(msg->data[i]);
+		SPI_MasterTransmit(msg[i]);
 	}
 
 	SPI_NoSlave();
