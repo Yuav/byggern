@@ -37,7 +37,7 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 ## Objects that must be built in order to link
-OBJECTS = bygger_gruppe_15.o uart.o sram.o joystick.o spi.o can.o butterfly_interface.o game.o 
+OBJECTS = bygger_gruppe_15.o uart.o sram.o joystick.o spi.o can.o butterfly_interface.o game.o mcp2515.o 
 
 ## Objects explicitly added by the user
 LINKONLYOBJECTS = 
@@ -68,6 +68,9 @@ butterfly_interface.o: ../butterfly_interface.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 game.o: ../game.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+
+mcp2515.o: ../mcp2515.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 ##Link

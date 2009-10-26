@@ -4,7 +4,7 @@ bygger_gruppe_15.o: ../bygger_gruppe_15.c \
   c:/program\ files/winavr/lib/gcc/../../avr/include/stdint.h \
   c:\program\ files\winavr\bin\../lib/gcc/avr/4.3.2/include/stdarg.h \
   c:\program\ files\winavr\bin\../lib/gcc/avr/4.3.2/include/stddef.h \
-  ../settings.h ../uart.h ../spi.h ../can.h \
+  ../settings.h ../uart.h ../spi.h ../can.h ../mcp2515.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/io.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/sfr_defs.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/iom162.h \
@@ -36,6 +36,8 @@ c:\program\ files\winavr\bin\../lib/gcc/avr/4.3.2/include/stddef.h:
 ../spi.h:
 
 ../can.h:
+
+../mcp2515.h:
 
 c:/program\ files/winavr/lib/gcc/../../avr/include/avr/io.h:
 
