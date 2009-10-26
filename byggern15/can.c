@@ -11,7 +11,7 @@ void CAN_init(void){
 
 	CAN_reset();
 
-	/*	uint8_t data[2];
+	uint8_t data[2];
 
 	//Acceptance mask for RXB0 (all 11 bits counts)
 	data[0] = 0b11111111;
@@ -34,7 +34,7 @@ void CAN_init(void){
 	CAN_write(data[0], RXF1);
 	CAN_write(data[1], RXF1+1);
 
-
+/*
 
 	//Acceptance mask for RXB1
 	data[0] = 0b11111111;
@@ -216,7 +216,7 @@ int CAN_send(char* str, int id){
 int CAN_receive(CAN_message* msg, int rx){
 	//FILHIT to check message type
 	
-	while((CAN_read_status() & MASK_CANINTF_RX0IF) == 0); // loop until data received
+	while((CAN_read_status() & MASK_CANINTF_RX0IF+2*rx) == 0); // loop until data received
 	CAN_read_rx(msg, rx);
 	
 	return 0;
@@ -257,19 +257,7 @@ SIGNAL(SIG_INTERRUPT0) {
 	printf("%s\n", received.data);
 
 }
-/*
-SIGNAL(SIG_INTERRUPT1) {
-		
-	CAN_message received;
-	received.data = "\0\0\0\0\0\0\0\0";
 
-	//CAN_read(received.data, 0b01110110, 8);
-	//CAN_read_rx(received.data, 1);
-	printf("Received1: ");
-    CAN_receive(&received, 1);
-	printf("%s\n", received.data);
-
-}*/
 SIGNAL(SIG_INTERRUPT1) {
 		
 	CAN_message received;
@@ -278,5 +266,6 @@ SIGNAL(SIG_INTERRUPT1) {
 	printf("Received1: ");
     CAN_receive(&received, 1);
 	printf("%s\n", received.data);
+	printf("lala\n");
 
 }
