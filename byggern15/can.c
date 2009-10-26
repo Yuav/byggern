@@ -152,7 +152,7 @@ SIGNAL(SIG_INTERRUPT0) {
 	CAN_message received;
 	received.data = "\0\0\0\0\0\0\0\0";
 
-	printf("Received: ");
+	printf("Received0: ");
     CAN_receive(&received, 0);
 	printf("%s\n", received.data);
 
@@ -170,3 +170,13 @@ SIGNAL(SIG_INTERRUPT1) {
 	printf("%s\n", received.data);
 
 }*/
+SIGNAL(SIG_INTERRUPT1) {
+		
+	CAN_message received;
+	received.data = "\0\0\0\0\0\0\0\0";
+
+	printf("Received1: ");
+    CAN_receive(&received, 1);
+	printf("%s\n", received.data);
+
+}
