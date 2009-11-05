@@ -15,7 +15,7 @@ COMMON = -mmcu=$(MCU)
 
 ## Compile options common for all C compilation units.
 CFLAGS = $(COMMON)
-CFLAGS += -Wall -gdwarf-2 -Os -std=gnu99 -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
+CFLAGS += -Wall -gdwarf-2 -std=gnu99 -O0 -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
 CFLAGS += -MD -MP -MT $(*F).o -MF dep/$(@F).d 
 
 ## Assembly specific flags
@@ -37,7 +37,7 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 ## Objects that must be built in order to link
-OBJECTS = node2.o can.o mcp2515.o spi.o 
+OBJECTS = can.o mcp2515.o spi.o node2.o 
 
 ## Objects explicitly added by the user
 LINKONLYOBJECTS = 
@@ -46,9 +46,6 @@ LINKONLYOBJECTS =
 all: $(TARGET) Node2.hex Node2.eep Node2.lss size
 
 ## Compile
-node2.o: ../node2.c
-	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
-
 can.o: ../can.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
@@ -56,6 +53,9 @@ mcp2515.o: ../mcp2515.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 spi.o: ../spi.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+
+node2.o: ../node2.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 ##Link
