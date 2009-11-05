@@ -37,7 +37,7 @@ void CAN_init(void){
 
 
 
-	//Acceptance mask for RXB1 - accepts 1 2 3 8 9 only
+	/*//Acceptance mask for RXB1 - accepts 1 2 3 8 9 only
 	data[0] = 0b11111111;
 	data[1] = 0b11100000;
 	CAN_write(data[0], MASK_RXF1);
@@ -71,7 +71,7 @@ void CAN_init(void){
 	data[0] = 0b00000000;
 	data[1] = 0b01100000;
 	CAN_write(data[0], RXF5);
-	CAN_write(data[1], RXF5+1);
+	CAN_write(data[1], RXF5+1);*/
 
 
 	CAN_bit_modify(CANCTRL, MASK_MODE, MODE_NORMAL); //set loopback mode
@@ -100,7 +100,7 @@ int CAN_test(void){
 */
 
 
-/*	for(i = 0; i < 10; i++){
+	for(i = 0; i < 10; i++){
 		switch (i) {
 			case 0:
 				message.data = "0";
@@ -144,12 +144,16 @@ int CAN_test(void){
 				break;
 		}
 
+		/*// Blanking out recieved buffer (really needed??)
+		for (i = 0;(i < 9); i++)
+			received[i] = '\0';	*/
+
 		// Sending data in CAN bus
-		printf("Sending string: %s", message.data);
+		//printf("Sending string: %s", message.data);
 		if (CAN_send(message.data, message.id) != 0){
 			return -1;
 		}
-	}*/
+	}
 	return 0;
 }
 
@@ -226,24 +230,24 @@ int CAN_receive(CAN_message* msg, int rx){
 
 
 
-/*void CAN_init_interrupt(){
+void CAN_init_interrupt(){
 //interrupt init
 	PORTD = PORTD | 0b00000100;
 	DDRD = DDRD & 	0b11111011;
 	MCUCR = MCUCR | (0<<ISC01) | (0<<ISC00);
-	GICR = GICR | (1<<INT0);
+//	GICR = GICR | (1<<INT0);
 	sei();
-}*/
+}
 
 
-void CAN_init_interrupt(){
+/*void CAN_init_interrupt(){
 //interrupt init
 	PORTD = PORTD | 0b00001100;
 	DDRD = DDRD & 	0b11110011;
 	MCUCR = MCUCR | (0<<ISC01) | (0<<ISC00) | (0<<ISC11) | (0<<ISC10);
 	GICR = GICR | (1<<INT0) | (1<<INT1);
 	sei();
-}
+}*/
 
 
 SIGNAL(SIG_INTERRUPT0) {
@@ -251,13 +255,13 @@ SIGNAL(SIG_INTERRUPT0) {
 	CAN_message received;
 	received.data = "\0\0\0\0\0\0\0\0";
 
-	printf("Received interrupt0: ");
+//	printf("Received interrupt0: ");
     CAN_receive(&received, 0);
-	printf("%s\n", received.data);
+//	printf("%s\n", received.data);
 
 }
 
-SIGNAL(SIG_INTERRUPT1) {
+/*SIGNAL(SIG_INTERRUPT1) {
 		
 	CAN_message received;
 	received.data = "\0\0\0\0\0\0\0\0";
@@ -265,4 +269,4 @@ SIGNAL(SIG_INTERRUPT1) {
 	printf("Received interrupt1: ");
     CAN_receive(&received, 1);
 	printf("%s\n", received.data);
-}
+}*/
