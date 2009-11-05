@@ -18,19 +18,19 @@ int main(void) {
 	SPI_NoSlave();
 	init_UART(BAUD);
 	init_SRAM();
-	init_joystick();
 	SPI_MasterInit();	
-	CAN_init();
+	//CAN_init();
 
+	init_joystick();
 
-
+/*
 	printf("Initialization complete\n");
 
 
 	printf("CAN_test: %d", CAN_test());
 
 
-	
+	*/
 	
 	
 

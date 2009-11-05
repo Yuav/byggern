@@ -46,6 +46,7 @@
 #define RXB0D0			0b01100110 //data byte 0 for RX0
 #define RXB1D0			0b01110110 //data byte 0 for RX1
 #define BFPCTRL			0b00001100 //BFPCTRL
+#define CANINTE			0b00101011 //CAN interrupt enable register
 
 #define RXB0CTRL		0b01100000 //Receive buffer 0 control register
 

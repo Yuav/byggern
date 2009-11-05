@@ -76,13 +76,13 @@ void CAN_init(void){
 
 	CAN_bit_modify(CANCTRL, MASK_MODE, MODE_NORMAL); //set loopback mode
 	CAN_bit_modify(RXB0CTRL, MASK_RECEIVE_ID_TYPE, ID_TYPE_STANDARD); // set no filter, set to 01 to accept only standard, 00 to accept accordig to filters
-	CAN_bit_modify(BFPCTRL, 0x0f, 0xff);
+	CAN_bit_modify(CANINTE, 0x01, 0xff); //enable interrupt on receive
 	CAN_init_interrupt();
 }
 
 // Test send and recieve in loopback mode, verify result from UART
 int CAN_test(void){
-	printf("CAN_test started\n");
+//	printf("CAN_test started\n");
 	int i;
 	
 
@@ -99,15 +99,15 @@ int CAN_test(void){
 	CAN_bit_modify(BFPCTRL, 0x0f, 0xff);
 */
 
-
+/*
 	for(i = 0; i < 10; i++){
 		switch (i) {
 			case 0:
-				message.data = "0";
+				message.data = "1F";
 				message.id = 0x1F;
 				break;
 			case 1:
-				message.data = "1";
+				message.data = "1E";
 				message.id = 0x1E;
 				break;
 			case 2:
@@ -135,25 +135,23 @@ int CAN_test(void){
 				message.id = 7;
 				break;
 			case 8:
-				message.data = "8";
-				message.id = 8;
+				message.data = "0";
+				message.id = 0;
 				break;
 			case 9:
-				message.data = "9";
-				message.id = 9;
+				message.data = "1";
+				message.id = 1;
 				break;
 		}
-
-		/*// Blanking out recieved buffer (really needed??)
-		for (i = 0;(i < 9); i++)
-			received[i] = '\0';	*/
 
 		// Sending data in CAN bus
 		//printf("Sending string: %s", message.data);
 		if (CAN_send(message.data, message.id) != 0){
 			return -1;
 		}
-	}
+
+		_delay_ms(800);
+	}*/ 
 	return 0;
 }
 
@@ -221,6 +219,8 @@ int CAN_receive(CAN_message* msg, int rx){
 	
 	while((CAN_read_status() & MASK_CANINTF_RX0IF+2*rx) == 0); // loop until data received
 	CAN_read_rx(msg, rx);
+
+	msg->id = 0x1F; //only id allowed
 	
 	return 0;
 
@@ -232,10 +232,10 @@ int CAN_receive(CAN_message* msg, int rx){
 
 void CAN_init_interrupt(){
 //interrupt init
-	PORTD = PORTD | 0b00000100;
-	DDRD = DDRD & 	0b11111011;
-	MCUCR = MCUCR | (0<<ISC01) | (0<<ISC00);
-//	GICR = GICR | (1<<INT0);
+	PORTE = PORTE | 0b00001000;
+	DDRE = DDRE & 	0b11110111;
+	EICRB = 0;// | (0<<ISC41) | (0<<ISC40); ////////////////fix: ikke or med 0
+	EIMSK = EIMSK | (1<<INT4);
 	sei();
 }
 
@@ -250,14 +250,14 @@ void CAN_init_interrupt(){
 }*/
 
 
-SIGNAL(SIG_INTERRUPT0) {
+SIGNAL(SIG_INTERRUPT4) {
 		
+
 	CAN_message received;
 	received.data = "\0\0\0\0\0\0\0\0";
 
-//	printf("Received interrupt0: ");
     CAN_receive(&received, 0);
-//	printf("%s\n", received.data);
+	CAN_send(received.data, received.id);
 
 }
 

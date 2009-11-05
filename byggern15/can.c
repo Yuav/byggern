@@ -100,7 +100,7 @@ int CAN_test(void){
 */
 
 
-/*	for(i = 0; i < 10; i++){
+	for(i = 0; i < 10; i++){
 		switch (i) {
 			case 0:
 				message.data = "0";
@@ -149,7 +149,9 @@ int CAN_test(void){
 		if (CAN_send(message.data, message.id) != 0){
 			return -1;
 		}
-	}*/
+
+		_delay_ms(500);
+	}
 	return 0;
 }
 
@@ -216,8 +218,11 @@ int CAN_receive(CAN_message* msg, int rx){
 	//FILHIT to check message type
 	
 	while((CAN_read_status() & MASK_CANINTF_RX0IF+2*rx) == 0); // loop until data received
+
+	if (rx == 1 && ((uint8_t)CAN_rx_status & (uint8_t)0b10000000))
+		return -1;
+
 	CAN_read_rx(msg, rx);
-	
 	return 0;
 
 }
@@ -251,9 +256,8 @@ SIGNAL(SIG_INTERRUPT0) {
 	CAN_message received;
 	received.data = "\0\0\0\0\0\0\0\0";
 
-	printf("Received interrupt0: ");
-    CAN_receive(&received, 0);
-	printf("%s\n", received.data);
+    if(CAN_receive(&received, 0) == 0)
+		printf("Received interrupt0: %s\n", received.data);
 
 }
 
@@ -262,7 +266,6 @@ SIGNAL(SIG_INTERRUPT1) {
 	CAN_message received;
 	received.data = "\0\0\0\0\0\0\0\0";
 
-	printf("Received interrupt1: ");
-    CAN_receive(&received, 1);
-	printf("%s\n", received.data);
+    if(CAN_receive(&received, 1) == 0)
+		printf("Received interrupt1: %s\n", received.data);;
 }

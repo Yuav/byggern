@@ -95,9 +95,19 @@ uint8_t CAN_read_status(void){
 }
 
 uint8_t CAN_rx_status(void){
-return 0;
+
+	char status;
+	SPI_SelectSlave(SPI_CAN);
+
+	SPI_MasterTransmit(INS_RX_STATUS);
+	status = SPI_MasterReceive();
+
+	SPI_NoSlave();
+	
+	return (uint8_t) status;
 
 }
+
 void CAN_bit_modify(uint8_t address, uint8_t mask, uint8_t data){
 	SPI_SelectSlave(SPI_CAN);
 
