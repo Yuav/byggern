@@ -28,22 +28,15 @@ void CAN_init(void){
 	CAN_write(data[0], RXF0);
 	CAN_write(data[1], RXF0+1);
 
-	/*//RXF1
-	//Receive filter 1 hits when id = 1E (exactly)
-	data[0] = 0b00000011;
-	data[1] = 0b11000000; 
-	CAN_write(data[0], RXF1);
-	CAN_write(data[1], RXF1+1);*/
 
 
 
-	//Acceptance mask for RXB1 - accepts 1 2 3 8 9 only
+
+	//Acceptance mask for RXB1 - accepts 0 1 2 3 only
 	data[0] = 0b11111111;
 	data[1] = 0b11100000;
 	CAN_write(data[0], MASK_RXF1);
 	CAN_write(data[1], MASK_RXF1+1);
-
-
 
 	//RXF2
 	//Receive filter 2 hits when id = 0 (exactly)
@@ -164,9 +157,9 @@ int CAN_send(char* str, int id){
 	char *messg = "\0\0\0\0\0\0\0";
 	for(i = 0; i < 8; i++){
 		messg[i] = str[i];
-		if (messg[i] == '\0') {
+		/*if (messg[i] == '\0') { //////////////////husk å fikse i node2
 			break;
-		}
+		}*/
 	}
 
 	cli(); // disable interrupts, to protect SPI-communication 
@@ -233,8 +226,8 @@ int CAN_receive(CAN_message* msg, int rx){
 
 /*void CAN_init_interrupt(){
 //interrupt init
-	PORTD = PORTD | 0b00000100;
 	DDRD = DDRD & 	0b11111011;
+	PORTD = PORTD | 0b00000100;
 	MCUCR = MCUCR | (0<<ISC01) | (0<<ISC00);
 	GICR = GICR | (1<<INT0);
 	sei();
@@ -243,15 +236,17 @@ int CAN_receive(CAN_message* msg, int rx){
 
 void CAN_init_interrupt(){
 //interrupt init
-	PORTD = PORTD | 0b00001100;
 	DDRD = DDRD & 	0b11110011;
+	PORTD = PORTD | 0b00001100;
 	MCUCR = MCUCR | (0<<ISC01) | (0<<ISC00) | (0<<ISC11) | (0<<ISC10);
 	GICR = GICR | (1<<INT0) | (1<<INT1);
 	sei();
 }
 
 
-SIGNAL(SIG_INTERRUPT0) {
+
+
+void sig_interrupt0() {
 		
 	CAN_message received;
 	received.data = "\0\0\0\0\0\0\0\0";
@@ -261,11 +256,12 @@ SIGNAL(SIG_INTERRUPT0) {
 
 }
 
-SIGNAL(SIG_INTERRUPT1) {
+void sig_interrupt1() {
 		
 	CAN_message received;
 	received.data = "\0\0\0\0\0\0\0\0";
 
     if(CAN_receive(&received, 1) == 0)
-		printf("Received interrupt1: %s\n", received.data);;
+		printf("Received interrupt1: %s\n", received.data);
 }
+

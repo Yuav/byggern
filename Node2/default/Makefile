@@ -37,7 +37,7 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 ## Objects that must be built in order to link
-OBJECTS = can.o mcp2515.o spi.o node2.o 
+OBJECTS = can.o mcp2515.o spi.o node2.o servo.o 
 
 ## Objects explicitly added by the user
 LINKONLYOBJECTS = 
@@ -56,6 +56,9 @@ spi.o: ../spi.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 node2.o: ../node2.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+
+servo.o: ../servo.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 ##Link

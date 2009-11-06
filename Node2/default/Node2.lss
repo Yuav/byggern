@@ -3,63 +3,65 @@ Node2.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000014  00800100  0000071e  00000792  2**0
+  0 .data         00000014  00800100  0000098e  00000a22  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000071e  00000000  00000000  00000074  2**1
+  1 .text         0000098e  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .debug_aranges 00000080  00000000  00000000  000007a6  2**0
+  2 .bss          00000006  00800114  00800114  00000a36  2**0
+                  ALLOC
+  3 .debug_aranges 000000a0  00000000  00000000  00000a36  2**0
                   CONTENTS, READONLY, DEBUGGING
-  3 .debug_pubnames 000001a0  00000000  00000000  00000826  2**0
+  4 .debug_pubnames 000001e5  00000000  00000000  00000ad6  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_info   000005fd  00000000  00000000  000009c6  2**0
+  5 .debug_info   0000072a  00000000  00000000  00000cbb  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_abbrev 000002f1  00000000  00000000  00000fc3  2**0
+  6 .debug_abbrev 00000395  00000000  00000000  000013e5  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_line   00000690  00000000  00000000  000012b4  2**0
+  7 .debug_line   000007ea  00000000  00000000  0000177a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_frame  00000190  00000000  00000000  00001944  2**2
+  8 .debug_frame  000001d0  00000000  00000000  00001f64  2**2
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    0000020b  00000000  00000000  00001ad4  2**0
+  9 .debug_str    00000243  00000000  00000000  00002134  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
    0:	0c 94 46 00 	jmp	0x8c	; 0x8c <__ctors_end>
-   4:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-   8:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-   c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  10:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  14:	0c 94 8c 01 	jmp	0x318	; 0x318 <__vector_5>
-  18:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  1c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  20:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  24:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  28:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  2c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  30:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  34:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  38:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  3c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  40:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  44:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  48:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  4c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  50:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  54:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  58:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  5c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  60:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  64:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  68:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  6c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  70:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  74:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  78:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  7c:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  80:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  84:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
-  88:	0c 94 5d 00 	jmp	0xba	; 0xba <__bad_interrupt>
+   4:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+   8:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+   c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  10:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  14:	0c 94 53 03 	jmp	0x6a6	; 0x6a6 <__vector_5>
+  18:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  1c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  20:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  24:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  28:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  2c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  30:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  34:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  38:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  3c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  40:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  44:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  48:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  4c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  50:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  54:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  58:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  5c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  60:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  64:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  68:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  6c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  70:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  74:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  78:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  7c:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  80:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  84:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
+  88:	0c 94 65 00 	jmp	0xca	; 0xca <__bad_interrupt>
 
 0000008c <__ctors_end>:
   8c:	11 24       	eor	r1, r1
@@ -73,8 +75,8 @@ Disassembly of section .text:
   98:	11 e0       	ldi	r17, 0x01	; 1
   9a:	a0 e0       	ldi	r26, 0x00	; 0
   9c:	b1 e0       	ldi	r27, 0x01	; 1
-  9e:	ee e1       	ldi	r30, 0x1E	; 30
-  a0:	f7 e0       	ldi	r31, 0x07	; 7
+  9e:	ee e8       	ldi	r30, 0x8E	; 142
+  a0:	f9 e0       	ldi	r31, 0x09	; 9
   a2:	00 e0       	ldi	r16, 0x00	; 0
   a4:	0b bf       	out	0x3b, r16	; 59
   a6:	02 c0       	rjmp	.+4      	; 0xac <__do_copy_data+0x14>
@@ -83,1145 +85,1524 @@ Disassembly of section .text:
   ac:	a4 31       	cpi	r26, 0x14	; 20
   ae:	b1 07       	cpc	r27, r17
   b0:	d9 f7       	brne	.-10     	; 0xa8 <__do_copy_data+0x10>
-  b2:	0e 94 80 03 	call	0x700	; 0x700 <main>
-  b6:	0c 94 8d 03 	jmp	0x71a	; 0x71a <_exit>
 
-000000ba <__bad_interrupt>:
-  ba:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+000000b2 <__do_clear_bss>:
+  b2:	11 e0       	ldi	r17, 0x01	; 1
+  b4:	a4 e1       	ldi	r26, 0x14	; 20
+  b6:	b1 e0       	ldi	r27, 0x01	; 1
+  b8:	01 c0       	rjmp	.+2      	; 0xbc <.do_clear_bss_start>
 
-000000be <CAN_init>:
+000000ba <.do_clear_bss_loop>:
+  ba:	1d 92       	st	X+, r1
+
+000000bc <.do_clear_bss_start>:
+  bc:	aa 31       	cpi	r26, 0x1A	; 26
+  be:	b1 07       	cpc	r27, r17
+  c0:	e1 f7       	brne	.-8      	; 0xba <.do_clear_bss_loop>
+  c2:	0e 94 46 03 	call	0x68c	; 0x68c <main>
+  c6:	0c 94 c5 04 	jmp	0x98a	; 0x98a <_exit>
+
+000000ca <__bad_interrupt>:
+  ca:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000ce <CAN_init>:
 #include <util/delay.h>
 #include <avr/interrupt.h>
 #include <avr/io.h>
 
 //Initialize the CAN bus
 void CAN_init(void){
-  be:	df 93       	push	r29
-  c0:	cf 93       	push	r28
-  c2:	00 d0       	rcall	.+0      	; 0xc4 <CAN_init+0x6>
-  c4:	cd b7       	in	r28, 0x3d	; 61
-  c6:	de b7       	in	r29, 0x3e	; 62
+  ce:	df 93       	push	r29
+  d0:	cf 93       	push	r28
+  d2:	00 d0       	rcall	.+0      	; 0xd4 <CAN_init+0x6>
+  d4:	cd b7       	in	r28, 0x3d	; 61
+  d6:	de b7       	in	r29, 0x3e	; 62
 
 	CAN_reset();
-  c8:	0e 94 d5 01 	call	0x3aa	; 0x3aa <CAN_reset>
+  d8:	0e 94 8a 01 	call	0x314	; 0x314 <CAN_reset>
 
 	uint8_t data[2];
 
 	//Acceptance mask for RXB0 (all 11 bits counts)
 	//dette filteret blokkerer alt?!?
 	data[0] = 0b11111111;
-  cc:	8f ef       	ldi	r24, 0xFF	; 255
-  ce:	89 83       	std	Y+1, r24	; 0x01
+  dc:	8f ef       	ldi	r24, 0xFF	; 255
+  de:	89 83       	std	Y+1, r24	; 0x01
 	data[1] = 0b11100000;
-  d0:	80 ee       	ldi	r24, 0xE0	; 224
-  d2:	8a 83       	std	Y+2, r24	; 0x02
+  e0:	80 ee       	ldi	r24, 0xE0	; 224
+  e2:	8a 83       	std	Y+2, r24	; 0x02
 	CAN_write(data[0], MASK_RXF0);
-  d4:	89 81       	ldd	r24, Y+1	; 0x01
-  d6:	60 e2       	ldi	r22, 0x20	; 32
-  d8:	0e 94 70 02 	call	0x4e0	; 0x4e0 <CAN_write>
+  e4:	89 81       	ldd	r24, Y+1	; 0x01
+  e6:	60 e2       	ldi	r22, 0x20	; 32
+  e8:	0e 94 25 02 	call	0x44a	; 0x44a <CAN_write>
 	CAN_write(data[1], MASK_RXF0+1);
-  dc:	8a 81       	ldd	r24, Y+2	; 0x02
-  de:	61 e2       	ldi	r22, 0x21	; 33
-  e0:	0e 94 70 02 	call	0x4e0	; 0x4e0 <CAN_write>
+  ec:	8a 81       	ldd	r24, Y+2	; 0x02
+  ee:	61 e2       	ldi	r22, 0x21	; 33
+  f0:	0e 94 25 02 	call	0x44a	; 0x44a <CAN_write>
 
 
 	//RXF0
 	//Receive filter 0 hits when id = 0x1F (exactly)	
 	data[0] = 0b00000011;
-  e4:	83 e0       	ldi	r24, 0x03	; 3
-  e6:	89 83       	std	Y+1, r24	; 0x01
+  f4:	83 e0       	ldi	r24, 0x03	; 3
+  f6:	89 83       	std	Y+1, r24	; 0x01
 	data[1] = 0b11100000;
-  e8:	80 ee       	ldi	r24, 0xE0	; 224
-  ea:	8a 83       	std	Y+2, r24	; 0x02
+  f8:	80 ee       	ldi	r24, 0xE0	; 224
+  fa:	8a 83       	std	Y+2, r24	; 0x02
 	CAN_write(data[0], RXF0);
-  ec:	89 81       	ldd	r24, Y+1	; 0x01
-  ee:	60 e0       	ldi	r22, 0x00	; 0
-  f0:	0e 94 70 02 	call	0x4e0	; 0x4e0 <CAN_write>
+  fc:	89 81       	ldd	r24, Y+1	; 0x01
+  fe:	60 e0       	ldi	r22, 0x00	; 0
+ 100:	0e 94 25 02 	call	0x44a	; 0x44a <CAN_write>
 	CAN_write(data[1], RXF0+1);
-  f4:	8a 81       	ldd	r24, Y+2	; 0x02
-  f6:	61 e0       	ldi	r22, 0x01	; 1
-  f8:	0e 94 70 02 	call	0x4e0	; 0x4e0 <CAN_write>
+ 104:	8a 81       	ldd	r24, Y+2	; 0x02
+ 106:	61 e0       	ldi	r22, 0x01	; 1
+ 108:	0e 94 25 02 	call	0x44a	; 0x44a <CAN_write>
 	data[1] = 0b01100000;
 	CAN_write(data[0], RXF5);
 	CAN_write(data[1], RXF5+1);*/
 
 
 	CAN_bit_modify(CANCTRL, MASK_MODE, MODE_NORMAL); //set loopback mode
-  fc:	8f e0       	ldi	r24, 0x0F	; 15
-  fe:	60 ee       	ldi	r22, 0xE0	; 224
- 100:	40 e0       	ldi	r20, 0x00	; 0
- 102:	0e 94 0b 03 	call	0x616	; 0x616 <CAN_bit_modify>
+ 10c:	8f e0       	ldi	r24, 0x0F	; 15
+ 10e:	60 ee       	ldi	r22, 0xE0	; 224
+ 110:	40 e0       	ldi	r20, 0x00	; 0
+ 112:	0e 94 d1 02 	call	0x5a2	; 0x5a2 <CAN_bit_modify>
 	CAN_bit_modify(RXB0CTRL, MASK_RECEIVE_ID_TYPE, ID_TYPE_STANDARD); // set no filter, set to 01 to accept only standard, 00 to accept accordig to filters
- 106:	80 e6       	ldi	r24, 0x60	; 96
- 108:	60 e6       	ldi	r22, 0x60	; 96
- 10a:	40 e2       	ldi	r20, 0x20	; 32
- 10c:	0e 94 0b 03 	call	0x616	; 0x616 <CAN_bit_modify>
+ 116:	80 e6       	ldi	r24, 0x60	; 96
+ 118:	60 e6       	ldi	r22, 0x60	; 96
+ 11a:	40 e2       	ldi	r20, 0x20	; 32
+ 11c:	0e 94 d1 02 	call	0x5a2	; 0x5a2 <CAN_bit_modify>
 	CAN_bit_modify(CANINTE, 0x01, 0xff); //enable interrupt on receive
- 110:	8b e2       	ldi	r24, 0x2B	; 43
- 112:	61 e0       	ldi	r22, 0x01	; 1
- 114:	4f ef       	ldi	r20, 0xFF	; 255
- 116:	0e 94 0b 03 	call	0x616	; 0x616 <CAN_bit_modify>
+ 120:	8b e2       	ldi	r24, 0x2B	; 43
+ 122:	61 e0       	ldi	r22, 0x01	; 1
+ 124:	4f ef       	ldi	r20, 0xFF	; 255
+ 126:	0e 94 d1 02 	call	0x5a2	; 0x5a2 <CAN_bit_modify>
 	CAN_init_interrupt();
- 11a:	0e 94 6c 01 	call	0x2d8	; 0x2d8 <CAN_init_interrupt>
+ 12a:	0e 94 6a 01 	call	0x2d4	; 0x2d4 <CAN_init_interrupt>
 }
- 11e:	0f 90       	pop	r0
- 120:	0f 90       	pop	r0
- 122:	cf 91       	pop	r28
- 124:	df 91       	pop	r29
- 126:	08 95       	ret
+ 12e:	0f 90       	pop	r0
+ 130:	0f 90       	pop	r0
+ 132:	cf 91       	pop	r28
+ 134:	df 91       	pop	r29
+ 136:	08 95       	ret
 
-00000128 <CAN_test>:
+00000138 <CAN_test>:
 
 // Test send and recieve in loopback mode, verify result from UART
 int CAN_test(void){
- 128:	df 93       	push	r29
- 12a:	cf 93       	push	r28
- 12c:	cd b7       	in	r28, 0x3d	; 61
- 12e:	de b7       	in	r29, 0x3e	; 62
- 130:	27 97       	sbiw	r28, 0x07	; 7
- 132:	0f b6       	in	r0, 0x3f	; 63
- 134:	f8 94       	cli
- 136:	de bf       	out	0x3e, r29	; 62
- 138:	0f be       	out	0x3f, r0	; 63
- 13a:	cd bf       	out	0x3d, r28	; 61
+ 138:	df 93       	push	r29
+ 13a:	cf 93       	push	r28
+ 13c:	cd b7       	in	r28, 0x3d	; 61
+ 13e:	de b7       	in	r29, 0x3e	; 62
+ 140:	27 97       	sbiw	r28, 0x07	; 7
+ 142:	0f b6       	in	r0, 0x3f	; 63
+ 144:	f8 94       	cli
+ 146:	de bf       	out	0x3e, r29	; 62
+ 148:	0f be       	out	0x3f, r0	; 63
+ 14a:	cd bf       	out	0x3d, r28	; 61
 //	printf("CAN_test started\n");
 	int i;
 	
 
 	CAN_message message;
 	message.id = 0;
- 13c:	1c 82       	std	Y+4, r1	; 0x04
- 13e:	1b 82       	std	Y+3, r1	; 0x03
+ 14c:	1c 82       	std	Y+4, r1	; 0x04
+ 14e:	1b 82       	std	Y+3, r1	; 0x03
 	message.length = 8;
- 140:	88 e0       	ldi	r24, 0x08	; 8
- 142:	8d 83       	std	Y+5, r24	; 0x05
+ 150:	88 e0       	ldi	r24, 0x08	; 8
+ 152:	8d 83       	std	Y+5, r24	; 0x05
 	message.data = " ";
- 144:	80 e0       	ldi	r24, 0x00	; 0
- 146:	91 e0       	ldi	r25, 0x01	; 1
- 148:	9f 83       	std	Y+7, r25	; 0x07
- 14a:	8e 83       	std	Y+6, r24	; 0x06
+ 154:	80 e0       	ldi	r24, 0x00	; 0
+ 156:	91 e0       	ldi	r25, 0x01	; 1
+ 158:	9f 83       	std	Y+7, r25	; 0x07
+ 15a:	8e 83       	std	Y+6, r24	; 0x06
 			return -1;
 		}
 
 		_delay_ms(800);
 	}*/ 
 	return 0;
- 14c:	80 e0       	ldi	r24, 0x00	; 0
- 14e:	90 e0       	ldi	r25, 0x00	; 0
+ 15c:	80 e0       	ldi	r24, 0x00	; 0
+ 15e:	90 e0       	ldi	r25, 0x00	; 0
 }
- 150:	27 96       	adiw	r28, 0x07	; 7
- 152:	0f b6       	in	r0, 0x3f	; 63
- 154:	f8 94       	cli
- 156:	de bf       	out	0x3e, r29	; 62
- 158:	0f be       	out	0x3f, r0	; 63
- 15a:	cd bf       	out	0x3d, r28	; 61
- 15c:	cf 91       	pop	r28
- 15e:	df 91       	pop	r29
- 160:	08 95       	ret
+ 160:	27 96       	adiw	r28, 0x07	; 7
+ 162:	0f b6       	in	r0, 0x3f	; 63
+ 164:	f8 94       	cli
+ 166:	de bf       	out	0x3e, r29	; 62
+ 168:	0f be       	out	0x3f, r0	; 63
+ 16a:	cd bf       	out	0x3d, r28	; 61
+ 16c:	cf 91       	pop	r28
+ 16e:	df 91       	pop	r29
+ 170:	08 95       	ret
 
-00000162 <CAN_send>:
+00000172 <CAN_send>:
 
 // Send string using CAN bus
 int CAN_send(char* str, int id){
- 162:	df 93       	push	r29
- 164:	cf 93       	push	r28
- 166:	cd b7       	in	r28, 0x3d	; 61
- 168:	de b7       	in	r29, 0x3e	; 62
- 16a:	2e 97       	sbiw	r28, 0x0e	; 14
- 16c:	0f b6       	in	r0, 0x3f	; 63
- 16e:	f8 94       	cli
- 170:	de bf       	out	0x3e, r29	; 62
- 172:	0f be       	out	0x3f, r0	; 63
- 174:	cd bf       	out	0x3d, r28	; 61
- 176:	9a 87       	std	Y+10, r25	; 0x0a
- 178:	89 87       	std	Y+9, r24	; 0x09
- 17a:	7c 87       	std	Y+12, r23	; 0x0c
- 17c:	6b 87       	std	Y+11, r22	; 0x0b
+ 172:	df 93       	push	r29
+ 174:	cf 93       	push	r28
+ 176:	cd b7       	in	r28, 0x3d	; 61
+ 178:	de b7       	in	r29, 0x3e	; 62
+ 17a:	2e 97       	sbiw	r28, 0x0e	; 14
+ 17c:	0f b6       	in	r0, 0x3f	; 63
+ 17e:	f8 94       	cli
+ 180:	de bf       	out	0x3e, r29	; 62
+ 182:	0f be       	out	0x3f, r0	; 63
+ 184:	cd bf       	out	0x3d, r28	; 61
+ 186:	9a 87       	std	Y+10, r25	; 0x0a
+ 188:	89 87       	std	Y+9, r24	; 0x09
+ 18a:	7c 87       	std	Y+12, r23	; 0x0c
+ 18c:	6b 87       	std	Y+11, r22	; 0x0b
 	
 	unsigned int part, i;
 	int done = 0;
- 17e:	1c 82       	std	Y+4, r1	; 0x04
- 180:	1b 82       	std	Y+3, r1	; 0x03
+ 18e:	1c 82       	std	Y+4, r1	; 0x04
+ 190:	1b 82       	std	Y+3, r1	; 0x03
 
 	char *messg = "\0\0\0\0\0\0\0";
- 182:	82 e0       	ldi	r24, 0x02	; 2
- 184:	91 e0       	ldi	r25, 0x01	; 1
- 186:	9a 83       	std	Y+2, r25	; 0x02
- 188:	89 83       	std	Y+1, r24	; 0x01
+ 192:	82 e0       	ldi	r24, 0x02	; 2
+ 194:	91 e0       	ldi	r25, 0x01	; 1
+ 196:	9a 83       	std	Y+2, r25	; 0x02
+ 198:	89 83       	std	Y+1, r24	; 0x01
 	for(i = 0; i < 8; i++){
- 18a:	1e 82       	std	Y+6, r1	; 0x06
- 18c:	1d 82       	std	Y+5, r1	; 0x05
- 18e:	1f c0       	rjmp	.+62     	; 0x1ce <CAN_send+0x6c>
+ 19a:	1e 82       	std	Y+6, r1	; 0x06
+ 19c:	1d 82       	std	Y+5, r1	; 0x05
+ 19e:	15 c0       	rjmp	.+42     	; 0x1ca <CAN_send+0x58>
 		messg[i] = str[i];
- 190:	29 81       	ldd	r18, Y+1	; 0x01
- 192:	3a 81       	ldd	r19, Y+2	; 0x02
- 194:	8d 81       	ldd	r24, Y+5	; 0x05
- 196:	9e 81       	ldd	r25, Y+6	; 0x06
- 198:	d9 01       	movw	r26, r18
- 19a:	a8 0f       	add	r26, r24
- 19c:	b9 1f       	adc	r27, r25
- 19e:	29 85       	ldd	r18, Y+9	; 0x09
- 1a0:	3a 85       	ldd	r19, Y+10	; 0x0a
- 1a2:	8d 81       	ldd	r24, Y+5	; 0x05
- 1a4:	9e 81       	ldd	r25, Y+6	; 0x06
- 1a6:	f9 01       	movw	r30, r18
- 1a8:	e8 0f       	add	r30, r24
- 1aa:	f9 1f       	adc	r31, r25
- 1ac:	80 81       	ld	r24, Z
- 1ae:	8c 93       	st	X, r24
-		if (messg[i] == '\0') {
- 1b0:	29 81       	ldd	r18, Y+1	; 0x01
- 1b2:	3a 81       	ldd	r19, Y+2	; 0x02
- 1b4:	8d 81       	ldd	r24, Y+5	; 0x05
- 1b6:	9e 81       	ldd	r25, Y+6	; 0x06
- 1b8:	f9 01       	movw	r30, r18
- 1ba:	e8 0f       	add	r30, r24
- 1bc:	f9 1f       	adc	r31, r25
- 1be:	80 81       	ld	r24, Z
- 1c0:	88 23       	and	r24, r24
- 1c2:	51 f0       	breq	.+20     	; 0x1d8 <CAN_send+0x76>
+ 1a0:	29 81       	ldd	r18, Y+1	; 0x01
+ 1a2:	3a 81       	ldd	r19, Y+2	; 0x02
+ 1a4:	8d 81       	ldd	r24, Y+5	; 0x05
+ 1a6:	9e 81       	ldd	r25, Y+6	; 0x06
+ 1a8:	d9 01       	movw	r26, r18
+ 1aa:	a8 0f       	add	r26, r24
+ 1ac:	b9 1f       	adc	r27, r25
+ 1ae:	29 85       	ldd	r18, Y+9	; 0x09
+ 1b0:	3a 85       	ldd	r19, Y+10	; 0x0a
+ 1b2:	8d 81       	ldd	r24, Y+5	; 0x05
+ 1b4:	9e 81       	ldd	r25, Y+6	; 0x06
+ 1b6:	f9 01       	movw	r30, r18
+ 1b8:	e8 0f       	add	r30, r24
+ 1ba:	f9 1f       	adc	r31, r25
+ 1bc:	80 81       	ld	r24, Z
+ 1be:	8c 93       	st	X, r24
 	
 	unsigned int part, i;
 	int done = 0;
 
 	char *messg = "\0\0\0\0\0\0\0";
 	for(i = 0; i < 8; i++){
- 1c4:	8d 81       	ldd	r24, Y+5	; 0x05
- 1c6:	9e 81       	ldd	r25, Y+6	; 0x06
- 1c8:	01 96       	adiw	r24, 0x01	; 1
- 1ca:	9e 83       	std	Y+6, r25	; 0x06
- 1cc:	8d 83       	std	Y+5, r24	; 0x05
- 1ce:	8d 81       	ldd	r24, Y+5	; 0x05
- 1d0:	9e 81       	ldd	r25, Y+6	; 0x06
- 1d2:	88 30       	cpi	r24, 0x08	; 8
- 1d4:	91 05       	cpc	r25, r1
- 1d6:	e0 f2       	brcs	.-72     	; 0x190 <CAN_send+0x2e>
-		if (messg[i] == '\0') {
+ 1c0:	8d 81       	ldd	r24, Y+5	; 0x05
+ 1c2:	9e 81       	ldd	r25, Y+6	; 0x06
+ 1c4:	01 96       	adiw	r24, 0x01	; 1
+ 1c6:	9e 83       	std	Y+6, r25	; 0x06
+ 1c8:	8d 83       	std	Y+5, r24	; 0x05
+ 1ca:	8d 81       	ldd	r24, Y+5	; 0x05
+ 1cc:	9e 81       	ldd	r25, Y+6	; 0x06
+ 1ce:	88 30       	cpi	r24, 0x08	; 8
+ 1d0:	91 05       	cpc	r25, r1
+ 1d2:	30 f3       	brcs	.-52     	; 0x1a0 <CAN_send+0x2e>
+		/*if (messg[i] == '\0') {
 			break;
-		}
+		}*/
 	}
 
 	cli(); // disable interrupts, to protect SPI-communication 
- 1d8:	f8 94       	cli
+ 1d4:	f8 94       	cli
 
 	CAN_bit_modify(TXB0SIDH, 0xFF, (id>>3)); //transmit buffer 0 id high
- 1da:	8b 85       	ldd	r24, Y+11	; 0x0b
- 1dc:	9c 85       	ldd	r25, Y+12	; 0x0c
+ 1d6:	8b 85       	ldd	r24, Y+11	; 0x0b
+ 1d8:	9c 85       	ldd	r25, Y+12	; 0x0c
+ 1da:	95 95       	asr	r25
+ 1dc:	87 95       	ror	r24
  1de:	95 95       	asr	r25
  1e0:	87 95       	ror	r24
  1e2:	95 95       	asr	r25
  1e4:	87 95       	ror	r24
- 1e6:	95 95       	asr	r25
- 1e8:	87 95       	ror	r24
- 1ea:	98 2f       	mov	r25, r24
- 1ec:	81 e3       	ldi	r24, 0x31	; 49
- 1ee:	6f ef       	ldi	r22, 0xFF	; 255
- 1f0:	49 2f       	mov	r20, r25
- 1f2:	0e 94 0b 03 	call	0x616	; 0x616 <CAN_bit_modify>
+ 1e6:	98 2f       	mov	r25, r24
+ 1e8:	81 e3       	ldi	r24, 0x31	; 49
+ 1ea:	6f ef       	ldi	r22, 0xFF	; 255
+ 1ec:	49 2f       	mov	r20, r25
+ 1ee:	0e 94 d1 02 	call	0x5a2	; 0x5a2 <CAN_bit_modify>
 	CAN_bit_modify(TXB0SIDL, MASK_SIDL, (id<<5));//transmit buffer 0 id low
- 1f6:	8b 85       	ldd	r24, Y+11	; 0x0b
- 1f8:	98 2f       	mov	r25, r24
- 1fa:	92 95       	swap	r25
- 1fc:	99 0f       	add	r25, r25
- 1fe:	90 7e       	andi	r25, 0xE0	; 224
- 200:	82 e3       	ldi	r24, 0x32	; 50
- 202:	60 ee       	ldi	r22, 0xE0	; 224
- 204:	49 2f       	mov	r20, r25
- 206:	0e 94 0b 03 	call	0x616	; 0x616 <CAN_bit_modify>
+ 1f2:	8b 85       	ldd	r24, Y+11	; 0x0b
+ 1f4:	98 2f       	mov	r25, r24
+ 1f6:	92 95       	swap	r25
+ 1f8:	99 0f       	add	r25, r25
+ 1fa:	90 7e       	andi	r25, 0xE0	; 224
+ 1fc:	82 e3       	ldi	r24, 0x32	; 50
+ 1fe:	60 ee       	ldi	r22, 0xE0	; 224
+ 200:	49 2f       	mov	r20, r25
+ 202:	0e 94 d1 02 	call	0x5a2	; 0x5a2 <CAN_bit_modify>
 	//CAN_write((char)messg.length, TXB0DLC);	// data length
 	CAN_write((char)8, TXB0DLC);	// data length
- 20a:	88 e0       	ldi	r24, 0x08	; 8
- 20c:	65 e3       	ldi	r22, 0x35	; 53
- 20e:	0e 94 70 02 	call	0x4e0	; 0x4e0 <CAN_write>
+ 206:	88 e0       	ldi	r24, 0x08	; 8
+ 208:	65 e3       	ldi	r22, 0x35	; 53
+ 20a:	0e 94 25 02 	call	0x44a	; 0x44a <CAN_write>
 	CAN_load_tx(messg, 0); //load transmit buffer from channel 0
- 212:	89 81       	ldd	r24, Y+1	; 0x01
- 214:	9a 81       	ldd	r25, Y+2	; 0x02
- 216:	60 e0       	ldi	r22, 0x00	; 0
- 218:	0e 94 8d 02 	call	0x51a	; 0x51a <CAN_load_tx>
+ 20e:	89 81       	ldd	r24, Y+1	; 0x01
+ 210:	9a 81       	ldd	r25, Y+2	; 0x02
+ 212:	60 e0       	ldi	r22, 0x00	; 0
+ 214:	0e 94 42 02 	call	0x484	; 0x484 <CAN_load_tx>
 	//printf("\n\n%s\n\n", messg.data);
 	//_delay_ms(1);
 	CAN_rts(0); //request to send
- 21c:	80 e0       	ldi	r24, 0x00	; 0
- 21e:	0e 94 ca 02 	call	0x594	; 0x594 <CAN_rts>
+ 218:	80 e0       	ldi	r24, 0x00	; 0
+ 21a:	0e 94 83 02 	call	0x506	; 0x506 <CAN_rts>
 
 	//wait for send OK ()
 	for(i = 0; i < 0xffff; i++){
- 222:	1e 82       	std	Y+6, r1	; 0x06
- 224:	1d 82       	std	Y+5, r1	; 0x05
- 226:	0d c0       	rjmp	.+26     	; 0x242 <CAN_send+0xe0>
+ 21e:	1e 82       	std	Y+6, r1	; 0x06
+ 220:	1d 82       	std	Y+5, r1	; 0x05
+ 222:	0d c0       	rjmp	.+26     	; 0x23e <CAN_send+0xcc>
 		if((CAN_read_status() & MASK_TXREQ0) == 0) break;
- 228:	0e 94 ee 02 	call	0x5dc	; 0x5dc <CAN_read_status>
- 22c:	88 2f       	mov	r24, r24
- 22e:	90 e0       	ldi	r25, 0x00	; 0
- 230:	84 70       	andi	r24, 0x04	; 4
- 232:	90 70       	andi	r25, 0x00	; 0
- 234:	00 97       	sbiw	r24, 0x00	; 0
- 236:	59 f0       	breq	.+22     	; 0x24e <CAN_send+0xec>
+ 224:	0e 94 a7 02 	call	0x54e	; 0x54e <CAN_read_status>
+ 228:	88 2f       	mov	r24, r24
+ 22a:	90 e0       	ldi	r25, 0x00	; 0
+ 22c:	84 70       	andi	r24, 0x04	; 4
+ 22e:	90 70       	andi	r25, 0x00	; 0
+ 230:	00 97       	sbiw	r24, 0x00	; 0
+ 232:	59 f0       	breq	.+22     	; 0x24a <CAN_send+0xd8>
 	//printf("\n\n%s\n\n", messg.data);
 	//_delay_ms(1);
 	CAN_rts(0); //request to send
 
 	//wait for send OK ()
 	for(i = 0; i < 0xffff; i++){
- 238:	8d 81       	ldd	r24, Y+5	; 0x05
- 23a:	9e 81       	ldd	r25, Y+6	; 0x06
- 23c:	01 96       	adiw	r24, 0x01	; 1
- 23e:	9e 83       	std	Y+6, r25	; 0x06
- 240:	8d 83       	std	Y+5, r24	; 0x05
- 242:	8d 81       	ldd	r24, Y+5	; 0x05
- 244:	9e 81       	ldd	r25, Y+6	; 0x06
- 246:	2f ef       	ldi	r18, 0xFF	; 255
- 248:	8f 3f       	cpi	r24, 0xFF	; 255
- 24a:	92 07       	cpc	r25, r18
- 24c:	69 f7       	brne	.-38     	; 0x228 <CAN_send+0xc6>
+ 234:	8d 81       	ldd	r24, Y+5	; 0x05
+ 236:	9e 81       	ldd	r25, Y+6	; 0x06
+ 238:	01 96       	adiw	r24, 0x01	; 1
+ 23a:	9e 83       	std	Y+6, r25	; 0x06
+ 23c:	8d 83       	std	Y+5, r24	; 0x05
+ 23e:	8d 81       	ldd	r24, Y+5	; 0x05
+ 240:	9e 81       	ldd	r25, Y+6	; 0x06
+ 242:	2f ef       	ldi	r18, 0xFF	; 255
+ 244:	8f 3f       	cpi	r24, 0xFF	; 255
+ 246:	92 07       	cpc	r25, r18
+ 248:	69 f7       	brne	.-38     	; 0x224 <CAN_send+0xb2>
 		if((CAN_read_status() & MASK_TXREQ0) == 0) break;
 	}
 	sei(); // enable interrupts again
- 24e:	78 94       	sei
+ 24a:	78 94       	sei
 	if(i == 0xffff) return -1;
- 250:	8d 81       	ldd	r24, Y+5	; 0x05
- 252:	9e 81       	ldd	r25, Y+6	; 0x06
- 254:	2f ef       	ldi	r18, 0xFF	; 255
- 256:	8f 3f       	cpi	r24, 0xFF	; 255
- 258:	92 07       	cpc	r25, r18
- 25a:	29 f4       	brne	.+10     	; 0x266 <CAN_send+0x104>
- 25c:	8f ef       	ldi	r24, 0xFF	; 255
- 25e:	9f ef       	ldi	r25, 0xFF	; 255
- 260:	9e 87       	std	Y+14, r25	; 0x0e
- 262:	8d 87       	std	Y+13, r24	; 0x0d
- 264:	02 c0       	rjmp	.+4      	; 0x26a <CAN_send+0x108>
+ 24c:	8d 81       	ldd	r24, Y+5	; 0x05
+ 24e:	9e 81       	ldd	r25, Y+6	; 0x06
+ 250:	2f ef       	ldi	r18, 0xFF	; 255
+ 252:	8f 3f       	cpi	r24, 0xFF	; 255
+ 254:	92 07       	cpc	r25, r18
+ 256:	29 f4       	brne	.+10     	; 0x262 <CAN_send+0xf0>
+ 258:	8f ef       	ldi	r24, 0xFF	; 255
+ 25a:	9f ef       	ldi	r25, 0xFF	; 255
+ 25c:	9e 87       	std	Y+14, r25	; 0x0e
+ 25e:	8d 87       	std	Y+13, r24	; 0x0d
+ 260:	02 c0       	rjmp	.+4      	; 0x266 <CAN_send+0xf4>
 			if(i == 0xffff) return -1;
 		}
 
 		if(str[i] == '\0') break;
 */
 	return 0;
- 266:	1e 86       	std	Y+14, r1	; 0x0e
- 268:	1d 86       	std	Y+13, r1	; 0x0d
- 26a:	8d 85       	ldd	r24, Y+13	; 0x0d
- 26c:	9e 85       	ldd	r25, Y+14	; 0x0e
+ 262:	1e 86       	std	Y+14, r1	; 0x0e
+ 264:	1d 86       	std	Y+13, r1	; 0x0d
+ 266:	8d 85       	ldd	r24, Y+13	; 0x0d
+ 268:	9e 85       	ldd	r25, Y+14	; 0x0e
 }
- 26e:	2e 96       	adiw	r28, 0x0e	; 14
- 270:	0f b6       	in	r0, 0x3f	; 63
- 272:	f8 94       	cli
- 274:	de bf       	out	0x3e, r29	; 62
- 276:	0f be       	out	0x3f, r0	; 63
- 278:	cd bf       	out	0x3d, r28	; 61
- 27a:	cf 91       	pop	r28
- 27c:	df 91       	pop	r29
- 27e:	08 95       	ret
+ 26a:	2e 96       	adiw	r28, 0x0e	; 14
+ 26c:	0f b6       	in	r0, 0x3f	; 63
+ 26e:	f8 94       	cli
+ 270:	de bf       	out	0x3e, r29	; 62
+ 272:	0f be       	out	0x3f, r0	; 63
+ 274:	cd bf       	out	0x3d, r28	; 61
+ 276:	cf 91       	pop	r28
+ 278:	df 91       	pop	r29
+ 27a:	08 95       	ret
 
-00000280 <CAN_receive>:
+0000027c <CAN_receive>:
 
 // Recieve string from CAN recieve buffer
 int CAN_receive(CAN_message* msg, int rx){
- 280:	df 93       	push	r29
- 282:	cf 93       	push	r28
- 284:	00 d0       	rcall	.+0      	; 0x286 <CAN_receive+0x6>
- 286:	00 d0       	rcall	.+0      	; 0x288 <CAN_receive+0x8>
- 288:	cd b7       	in	r28, 0x3d	; 61
- 28a:	de b7       	in	r29, 0x3e	; 62
- 28c:	9a 83       	std	Y+2, r25	; 0x02
- 28e:	89 83       	std	Y+1, r24	; 0x01
- 290:	7c 83       	std	Y+4, r23	; 0x04
- 292:	6b 83       	std	Y+3, r22	; 0x03
+ 27c:	df 93       	push	r29
+ 27e:	cf 93       	push	r28
+ 280:	00 d0       	rcall	.+0      	; 0x282 <CAN_receive+0x6>
+ 282:	00 d0       	rcall	.+0      	; 0x284 <CAN_receive+0x8>
+ 284:	cd b7       	in	r28, 0x3d	; 61
+ 286:	de b7       	in	r29, 0x3e	; 62
+ 288:	9a 83       	std	Y+2, r25	; 0x02
+ 28a:	89 83       	std	Y+1, r24	; 0x01
+ 28c:	7c 83       	std	Y+4, r23	; 0x04
+ 28e:	6b 83       	std	Y+3, r22	; 0x03
 	//FILHIT to check message type
 	
 	while((CAN_read_status() & MASK_CANINTF_RX0IF+2*rx) == 0); // loop until data received
- 294:	0e 94 ee 02 	call	0x5dc	; 0x5dc <CAN_read_status>
- 298:	28 2f       	mov	r18, r24
- 29a:	30 e0       	ldi	r19, 0x00	; 0
- 29c:	8b 81       	ldd	r24, Y+3	; 0x03
- 29e:	9c 81       	ldd	r25, Y+4	; 0x04
- 2a0:	88 0f       	add	r24, r24
- 2a2:	99 1f       	adc	r25, r25
- 2a4:	01 96       	adiw	r24, 0x01	; 1
- 2a6:	82 23       	and	r24, r18
- 2a8:	93 23       	and	r25, r19
- 2aa:	00 97       	sbiw	r24, 0x00	; 0
- 2ac:	99 f3       	breq	.-26     	; 0x294 <CAN_receive+0x14>
+ 290:	0e 94 a7 02 	call	0x54e	; 0x54e <CAN_read_status>
+ 294:	28 2f       	mov	r18, r24
+ 296:	30 e0       	ldi	r19, 0x00	; 0
+ 298:	8b 81       	ldd	r24, Y+3	; 0x03
+ 29a:	9c 81       	ldd	r25, Y+4	; 0x04
+ 29c:	88 0f       	add	r24, r24
+ 29e:	99 1f       	adc	r25, r25
+ 2a0:	01 96       	adiw	r24, 0x01	; 1
+ 2a2:	82 23       	and	r24, r18
+ 2a4:	93 23       	and	r25, r19
+ 2a6:	00 97       	sbiw	r24, 0x00	; 0
+ 2a8:	99 f3       	breq	.-26     	; 0x290 <CAN_receive+0x14>
 	CAN_read_rx(msg, rx);
- 2ae:	2b 81       	ldd	r18, Y+3	; 0x03
- 2b0:	89 81       	ldd	r24, Y+1	; 0x01
- 2b2:	9a 81       	ldd	r25, Y+2	; 0x02
- 2b4:	62 2f       	mov	r22, r18
- 2b6:	0e 94 25 02 	call	0x44a	; 0x44a <CAN_read_rx>
+ 2aa:	2b 81       	ldd	r18, Y+3	; 0x03
+ 2ac:	89 81       	ldd	r24, Y+1	; 0x01
+ 2ae:	9a 81       	ldd	r25, Y+2	; 0x02
+ 2b0:	62 2f       	mov	r22, r18
+ 2b2:	0e 94 da 01 	call	0x3b4	; 0x3b4 <CAN_read_rx>
 
 	msg->id = 0x1F; //only id allowed
- 2ba:	e9 81       	ldd	r30, Y+1	; 0x01
- 2bc:	fa 81       	ldd	r31, Y+2	; 0x02
- 2be:	8f e1       	ldi	r24, 0x1F	; 31
- 2c0:	90 e0       	ldi	r25, 0x00	; 0
- 2c2:	91 83       	std	Z+1, r25	; 0x01
- 2c4:	80 83       	st	Z, r24
+ 2b6:	e9 81       	ldd	r30, Y+1	; 0x01
+ 2b8:	fa 81       	ldd	r31, Y+2	; 0x02
+ 2ba:	8f e1       	ldi	r24, 0x1F	; 31
+ 2bc:	90 e0       	ldi	r25, 0x00	; 0
+ 2be:	91 83       	std	Z+1, r25	; 0x01
+ 2c0:	80 83       	st	Z, r24
 	
 	return 0;
- 2c6:	80 e0       	ldi	r24, 0x00	; 0
- 2c8:	90 e0       	ldi	r25, 0x00	; 0
+ 2c2:	80 e0       	ldi	r24, 0x00	; 0
+ 2c4:	90 e0       	ldi	r25, 0x00	; 0
 
 }
+ 2c6:	0f 90       	pop	r0
+ 2c8:	0f 90       	pop	r0
  2ca:	0f 90       	pop	r0
  2cc:	0f 90       	pop	r0
- 2ce:	0f 90       	pop	r0
- 2d0:	0f 90       	pop	r0
- 2d2:	cf 91       	pop	r28
- 2d4:	df 91       	pop	r29
- 2d6:	08 95       	ret
+ 2ce:	cf 91       	pop	r28
+ 2d0:	df 91       	pop	r29
+ 2d2:	08 95       	ret
 
-000002d8 <CAN_init_interrupt>:
+000002d4 <CAN_init_interrupt>:
 
 
 
 
 
 void CAN_init_interrupt(){
- 2d8:	df 93       	push	r29
- 2da:	cf 93       	push	r28
- 2dc:	cd b7       	in	r28, 0x3d	; 61
- 2de:	de b7       	in	r29, 0x3e	; 62
-//interrupt init
-	PORTE = PORTE | 0b00001000;
- 2e0:	a3 e2       	ldi	r26, 0x23	; 35
- 2e2:	b0 e0       	ldi	r27, 0x00	; 0
- 2e4:	e3 e2       	ldi	r30, 0x23	; 35
- 2e6:	f0 e0       	ldi	r31, 0x00	; 0
- 2e8:	80 81       	ld	r24, Z
- 2ea:	88 60       	ori	r24, 0x08	; 8
- 2ec:	8c 93       	st	X, r24
-	DDRE = DDRE & 	0b11110111;
- 2ee:	a2 e2       	ldi	r26, 0x22	; 34
- 2f0:	b0 e0       	ldi	r27, 0x00	; 0
- 2f2:	e2 e2       	ldi	r30, 0x22	; 34
- 2f4:	f0 e0       	ldi	r31, 0x00	; 0
- 2f6:	80 81       	ld	r24, Z
- 2f8:	87 7f       	andi	r24, 0xF7	; 247
- 2fa:	8c 93       	st	X, r24
+ 2d4:	df 93       	push	r29
+ 2d6:	cf 93       	push	r28
+ 2d8:	cd b7       	in	r28, 0x3d	; 61
+ 2da:	de b7       	in	r29, 0x3e	; 62
+	//interrupt init
+	DDRE = DDRE & 	0b11101111;
+ 2dc:	a2 e2       	ldi	r26, 0x22	; 34
+ 2de:	b0 e0       	ldi	r27, 0x00	; 0
+ 2e0:	e2 e2       	ldi	r30, 0x22	; 34
+ 2e2:	f0 e0       	ldi	r31, 0x00	; 0
+ 2e4:	80 81       	ld	r24, Z
+ 2e6:	8f 7e       	andi	r24, 0xEF	; 239
+ 2e8:	8c 93       	st	X, r24
+	PORTE = PORTE | 0b00010000;
+ 2ea:	a3 e2       	ldi	r26, 0x23	; 35
+ 2ec:	b0 e0       	ldi	r27, 0x00	; 0
+ 2ee:	e3 e2       	ldi	r30, 0x23	; 35
+ 2f0:	f0 e0       	ldi	r31, 0x00	; 0
+ 2f2:	80 81       	ld	r24, Z
+ 2f4:	80 61       	ori	r24, 0x10	; 16
+ 2f6:	8c 93       	st	X, r24
 	EICRB = 0;// | (0<<ISC41) | (0<<ISC40); ////////////////fix: ikke or med 0
- 2fc:	ea e5       	ldi	r30, 0x5A	; 90
- 2fe:	f0 e0       	ldi	r31, 0x00	; 0
- 300:	10 82       	st	Z, r1
+ 2f8:	ea e5       	ldi	r30, 0x5A	; 90
+ 2fa:	f0 e0       	ldi	r31, 0x00	; 0
+ 2fc:	10 82       	st	Z, r1
 	EIMSK = EIMSK | (1<<INT4);
- 302:	a9 e5       	ldi	r26, 0x59	; 89
- 304:	b0 e0       	ldi	r27, 0x00	; 0
- 306:	e9 e5       	ldi	r30, 0x59	; 89
- 308:	f0 e0       	ldi	r31, 0x00	; 0
- 30a:	80 81       	ld	r24, Z
- 30c:	80 61       	ori	r24, 0x10	; 16
- 30e:	8c 93       	st	X, r24
+ 2fe:	a9 e5       	ldi	r26, 0x59	; 89
+ 300:	b0 e0       	ldi	r27, 0x00	; 0
+ 302:	e9 e5       	ldi	r30, 0x59	; 89
+ 304:	f0 e0       	ldi	r31, 0x00	; 0
+ 306:	80 81       	ld	r24, Z
+ 308:	80 61       	ori	r24, 0x10	; 16
+ 30a:	8c 93       	st	X, r24
 	sei();
- 310:	78 94       	sei
+ 30c:	78 94       	sei
 }
- 312:	cf 91       	pop	r28
- 314:	df 91       	pop	r29
- 316:	08 95       	ret
+ 30e:	cf 91       	pop	r28
+ 310:	df 91       	pop	r29
+ 312:	08 95       	ret
 
-00000318 <__vector_5>:
-	GICR = GICR | (1<<INT0) | (1<<INT1);
-	sei();
-}*/
-
-
-SIGNAL(SIG_INTERRUPT4) {
- 318:	1f 92       	push	r1
- 31a:	0f 92       	push	r0
- 31c:	0f b6       	in	r0, 0x3f	; 63
- 31e:	0f 92       	push	r0
- 320:	00 90 5b 00 	lds	r0, 0x005B
- 324:	0f 92       	push	r0
- 326:	11 24       	eor	r1, r1
- 328:	2f 93       	push	r18
- 32a:	3f 93       	push	r19
- 32c:	4f 93       	push	r20
- 32e:	5f 93       	push	r21
- 330:	6f 93       	push	r22
- 332:	7f 93       	push	r23
- 334:	8f 93       	push	r24
- 336:	9f 93       	push	r25
- 338:	af 93       	push	r26
- 33a:	bf 93       	push	r27
- 33c:	ef 93       	push	r30
- 33e:	ff 93       	push	r31
- 340:	df 93       	push	r29
- 342:	cf 93       	push	r28
- 344:	00 d0       	rcall	.+0      	; 0x346 <__vector_5+0x2e>
- 346:	00 d0       	rcall	.+0      	; 0x348 <__vector_5+0x30>
- 348:	0f 92       	push	r0
- 34a:	cd b7       	in	r28, 0x3d	; 61
- 34c:	de b7       	in	r29, 0x3e	; 62
-		
-
-	CAN_message received;
-	received.data = "\0\0\0\0\0\0\0\0";
- 34e:	8a e0       	ldi	r24, 0x0A	; 10
- 350:	91 e0       	ldi	r25, 0x01	; 1
- 352:	9d 83       	std	Y+5, r25	; 0x05
- 354:	8c 83       	std	Y+4, r24	; 0x04
-
-    CAN_receive(&received, 0);
- 356:	ce 01       	movw	r24, r28
- 358:	01 96       	adiw	r24, 0x01	; 1
- 35a:	60 e0       	ldi	r22, 0x00	; 0
- 35c:	70 e0       	ldi	r23, 0x00	; 0
- 35e:	0e 94 40 01 	call	0x280	; 0x280 <CAN_receive>
-	CAN_send(received.data, received.id);
- 362:	4c 81       	ldd	r20, Y+4	; 0x04
- 364:	5d 81       	ldd	r21, Y+5	; 0x05
- 366:	89 81       	ldd	r24, Y+1	; 0x01
- 368:	9a 81       	ldd	r25, Y+2	; 0x02
- 36a:	9c 01       	movw	r18, r24
- 36c:	ca 01       	movw	r24, r20
- 36e:	b9 01       	movw	r22, r18
- 370:	0e 94 b1 00 	call	0x162	; 0x162 <CAN_send>
-
-}
- 374:	0f 90       	pop	r0
- 376:	0f 90       	pop	r0
- 378:	0f 90       	pop	r0
- 37a:	0f 90       	pop	r0
- 37c:	0f 90       	pop	r0
- 37e:	cf 91       	pop	r28
- 380:	df 91       	pop	r29
- 382:	ff 91       	pop	r31
- 384:	ef 91       	pop	r30
- 386:	bf 91       	pop	r27
- 388:	af 91       	pop	r26
- 38a:	9f 91       	pop	r25
- 38c:	8f 91       	pop	r24
- 38e:	7f 91       	pop	r23
- 390:	6f 91       	pop	r22
- 392:	5f 91       	pop	r21
- 394:	4f 91       	pop	r20
- 396:	3f 91       	pop	r19
- 398:	2f 91       	pop	r18
- 39a:	0f 90       	pop	r0
- 39c:	00 92 5b 00 	sts	0x005B, r0
- 3a0:	0f 90       	pop	r0
- 3a2:	0f be       	out	0x3f, r0	; 63
- 3a4:	0f 90       	pop	r0
- 3a6:	1f 90       	pop	r1
- 3a8:	18 95       	reti
-
-000003aa <CAN_reset>:
+00000314 <CAN_reset>:
 #include "mcp2515.h"
 #include "spi.h"
 
 // Reset the CAN chip
 void CAN_reset(void){
- 3aa:	df 93       	push	r29
- 3ac:	cf 93       	push	r28
- 3ae:	cd b7       	in	r28, 0x3d	; 61
- 3b0:	de b7       	in	r29, 0x3e	; 62
+ 314:	df 93       	push	r29
+ 316:	cf 93       	push	r28
+ 318:	cd b7       	in	r28, 0x3d	; 61
+ 31a:	de b7       	in	r29, 0x3e	; 62
 	SPI_SelectSlave(SPI_CAN);
- 3b2:	83 e7       	ldi	r24, 0x73	; 115
- 3b4:	0e 94 61 03 	call	0x6c2	; 0x6c2 <SPI_SelectSlave>
+ 31c:	83 e7       	ldi	r24, 0x73	; 115
+ 31e:	0e 94 27 03 	call	0x64e	; 0x64e <SPI_SelectSlave>
 	SPI_MasterTransmit(INS_RESET);
- 3b8:	80 ec       	ldi	r24, 0xC0	; 192
- 3ba:	0e 94 3c 03 	call	0x678	; 0x678 <SPI_MasterTransmit>
+ 322:	80 ec       	ldi	r24, 0xC0	; 192
+ 324:	0e 94 02 03 	call	0x604	; 0x604 <SPI_MasterTransmit>
 	SPI_NoSlave();
- 3be:	0e 94 72 03 	call	0x6e4	; 0x6e4 <SPI_NoSlave>
+ 328:	0e 94 38 03 	call	0x670	; 0x670 <SPI_NoSlave>
 }
- 3c2:	cf 91       	pop	r28
- 3c4:	df 91       	pop	r29
- 3c6:	08 95       	ret
+ 32c:	cf 91       	pop	r28
+ 32e:	df 91       	pop	r29
+ 330:	08 95       	ret
 
-000003c8 <CAN_read>:
+00000332 <CAN_read>:
 
 // Read
 void CAN_read(char* data, uint8_t address , int data_count){
- 3c8:	0f 93       	push	r16
- 3ca:	1f 93       	push	r17
- 3cc:	df 93       	push	r29
- 3ce:	cf 93       	push	r28
- 3d0:	cd b7       	in	r28, 0x3d	; 61
- 3d2:	de b7       	in	r29, 0x3e	; 62
- 3d4:	27 97       	sbiw	r28, 0x07	; 7
- 3d6:	0f b6       	in	r0, 0x3f	; 63
- 3d8:	f8 94       	cli
- 3da:	de bf       	out	0x3e, r29	; 62
- 3dc:	0f be       	out	0x3f, r0	; 63
- 3de:	cd bf       	out	0x3d, r28	; 61
- 3e0:	9c 83       	std	Y+4, r25	; 0x04
- 3e2:	8b 83       	std	Y+3, r24	; 0x03
- 3e4:	6d 83       	std	Y+5, r22	; 0x05
- 3e6:	5f 83       	std	Y+7, r21	; 0x07
- 3e8:	4e 83       	std	Y+6, r20	; 0x06
+ 332:	0f 93       	push	r16
+ 334:	1f 93       	push	r17
+ 336:	df 93       	push	r29
+ 338:	cf 93       	push	r28
+ 33a:	cd b7       	in	r28, 0x3d	; 61
+ 33c:	de b7       	in	r29, 0x3e	; 62
+ 33e:	27 97       	sbiw	r28, 0x07	; 7
+ 340:	0f b6       	in	r0, 0x3f	; 63
+ 342:	f8 94       	cli
+ 344:	de bf       	out	0x3e, r29	; 62
+ 346:	0f be       	out	0x3f, r0	; 63
+ 348:	cd bf       	out	0x3d, r28	; 61
+ 34a:	9c 83       	std	Y+4, r25	; 0x04
+ 34c:	8b 83       	std	Y+3, r24	; 0x03
+ 34e:	6d 83       	std	Y+5, r22	; 0x05
+ 350:	5f 83       	std	Y+7, r21	; 0x07
+ 352:	4e 83       	std	Y+6, r20	; 0x06
 	int i;
 	SPI_SelectSlave(SPI_CAN);	
- 3ea:	83 e7       	ldi	r24, 0x73	; 115
- 3ec:	0e 94 61 03 	call	0x6c2	; 0x6c2 <SPI_SelectSlave>
+ 354:	83 e7       	ldi	r24, 0x73	; 115
+ 356:	0e 94 27 03 	call	0x64e	; 0x64e <SPI_SelectSlave>
 
 	SPI_MasterTransmit(INS_READ);
- 3f0:	83 e0       	ldi	r24, 0x03	; 3
- 3f2:	0e 94 3c 03 	call	0x678	; 0x678 <SPI_MasterTransmit>
+ 35a:	83 e0       	ldi	r24, 0x03	; 3
+ 35c:	0e 94 02 03 	call	0x604	; 0x604 <SPI_MasterTransmit>
 	SPI_MasterTransmit((char)address);
- 3f6:	8d 81       	ldd	r24, Y+5	; 0x05
- 3f8:	0e 94 3c 03 	call	0x678	; 0x678 <SPI_MasterTransmit>
+ 360:	8d 81       	ldd	r24, Y+5	; 0x05
+ 362:	0e 94 02 03 	call	0x604	; 0x604 <SPI_MasterTransmit>
 	for(i = 0; i < data_count; i++){
- 3fc:	1a 82       	std	Y+2, r1	; 0x02
- 3fe:	19 82       	std	Y+1, r1	; 0x01
- 400:	10 c0       	rjmp	.+32     	; 0x422 <CAN_read+0x5a>
+ 366:	1a 82       	std	Y+2, r1	; 0x02
+ 368:	19 82       	std	Y+1, r1	; 0x01
+ 36a:	10 c0       	rjmp	.+32     	; 0x38c <CAN_read+0x5a>
 		data[i] = SPI_MasterReceive();
- 402:	29 81       	ldd	r18, Y+1	; 0x01
- 404:	3a 81       	ldd	r19, Y+2	; 0x02
- 406:	8b 81       	ldd	r24, Y+3	; 0x03
- 408:	9c 81       	ldd	r25, Y+4	; 0x04
- 40a:	8c 01       	movw	r16, r24
- 40c:	02 0f       	add	r16, r18
- 40e:	13 1f       	adc	r17, r19
- 410:	0e 94 4f 03 	call	0x69e	; 0x69e <SPI_MasterReceive>
- 414:	f8 01       	movw	r30, r16
- 416:	80 83       	st	Z, r24
+ 36c:	29 81       	ldd	r18, Y+1	; 0x01
+ 36e:	3a 81       	ldd	r19, Y+2	; 0x02
+ 370:	8b 81       	ldd	r24, Y+3	; 0x03
+ 372:	9c 81       	ldd	r25, Y+4	; 0x04
+ 374:	8c 01       	movw	r16, r24
+ 376:	02 0f       	add	r16, r18
+ 378:	13 1f       	adc	r17, r19
+ 37a:	0e 94 15 03 	call	0x62a	; 0x62a <SPI_MasterReceive>
+ 37e:	f8 01       	movw	r30, r16
+ 380:	80 83       	st	Z, r24
 	int i;
 	SPI_SelectSlave(SPI_CAN);	
 
 	SPI_MasterTransmit(INS_READ);
 	SPI_MasterTransmit((char)address);
 	for(i = 0; i < data_count; i++){
- 418:	89 81       	ldd	r24, Y+1	; 0x01
- 41a:	9a 81       	ldd	r25, Y+2	; 0x02
- 41c:	01 96       	adiw	r24, 0x01	; 1
- 41e:	9a 83       	std	Y+2, r25	; 0x02
- 420:	89 83       	std	Y+1, r24	; 0x01
- 422:	29 81       	ldd	r18, Y+1	; 0x01
- 424:	3a 81       	ldd	r19, Y+2	; 0x02
- 426:	8e 81       	ldd	r24, Y+6	; 0x06
- 428:	9f 81       	ldd	r25, Y+7	; 0x07
- 42a:	28 17       	cp	r18, r24
- 42c:	39 07       	cpc	r19, r25
- 42e:	4c f3       	brlt	.-46     	; 0x402 <CAN_read+0x3a>
+ 382:	89 81       	ldd	r24, Y+1	; 0x01
+ 384:	9a 81       	ldd	r25, Y+2	; 0x02
+ 386:	01 96       	adiw	r24, 0x01	; 1
+ 388:	9a 83       	std	Y+2, r25	; 0x02
+ 38a:	89 83       	std	Y+1, r24	; 0x01
+ 38c:	29 81       	ldd	r18, Y+1	; 0x01
+ 38e:	3a 81       	ldd	r19, Y+2	; 0x02
+ 390:	8e 81       	ldd	r24, Y+6	; 0x06
+ 392:	9f 81       	ldd	r25, Y+7	; 0x07
+ 394:	28 17       	cp	r18, r24
+ 396:	39 07       	cpc	r19, r25
+ 398:	4c f3       	brlt	.-46     	; 0x36c <CAN_read+0x3a>
 		data[i] = SPI_MasterReceive();
 	}
 
 	SPI_NoSlave();
- 430:	0e 94 72 03 	call	0x6e4	; 0x6e4 <SPI_NoSlave>
+ 39a:	0e 94 38 03 	call	0x670	; 0x670 <SPI_NoSlave>
 
 }
- 434:	27 96       	adiw	r28, 0x07	; 7
- 436:	0f b6       	in	r0, 0x3f	; 63
- 438:	f8 94       	cli
- 43a:	de bf       	out	0x3e, r29	; 62
- 43c:	0f be       	out	0x3f, r0	; 63
- 43e:	cd bf       	out	0x3d, r28	; 61
+ 39e:	27 96       	adiw	r28, 0x07	; 7
+ 3a0:	0f b6       	in	r0, 0x3f	; 63
+ 3a2:	f8 94       	cli
+ 3a4:	de bf       	out	0x3e, r29	; 62
+ 3a6:	0f be       	out	0x3f, r0	; 63
+ 3a8:	cd bf       	out	0x3d, r28	; 61
+ 3aa:	cf 91       	pop	r28
+ 3ac:	df 91       	pop	r29
+ 3ae:	1f 91       	pop	r17
+ 3b0:	0f 91       	pop	r16
+ 3b2:	08 95       	ret
+
+000003b4 <CAN_read_rx>:
+
+void CAN_read_rx(CAN_message* msg, uint8_t rx){
+ 3b4:	0f 93       	push	r16
+ 3b6:	1f 93       	push	r17
+ 3b8:	df 93       	push	r29
+ 3ba:	cf 93       	push	r28
+ 3bc:	00 d0       	rcall	.+0      	; 0x3be <CAN_read_rx+0xa>
+ 3be:	00 d0       	rcall	.+0      	; 0x3c0 <CAN_read_rx+0xc>
+ 3c0:	0f 92       	push	r0
+ 3c2:	cd b7       	in	r28, 0x3d	; 61
+ 3c4:	de b7       	in	r29, 0x3e	; 62
+ 3c6:	9c 83       	std	Y+4, r25	; 0x04
+ 3c8:	8b 83       	std	Y+3, r24	; 0x03
+ 3ca:	6d 83       	std	Y+5, r22	; 0x05
+	int i;
+	if (rx>1)
+ 3cc:	8d 81       	ldd	r24, Y+5	; 0x05
+ 3ce:	82 30       	cpi	r24, 0x02	; 2
+ 3d0:	90 f5       	brcc	.+100    	; 0x436 <CAN_read_rx+0x82>
+		return;
+	if(rx == 0) rx = 1; //decode rx0 to word for "read from rxb0", standard frame
+ 3d2:	8d 81       	ldd	r24, Y+5	; 0x05
+ 3d4:	88 23       	and	r24, r24
+ 3d6:	19 f4       	brne	.+6      	; 0x3de <CAN_read_rx+0x2a>
+ 3d8:	81 e0       	ldi	r24, 0x01	; 1
+ 3da:	8d 83       	std	Y+5, r24	; 0x05
+ 3dc:	05 c0       	rjmp	.+10     	; 0x3e8 <CAN_read_rx+0x34>
+	else if(rx == 1) rx = 3; //decode rx1 to intruction for "read from rxb1", standard frame
+ 3de:	8d 81       	ldd	r24, Y+5	; 0x05
+ 3e0:	81 30       	cpi	r24, 0x01	; 1
+ 3e2:	11 f4       	brne	.+4      	; 0x3e8 <CAN_read_rx+0x34>
+ 3e4:	83 e0       	ldi	r24, 0x03	; 3
+ 3e6:	8d 83       	std	Y+5, r24	; 0x05
+	
+	SPI_SelectSlave(SPI_CAN);	
+ 3e8:	83 e7       	ldi	r24, 0x73	; 115
+ 3ea:	0e 94 27 03 	call	0x64e	; 0x64e <SPI_SelectSlave>
+	SPI_MasterTransmit(INS_READ_RX | (rx<<1));
+ 3ee:	8d 81       	ldd	r24, Y+5	; 0x05
+ 3f0:	88 2f       	mov	r24, r24
+ 3f2:	90 e0       	ldi	r25, 0x00	; 0
+ 3f4:	88 0f       	add	r24, r24
+ 3f6:	99 1f       	adc	r25, r25
+ 3f8:	80 69       	ori	r24, 0x90	; 144
+ 3fa:	0e 94 02 03 	call	0x604	; 0x604 <SPI_MasterTransmit>
+	for (i = 0; i < 8; i++){
+ 3fe:	1a 82       	std	Y+2, r1	; 0x02
+ 400:	19 82       	std	Y+1, r1	; 0x01
+ 402:	12 c0       	rjmp	.+36     	; 0x428 <CAN_read_rx+0x74>
+		msg->data[i] = SPI_MasterReceive();
+ 404:	eb 81       	ldd	r30, Y+3	; 0x03
+ 406:	fc 81       	ldd	r31, Y+4	; 0x04
+ 408:	23 81       	ldd	r18, Z+3	; 0x03
+ 40a:	34 81       	ldd	r19, Z+4	; 0x04
+ 40c:	89 81       	ldd	r24, Y+1	; 0x01
+ 40e:	9a 81       	ldd	r25, Y+2	; 0x02
+ 410:	89 01       	movw	r16, r18
+ 412:	08 0f       	add	r16, r24
+ 414:	19 1f       	adc	r17, r25
+ 416:	0e 94 15 03 	call	0x62a	; 0x62a <SPI_MasterReceive>
+ 41a:	f8 01       	movw	r30, r16
+ 41c:	80 83       	st	Z, r24
+	if(rx == 0) rx = 1; //decode rx0 to word for "read from rxb0", standard frame
+	else if(rx == 1) rx = 3; //decode rx1 to intruction for "read from rxb1", standard frame
+	
+	SPI_SelectSlave(SPI_CAN);	
+	SPI_MasterTransmit(INS_READ_RX | (rx<<1));
+	for (i = 0; i < 8; i++){
+ 41e:	89 81       	ldd	r24, Y+1	; 0x01
+ 420:	9a 81       	ldd	r25, Y+2	; 0x02
+ 422:	01 96       	adiw	r24, 0x01	; 1
+ 424:	9a 83       	std	Y+2, r25	; 0x02
+ 426:	89 83       	std	Y+1, r24	; 0x01
+ 428:	89 81       	ldd	r24, Y+1	; 0x01
+ 42a:	9a 81       	ldd	r25, Y+2	; 0x02
+ 42c:	88 30       	cpi	r24, 0x08	; 8
+ 42e:	91 05       	cpc	r25, r1
+ 430:	4c f3       	brlt	.-46     	; 0x404 <CAN_read_rx+0x50>
+		msg->data[i] = SPI_MasterReceive();
+	}
+	
+	SPI_NoSlave();
+ 432:	0e 94 38 03 	call	0x670	; 0x670 <SPI_NoSlave>
+}
+ 436:	0f 90       	pop	r0
+ 438:	0f 90       	pop	r0
+ 43a:	0f 90       	pop	r0
+ 43c:	0f 90       	pop	r0
+ 43e:	0f 90       	pop	r0
  440:	cf 91       	pop	r28
  442:	df 91       	pop	r29
  444:	1f 91       	pop	r17
  446:	0f 91       	pop	r16
  448:	08 95       	ret
 
-0000044a <CAN_read_rx>:
-
-void CAN_read_rx(CAN_message* msg, uint8_t rx){
- 44a:	0f 93       	push	r16
- 44c:	1f 93       	push	r17
- 44e:	df 93       	push	r29
- 450:	cf 93       	push	r28
- 452:	00 d0       	rcall	.+0      	; 0x454 <CAN_read_rx+0xa>
- 454:	00 d0       	rcall	.+0      	; 0x456 <CAN_read_rx+0xc>
- 456:	0f 92       	push	r0
- 458:	cd b7       	in	r28, 0x3d	; 61
- 45a:	de b7       	in	r29, 0x3e	; 62
- 45c:	9c 83       	std	Y+4, r25	; 0x04
- 45e:	8b 83       	std	Y+3, r24	; 0x03
- 460:	6d 83       	std	Y+5, r22	; 0x05
-	int i;
-	if (rx>1)
- 462:	8d 81       	ldd	r24, Y+5	; 0x05
- 464:	82 30       	cpi	r24, 0x02	; 2
- 466:	90 f5       	brcc	.+100    	; 0x4cc <CAN_read_rx+0x82>
-		return;
-	if(rx == 0) rx = 1; //decode rx0 to word for "read from rxb0", standard frame
- 468:	8d 81       	ldd	r24, Y+5	; 0x05
- 46a:	88 23       	and	r24, r24
- 46c:	19 f4       	brne	.+6      	; 0x474 <CAN_read_rx+0x2a>
- 46e:	81 e0       	ldi	r24, 0x01	; 1
- 470:	8d 83       	std	Y+5, r24	; 0x05
- 472:	05 c0       	rjmp	.+10     	; 0x47e <CAN_read_rx+0x34>
-	else if(rx == 1) rx = 3; //decode rx1 to intruction for "read from rxb1", standard frame
- 474:	8d 81       	ldd	r24, Y+5	; 0x05
- 476:	81 30       	cpi	r24, 0x01	; 1
- 478:	11 f4       	brne	.+4      	; 0x47e <CAN_read_rx+0x34>
- 47a:	83 e0       	ldi	r24, 0x03	; 3
- 47c:	8d 83       	std	Y+5, r24	; 0x05
-	
-	SPI_SelectSlave(SPI_CAN);	
- 47e:	83 e7       	ldi	r24, 0x73	; 115
- 480:	0e 94 61 03 	call	0x6c2	; 0x6c2 <SPI_SelectSlave>
-	SPI_MasterTransmit(INS_READ_RX | (rx<<1));
- 484:	8d 81       	ldd	r24, Y+5	; 0x05
- 486:	88 2f       	mov	r24, r24
- 488:	90 e0       	ldi	r25, 0x00	; 0
- 48a:	88 0f       	add	r24, r24
- 48c:	99 1f       	adc	r25, r25
- 48e:	80 69       	ori	r24, 0x90	; 144
- 490:	0e 94 3c 03 	call	0x678	; 0x678 <SPI_MasterTransmit>
-	for (i = 0; i < 8; i++){
- 494:	1a 82       	std	Y+2, r1	; 0x02
- 496:	19 82       	std	Y+1, r1	; 0x01
- 498:	12 c0       	rjmp	.+36     	; 0x4be <CAN_read_rx+0x74>
-		msg->data[i] = SPI_MasterReceive();
- 49a:	eb 81       	ldd	r30, Y+3	; 0x03
- 49c:	fc 81       	ldd	r31, Y+4	; 0x04
- 49e:	23 81       	ldd	r18, Z+3	; 0x03
- 4a0:	34 81       	ldd	r19, Z+4	; 0x04
- 4a2:	89 81       	ldd	r24, Y+1	; 0x01
- 4a4:	9a 81       	ldd	r25, Y+2	; 0x02
- 4a6:	89 01       	movw	r16, r18
- 4a8:	08 0f       	add	r16, r24
- 4aa:	19 1f       	adc	r17, r25
- 4ac:	0e 94 4f 03 	call	0x69e	; 0x69e <SPI_MasterReceive>
- 4b0:	f8 01       	movw	r30, r16
- 4b2:	80 83       	st	Z, r24
-	if(rx == 0) rx = 1; //decode rx0 to word for "read from rxb0", standard frame
-	else if(rx == 1) rx = 3; //decode rx1 to intruction for "read from rxb1", standard frame
-	
-	SPI_SelectSlave(SPI_CAN);	
-	SPI_MasterTransmit(INS_READ_RX | (rx<<1));
-	for (i = 0; i < 8; i++){
- 4b4:	89 81       	ldd	r24, Y+1	; 0x01
- 4b6:	9a 81       	ldd	r25, Y+2	; 0x02
- 4b8:	01 96       	adiw	r24, 0x01	; 1
- 4ba:	9a 83       	std	Y+2, r25	; 0x02
- 4bc:	89 83       	std	Y+1, r24	; 0x01
- 4be:	89 81       	ldd	r24, Y+1	; 0x01
- 4c0:	9a 81       	ldd	r25, Y+2	; 0x02
- 4c2:	88 30       	cpi	r24, 0x08	; 8
- 4c4:	91 05       	cpc	r25, r1
- 4c6:	4c f3       	brlt	.-46     	; 0x49a <CAN_read_rx+0x50>
-		msg->data[i] = SPI_MasterReceive();
-	}
-	
-	SPI_NoSlave();
- 4c8:	0e 94 72 03 	call	0x6e4	; 0x6e4 <SPI_NoSlave>
-}
- 4cc:	0f 90       	pop	r0
- 4ce:	0f 90       	pop	r0
- 4d0:	0f 90       	pop	r0
- 4d2:	0f 90       	pop	r0
- 4d4:	0f 90       	pop	r0
- 4d6:	cf 91       	pop	r28
- 4d8:	df 91       	pop	r29
- 4da:	1f 91       	pop	r17
- 4dc:	0f 91       	pop	r16
- 4de:	08 95       	ret
-
-000004e0 <CAN_write>:
+0000044a <CAN_write>:
 
 void CAN_write(char data, uint8_t address){
- 4e0:	df 93       	push	r29
- 4e2:	cf 93       	push	r28
- 4e4:	00 d0       	rcall	.+0      	; 0x4e6 <CAN_write+0x6>
- 4e6:	00 d0       	rcall	.+0      	; 0x4e8 <CAN_write+0x8>
- 4e8:	cd b7       	in	r28, 0x3d	; 61
- 4ea:	de b7       	in	r29, 0x3e	; 62
- 4ec:	8b 83       	std	Y+3, r24	; 0x03
- 4ee:	6c 83       	std	Y+4, r22	; 0x04
+ 44a:	df 93       	push	r29
+ 44c:	cf 93       	push	r28
+ 44e:	00 d0       	rcall	.+0      	; 0x450 <CAN_write+0x6>
+ 450:	00 d0       	rcall	.+0      	; 0x452 <CAN_write+0x8>
+ 452:	cd b7       	in	r28, 0x3d	; 61
+ 454:	de b7       	in	r29, 0x3e	; 62
+ 456:	8b 83       	std	Y+3, r24	; 0x03
+ 458:	6c 83       	std	Y+4, r22	; 0x04
 	int i;
 	SPI_SelectSlave(SPI_CAN);	
- 4f0:	83 e7       	ldi	r24, 0x73	; 115
- 4f2:	0e 94 61 03 	call	0x6c2	; 0x6c2 <SPI_SelectSlave>
+ 45a:	83 e7       	ldi	r24, 0x73	; 115
+ 45c:	0e 94 27 03 	call	0x64e	; 0x64e <SPI_SelectSlave>
 
 	SPI_MasterTransmit(INS_WRITE);
- 4f6:	82 e0       	ldi	r24, 0x02	; 2
- 4f8:	0e 94 3c 03 	call	0x678	; 0x678 <SPI_MasterTransmit>
+ 460:	82 e0       	ldi	r24, 0x02	; 2
+ 462:	0e 94 02 03 	call	0x604	; 0x604 <SPI_MasterTransmit>
 	SPI_MasterTransmit((char)address);
- 4fc:	8c 81       	ldd	r24, Y+4	; 0x04
- 4fe:	0e 94 3c 03 	call	0x678	; 0x678 <SPI_MasterTransmit>
+ 466:	8c 81       	ldd	r24, Y+4	; 0x04
+ 468:	0e 94 02 03 	call	0x604	; 0x604 <SPI_MasterTransmit>
 		SPI_MasterTransmit(data);
- 502:	8b 81       	ldd	r24, Y+3	; 0x03
- 504:	0e 94 3c 03 	call	0x678	; 0x678 <SPI_MasterTransmit>
+ 46c:	8b 81       	ldd	r24, Y+3	; 0x03
+ 46e:	0e 94 02 03 	call	0x604	; 0x604 <SPI_MasterTransmit>
 
 	SPI_NoSlave();
- 508:	0e 94 72 03 	call	0x6e4	; 0x6e4 <SPI_NoSlave>
+ 472:	0e 94 38 03 	call	0x670	; 0x670 <SPI_NoSlave>
 
 }
- 50c:	0f 90       	pop	r0
- 50e:	0f 90       	pop	r0
- 510:	0f 90       	pop	r0
- 512:	0f 90       	pop	r0
- 514:	cf 91       	pop	r28
- 516:	df 91       	pop	r29
- 518:	08 95       	ret
+ 476:	0f 90       	pop	r0
+ 478:	0f 90       	pop	r0
+ 47a:	0f 90       	pop	r0
+ 47c:	0f 90       	pop	r0
+ 47e:	cf 91       	pop	r28
+ 480:	df 91       	pop	r29
+ 482:	08 95       	ret
 
-0000051a <CAN_load_tx>:
+00000484 <CAN_load_tx>:
 //tx = "modul" (3 output "kanaler")
 void CAN_load_tx(char* msg, uint8_t tx){
- 51a:	df 93       	push	r29
- 51c:	cf 93       	push	r28
- 51e:	00 d0       	rcall	.+0      	; 0x520 <CAN_load_tx+0x6>
- 520:	00 d0       	rcall	.+0      	; 0x522 <CAN_load_tx+0x8>
- 522:	0f 92       	push	r0
- 524:	cd b7       	in	r28, 0x3d	; 61
- 526:	de b7       	in	r29, 0x3e	; 62
- 528:	9c 83       	std	Y+4, r25	; 0x04
- 52a:	8b 83       	std	Y+3, r24	; 0x03
- 52c:	6d 83       	std	Y+5, r22	; 0x05
+ 484:	df 93       	push	r29
+ 486:	cf 93       	push	r28
+ 488:	00 d0       	rcall	.+0      	; 0x48a <CAN_load_tx+0x6>
+ 48a:	00 d0       	rcall	.+0      	; 0x48c <CAN_load_tx+0x8>
+ 48c:	0f 92       	push	r0
+ 48e:	cd b7       	in	r28, 0x3d	; 61
+ 490:	de b7       	in	r29, 0x3e	; 62
+ 492:	9c 83       	std	Y+4, r25	; 0x04
+ 494:	8b 83       	std	Y+3, r24	; 0x03
+ 496:	6d 83       	std	Y+5, r22	; 0x05
 	int i;
 	if (tx>2)
- 52e:	8d 81       	ldd	r24, Y+5	; 0x05
- 530:	83 30       	cpi	r24, 0x03	; 3
- 532:	40 f5       	brcc	.+80     	; 0x584 <CAN_load_tx+0x6a>
+ 498:	8d 81       	ldd	r24, Y+5	; 0x05
+ 49a:	83 30       	cpi	r24, 0x03	; 3
+ 49c:	60 f5       	brcc	.+88     	; 0x4f6 <CAN_load_tx+0x72>
 		return;
 	tx = (tx+1)*2 - 1; //convert to abc-format as explained in table 12-5
- 534:	8d 81       	ldd	r24, Y+5	; 0x05
- 536:	88 2f       	mov	r24, r24
- 538:	90 e0       	ldi	r25, 0x00	; 0
- 53a:	01 96       	adiw	r24, 0x01	; 1
- 53c:	88 0f       	add	r24, r24
- 53e:	99 1f       	adc	r25, r25
- 540:	81 50       	subi	r24, 0x01	; 1
- 542:	8d 83       	std	Y+5, r24	; 0x05
+ 49e:	8d 81       	ldd	r24, Y+5	; 0x05
+ 4a0:	88 2f       	mov	r24, r24
+ 4a2:	90 e0       	ldi	r25, 0x00	; 0
+ 4a4:	01 96       	adiw	r24, 0x01	; 1
+ 4a6:	88 0f       	add	r24, r24
+ 4a8:	99 1f       	adc	r25, r25
+ 4aa:	81 50       	subi	r24, 0x01	; 1
+ 4ac:	8d 83       	std	Y+5, r24	; 0x05
 	SPI_SelectSlave(SPI_CAN);
- 544:	83 e7       	ldi	r24, 0x73	; 115
- 546:	0e 94 61 03 	call	0x6c2	; 0x6c2 <SPI_SelectSlave>
+ 4ae:	83 e7       	ldi	r24, 0x73	; 115
+ 4b0:	0e 94 27 03 	call	0x64e	; 0x64e <SPI_SelectSlave>
 	
 	SPI_MasterTransmit(INS_LOAD_TX | tx);
- 54a:	8d 81       	ldd	r24, Y+5	; 0x05
- 54c:	80 64       	ori	r24, 0x40	; 64
- 54e:	0e 94 3c 03 	call	0x678	; 0x678 <SPI_MasterTransmit>
+ 4b4:	8d 81       	ldd	r24, Y+5	; 0x05
+ 4b6:	80 64       	ori	r24, 0x40	; 64
+ 4b8:	0e 94 02 03 	call	0x604	; 0x604 <SPI_MasterTransmit>
 	for(i = 0; i < 8; i++){
- 552:	1a 82       	std	Y+2, r1	; 0x02
- 554:	19 82       	std	Y+1, r1	; 0x01
- 556:	0f c0       	rjmp	.+30     	; 0x576 <CAN_load_tx+0x5c>
+ 4bc:	1a 82       	std	Y+2, r1	; 0x02
+ 4be:	19 82       	std	Y+1, r1	; 0x01
+ 4c0:	0f c0       	rjmp	.+30     	; 0x4e0 <CAN_load_tx+0x5c>
 		//printf("%c", data[i]);
 		SPI_MasterTransmit(msg[i]);
- 558:	29 81       	ldd	r18, Y+1	; 0x01
- 55a:	3a 81       	ldd	r19, Y+2	; 0x02
- 55c:	8b 81       	ldd	r24, Y+3	; 0x03
- 55e:	9c 81       	ldd	r25, Y+4	; 0x04
- 560:	fc 01       	movw	r30, r24
- 562:	e2 0f       	add	r30, r18
- 564:	f3 1f       	adc	r31, r19
- 566:	80 81       	ld	r24, Z
- 568:	0e 94 3c 03 	call	0x678	; 0x678 <SPI_MasterTransmit>
+ 4c2:	29 81       	ldd	r18, Y+1	; 0x01
+ 4c4:	3a 81       	ldd	r19, Y+2	; 0x02
+ 4c6:	8b 81       	ldd	r24, Y+3	; 0x03
+ 4c8:	9c 81       	ldd	r25, Y+4	; 0x04
+ 4ca:	fc 01       	movw	r30, r24
+ 4cc:	e2 0f       	add	r30, r18
+ 4ce:	f3 1f       	adc	r31, r19
+ 4d0:	80 81       	ld	r24, Z
+ 4d2:	0e 94 02 03 	call	0x604	; 0x604 <SPI_MasterTransmit>
 		return;
 	tx = (tx+1)*2 - 1; //convert to abc-format as explained in table 12-5
 	SPI_SelectSlave(SPI_CAN);
 	
 	SPI_MasterTransmit(INS_LOAD_TX | tx);
 	for(i = 0; i < 8; i++){
- 56c:	89 81       	ldd	r24, Y+1	; 0x01
- 56e:	9a 81       	ldd	r25, Y+2	; 0x02
- 570:	01 96       	adiw	r24, 0x01	; 1
- 572:	9a 83       	std	Y+2, r25	; 0x02
- 574:	89 83       	std	Y+1, r24	; 0x01
- 576:	89 81       	ldd	r24, Y+1	; 0x01
- 578:	9a 81       	ldd	r25, Y+2	; 0x02
- 57a:	88 30       	cpi	r24, 0x08	; 8
- 57c:	91 05       	cpc	r25, r1
- 57e:	64 f3       	brlt	.-40     	; 0x558 <CAN_load_tx+0x3e>
+ 4d6:	89 81       	ldd	r24, Y+1	; 0x01
+ 4d8:	9a 81       	ldd	r25, Y+2	; 0x02
+ 4da:	01 96       	adiw	r24, 0x01	; 1
+ 4dc:	9a 83       	std	Y+2, r25	; 0x02
+ 4de:	89 83       	std	Y+1, r24	; 0x01
+ 4e0:	89 81       	ldd	r24, Y+1	; 0x01
+ 4e2:	9a 81       	ldd	r25, Y+2	; 0x02
+ 4e4:	88 30       	cpi	r24, 0x08	; 8
+ 4e6:	91 05       	cpc	r25, r1
+ 4e8:	64 f3       	brlt	.-40     	; 0x4c2 <CAN_load_tx+0x3e>
 		//printf("%c", data[i]);
 		SPI_MasterTransmit(msg[i]);
 	}
 
 	SPI_NoSlave();
- 580:	0e 94 72 03 	call	0x6e4	; 0x6e4 <SPI_NoSlave>
+ 4ea:	0e 94 38 03 	call	0x670	; 0x670 <SPI_NoSlave>
+	printf("\n");
+ 4ee:	8a e0       	ldi	r24, 0x0A	; 10
+ 4f0:	90 e0       	ldi	r25, 0x00	; 0
+ 4f2:	0e 94 36 04 	call	0x86c	; 0x86c <putchar>
 }
- 584:	0f 90       	pop	r0
- 586:	0f 90       	pop	r0
- 588:	0f 90       	pop	r0
- 58a:	0f 90       	pop	r0
- 58c:	0f 90       	pop	r0
- 58e:	cf 91       	pop	r28
- 590:	df 91       	pop	r29
- 592:	08 95       	ret
+ 4f6:	0f 90       	pop	r0
+ 4f8:	0f 90       	pop	r0
+ 4fa:	0f 90       	pop	r0
+ 4fc:	0f 90       	pop	r0
+ 4fe:	0f 90       	pop	r0
+ 500:	cf 91       	pop	r28
+ 502:	df 91       	pop	r29
+ 504:	08 95       	ret
 
-00000594 <CAN_rts>:
+00000506 <CAN_rts>:
 
 void CAN_rts(uint8_t tx){
- 594:	df 93       	push	r29
- 596:	cf 93       	push	r28
- 598:	0f 92       	push	r0
- 59a:	cd b7       	in	r28, 0x3d	; 61
- 59c:	de b7       	in	r29, 0x3e	; 62
- 59e:	89 83       	std	Y+1, r24	; 0x01
+ 506:	df 93       	push	r29
+ 508:	cf 93       	push	r28
+ 50a:	0f 92       	push	r0
+ 50c:	cd b7       	in	r28, 0x3d	; 61
+ 50e:	de b7       	in	r29, 0x3e	; 62
+ 510:	89 83       	std	Y+1, r24	; 0x01
 	if (tx == 0) tx = 1;
- 5a0:	89 81       	ldd	r24, Y+1	; 0x01
- 5a2:	88 23       	and	r24, r24
- 5a4:	19 f4       	brne	.+6      	; 0x5ac <CAN_rts+0x18>
- 5a6:	81 e0       	ldi	r24, 0x01	; 1
- 5a8:	89 83       	std	Y+1, r24	; 0x01
- 5aa:	0b c0       	rjmp	.+22     	; 0x5c2 <CAN_rts+0x2e>
+ 512:	89 81       	ldd	r24, Y+1	; 0x01
+ 514:	88 23       	and	r24, r24
+ 516:	19 f4       	brne	.+6      	; 0x51e <CAN_rts+0x18>
+ 518:	81 e0       	ldi	r24, 0x01	; 1
+ 51a:	89 83       	std	Y+1, r24	; 0x01
+ 51c:	0b c0       	rjmp	.+22     	; 0x534 <CAN_rts+0x2e>
 	else if (tx == 1) tx = 2;
- 5ac:	89 81       	ldd	r24, Y+1	; 0x01
- 5ae:	81 30       	cpi	r24, 0x01	; 1
- 5b0:	19 f4       	brne	.+6      	; 0x5b8 <CAN_rts+0x24>
- 5b2:	82 e0       	ldi	r24, 0x02	; 2
- 5b4:	89 83       	std	Y+1, r24	; 0x01
- 5b6:	05 c0       	rjmp	.+10     	; 0x5c2 <CAN_rts+0x2e>
+ 51e:	89 81       	ldd	r24, Y+1	; 0x01
+ 520:	81 30       	cpi	r24, 0x01	; 1
+ 522:	19 f4       	brne	.+6      	; 0x52a <CAN_rts+0x24>
+ 524:	82 e0       	ldi	r24, 0x02	; 2
+ 526:	89 83       	std	Y+1, r24	; 0x01
+ 528:	05 c0       	rjmp	.+10     	; 0x534 <CAN_rts+0x2e>
 	else if (tx == 2) tx = 4;
- 5b8:	89 81       	ldd	r24, Y+1	; 0x01
- 5ba:	82 30       	cpi	r24, 0x02	; 2
- 5bc:	59 f4       	brne	.+22     	; 0x5d4 <CAN_rts+0x40>
- 5be:	84 e0       	ldi	r24, 0x04	; 4
- 5c0:	89 83       	std	Y+1, r24	; 0x01
+ 52a:	89 81       	ldd	r24, Y+1	; 0x01
+ 52c:	82 30       	cpi	r24, 0x02	; 2
+ 52e:	59 f4       	brne	.+22     	; 0x546 <CAN_rts+0x40>
+ 530:	84 e0       	ldi	r24, 0x04	; 4
+ 532:	89 83       	std	Y+1, r24	; 0x01
 	else return;
 	
 	SPI_SelectSlave(SPI_CAN);
- 5c2:	83 e7       	ldi	r24, 0x73	; 115
- 5c4:	0e 94 61 03 	call	0x6c2	; 0x6c2 <SPI_SelectSlave>
+ 534:	83 e7       	ldi	r24, 0x73	; 115
+ 536:	0e 94 27 03 	call	0x64e	; 0x64e <SPI_SelectSlave>
 	//printf("Rts: 0x%x\n", (INS_RTS | tx));
 	SPI_MasterTransmit(INS_RTS | tx);
- 5c8:	89 81       	ldd	r24, Y+1	; 0x01
- 5ca:	80 68       	ori	r24, 0x80	; 128
- 5cc:	0e 94 3c 03 	call	0x678	; 0x678 <SPI_MasterTransmit>
+ 53a:	89 81       	ldd	r24, Y+1	; 0x01
+ 53c:	80 68       	ori	r24, 0x80	; 128
+ 53e:	0e 94 02 03 	call	0x604	; 0x604 <SPI_MasterTransmit>
 
 	SPI_NoSlave();
- 5d0:	0e 94 72 03 	call	0x6e4	; 0x6e4 <SPI_NoSlave>
+ 542:	0e 94 38 03 	call	0x670	; 0x670 <SPI_NoSlave>
 }
- 5d4:	0f 90       	pop	r0
- 5d6:	cf 91       	pop	r28
- 5d8:	df 91       	pop	r29
- 5da:	08 95       	ret
+ 546:	0f 90       	pop	r0
+ 548:	cf 91       	pop	r28
+ 54a:	df 91       	pop	r29
+ 54c:	08 95       	ret
 
-000005dc <CAN_read_status>:
+0000054e <CAN_read_status>:
 
 uint8_t CAN_read_status(void){
- 5dc:	df 93       	push	r29
- 5de:	cf 93       	push	r28
- 5e0:	0f 92       	push	r0
- 5e2:	cd b7       	in	r28, 0x3d	; 61
- 5e4:	de b7       	in	r29, 0x3e	; 62
+ 54e:	df 93       	push	r29
+ 550:	cf 93       	push	r28
+ 552:	0f 92       	push	r0
+ 554:	cd b7       	in	r28, 0x3d	; 61
+ 556:	de b7       	in	r29, 0x3e	; 62
 	char status;
 	SPI_SelectSlave(SPI_CAN);
- 5e6:	83 e7       	ldi	r24, 0x73	; 115
- 5e8:	0e 94 61 03 	call	0x6c2	; 0x6c2 <SPI_SelectSlave>
+ 558:	83 e7       	ldi	r24, 0x73	; 115
+ 55a:	0e 94 27 03 	call	0x64e	; 0x64e <SPI_SelectSlave>
 
 	SPI_MasterTransmit(INS_READ_STATUS);
- 5ec:	80 ea       	ldi	r24, 0xA0	; 160
- 5ee:	0e 94 3c 03 	call	0x678	; 0x678 <SPI_MasterTransmit>
+ 55e:	80 ea       	ldi	r24, 0xA0	; 160
+ 560:	0e 94 02 03 	call	0x604	; 0x604 <SPI_MasterTransmit>
 	status = SPI_MasterReceive();
- 5f2:	0e 94 4f 03 	call	0x69e	; 0x69e <SPI_MasterReceive>
- 5f6:	89 83       	std	Y+1, r24	; 0x01
+ 564:	0e 94 15 03 	call	0x62a	; 0x62a <SPI_MasterReceive>
+ 568:	89 83       	std	Y+1, r24	; 0x01
 
 	SPI_NoSlave();
- 5f8:	0e 94 72 03 	call	0x6e4	; 0x6e4 <SPI_NoSlave>
+ 56a:	0e 94 38 03 	call	0x670	; 0x670 <SPI_NoSlave>
 	
 	return (uint8_t) status;
- 5fc:	89 81       	ldd	r24, Y+1	; 0x01
+ 56e:	89 81       	ldd	r24, Y+1	; 0x01
 
 }
- 5fe:	0f 90       	pop	r0
- 600:	cf 91       	pop	r28
- 602:	df 91       	pop	r29
- 604:	08 95       	ret
+ 570:	0f 90       	pop	r0
+ 572:	cf 91       	pop	r28
+ 574:	df 91       	pop	r29
+ 576:	08 95       	ret
 
-00000606 <CAN_rx_status>:
+00000578 <CAN_rx_status>:
 
 uint8_t CAN_rx_status(void){
- 606:	df 93       	push	r29
- 608:	cf 93       	push	r28
- 60a:	cd b7       	in	r28, 0x3d	; 61
- 60c:	de b7       	in	r29, 0x3e	; 62
-return 0;
- 60e:	80 e0       	ldi	r24, 0x00	; 0
+ 578:	df 93       	push	r29
+ 57a:	cf 93       	push	r28
+ 57c:	0f 92       	push	r0
+ 57e:	cd b7       	in	r28, 0x3d	; 61
+ 580:	de b7       	in	r29, 0x3e	; 62
+
+	char status;
+	SPI_SelectSlave(SPI_CAN);
+ 582:	83 e7       	ldi	r24, 0x73	; 115
+ 584:	0e 94 27 03 	call	0x64e	; 0x64e <SPI_SelectSlave>
+
+	SPI_MasterTransmit(INS_RX_STATUS);
+ 588:	80 eb       	ldi	r24, 0xB0	; 176
+ 58a:	0e 94 02 03 	call	0x604	; 0x604 <SPI_MasterTransmit>
+	status = SPI_MasterReceive();
+ 58e:	0e 94 15 03 	call	0x62a	; 0x62a <SPI_MasterReceive>
+ 592:	89 83       	std	Y+1, r24	; 0x01
+
+	SPI_NoSlave();
+ 594:	0e 94 38 03 	call	0x670	; 0x670 <SPI_NoSlave>
+	
+	return (uint8_t) status;
+ 598:	89 81       	ldd	r24, Y+1	; 0x01
 
 }
- 610:	cf 91       	pop	r28
- 612:	df 91       	pop	r29
- 614:	08 95       	ret
+ 59a:	0f 90       	pop	r0
+ 59c:	cf 91       	pop	r28
+ 59e:	df 91       	pop	r29
+ 5a0:	08 95       	ret
 
-00000616 <CAN_bit_modify>:
+000005a2 <CAN_bit_modify>:
+
 void CAN_bit_modify(uint8_t address, uint8_t mask, uint8_t data){
- 616:	df 93       	push	r29
- 618:	cf 93       	push	r28
- 61a:	00 d0       	rcall	.+0      	; 0x61c <CAN_bit_modify+0x6>
- 61c:	0f 92       	push	r0
- 61e:	cd b7       	in	r28, 0x3d	; 61
- 620:	de b7       	in	r29, 0x3e	; 62
- 622:	89 83       	std	Y+1, r24	; 0x01
- 624:	6a 83       	std	Y+2, r22	; 0x02
- 626:	4b 83       	std	Y+3, r20	; 0x03
+ 5a2:	df 93       	push	r29
+ 5a4:	cf 93       	push	r28
+ 5a6:	00 d0       	rcall	.+0      	; 0x5a8 <CAN_bit_modify+0x6>
+ 5a8:	0f 92       	push	r0
+ 5aa:	cd b7       	in	r28, 0x3d	; 61
+ 5ac:	de b7       	in	r29, 0x3e	; 62
+ 5ae:	89 83       	std	Y+1, r24	; 0x01
+ 5b0:	6a 83       	std	Y+2, r22	; 0x02
+ 5b2:	4b 83       	std	Y+3, r20	; 0x03
 	SPI_SelectSlave(SPI_CAN);
- 628:	83 e7       	ldi	r24, 0x73	; 115
- 62a:	0e 94 61 03 	call	0x6c2	; 0x6c2 <SPI_SelectSlave>
+ 5b4:	83 e7       	ldi	r24, 0x73	; 115
+ 5b6:	0e 94 27 03 	call	0x64e	; 0x64e <SPI_SelectSlave>
 
 
 	SPI_MasterTransmit((char)INS_BIT_MODIFY);	
- 62e:	85 e0       	ldi	r24, 0x05	; 5
- 630:	0e 94 3c 03 	call	0x678	; 0x678 <SPI_MasterTransmit>
+ 5ba:	85 e0       	ldi	r24, 0x05	; 5
+ 5bc:	0e 94 02 03 	call	0x604	; 0x604 <SPI_MasterTransmit>
 	SPI_MasterTransmit((char)address);
- 634:	89 81       	ldd	r24, Y+1	; 0x01
- 636:	0e 94 3c 03 	call	0x678	; 0x678 <SPI_MasterTransmit>
+ 5c0:	89 81       	ldd	r24, Y+1	; 0x01
+ 5c2:	0e 94 02 03 	call	0x604	; 0x604 <SPI_MasterTransmit>
 	SPI_MasterTransmit((char)mask);
- 63a:	8a 81       	ldd	r24, Y+2	; 0x02
- 63c:	0e 94 3c 03 	call	0x678	; 0x678 <SPI_MasterTransmit>
+ 5c6:	8a 81       	ldd	r24, Y+2	; 0x02
+ 5c8:	0e 94 02 03 	call	0x604	; 0x604 <SPI_MasterTransmit>
 	SPI_MasterTransmit((char)data);
- 640:	8b 81       	ldd	r24, Y+3	; 0x03
- 642:	0e 94 3c 03 	call	0x678	; 0x678 <SPI_MasterTransmit>
+ 5cc:	8b 81       	ldd	r24, Y+3	; 0x03
+ 5ce:	0e 94 02 03 	call	0x604	; 0x604 <SPI_MasterTransmit>
 
 	SPI_NoSlave();
- 646:	0e 94 72 03 	call	0x6e4	; 0x6e4 <SPI_NoSlave>
+ 5d2:	0e 94 38 03 	call	0x670	; 0x670 <SPI_NoSlave>
 }
- 64a:	0f 90       	pop	r0
- 64c:	0f 90       	pop	r0
- 64e:	0f 90       	pop	r0
- 650:	cf 91       	pop	r28
- 652:	df 91       	pop	r29
- 654:	08 95       	ret
+ 5d6:	0f 90       	pop	r0
+ 5d8:	0f 90       	pop	r0
+ 5da:	0f 90       	pop	r0
+ 5dc:	cf 91       	pop	r28
+ 5de:	df 91       	pop	r29
+ 5e0:	08 95       	ret
 
-00000656 <SPI_MasterInit>:
+000005e2 <SPI_MasterInit>:
 #include <avr/interrupt.h>
 #include "spi.h"
 
 // Initialize the SPI Master interface
 void SPI_MasterInit(void)
 {
- 656:	df 93       	push	r29
- 658:	cf 93       	push	r28
- 65a:	cd b7       	in	r28, 0x3d	; 61
- 65c:	de b7       	in	r29, 0x3e	; 62
+ 5e2:	df 93       	push	r29
+ 5e4:	cf 93       	push	r28
+ 5e6:	cd b7       	in	r28, 0x3d	; 61
+ 5e8:	de b7       	in	r29, 0x3e	; 62
 	/* Set MISO input, other pins output */
 	DDRB = (0b11110111);;
- 65e:	e7 e3       	ldi	r30, 0x37	; 55
- 660:	f0 e0       	ldi	r31, 0x00	; 0
- 662:	87 ef       	ldi	r24, 0xF7	; 247
- 664:	80 83       	st	Z, r24
+ 5ea:	e7 e3       	ldi	r30, 0x37	; 55
+ 5ec:	f0 e0       	ldi	r31, 0x00	; 0
+ 5ee:	87 ef       	ldi	r24, 0xF7	; 247
+ 5f0:	80 83       	st	Z, r24
 	/* Enable SPI, Master, set clock rate fck/16 */
 	SPCR = (1<<SPE)|(1<<MSTR)|(1<<SPR0);
- 666:	ed e2       	ldi	r30, 0x2D	; 45
- 668:	f0 e0       	ldi	r31, 0x00	; 0
- 66a:	81 e5       	ldi	r24, 0x51	; 81
- 66c:	80 83       	st	Z, r24
+ 5f2:	ed e2       	ldi	r30, 0x2D	; 45
+ 5f4:	f0 e0       	ldi	r31, 0x00	; 0
+ 5f6:	81 e5       	ldi	r24, 0x51	; 81
+ 5f8:	80 83       	st	Z, r24
 	SPI_NoSlave();
- 66e:	0e 94 72 03 	call	0x6e4	; 0x6e4 <SPI_NoSlave>
+ 5fa:	0e 94 38 03 	call	0x670	; 0x670 <SPI_NoSlave>
 }
- 672:	cf 91       	pop	r28
- 674:	df 91       	pop	r29
- 676:	08 95       	ret
+ 5fe:	cf 91       	pop	r28
+ 600:	df 91       	pop	r29
+ 602:	08 95       	ret
 
-00000678 <SPI_MasterTransmit>:
+00000604 <SPI_MasterTransmit>:
 
 // Transmit char over SPI
 void SPI_MasterTransmit(char cData)
 {
- 678:	df 93       	push	r29
- 67a:	cf 93       	push	r28
- 67c:	0f 92       	push	r0
- 67e:	cd b7       	in	r28, 0x3d	; 61
- 680:	de b7       	in	r29, 0x3e	; 62
- 682:	89 83       	std	Y+1, r24	; 0x01
+ 604:	df 93       	push	r29
+ 606:	cf 93       	push	r28
+ 608:	0f 92       	push	r0
+ 60a:	cd b7       	in	r28, 0x3d	; 61
+ 60c:	de b7       	in	r29, 0x3e	; 62
+ 60e:	89 83       	std	Y+1, r24	; 0x01
 	/* Start transmission */
 	SPDR = cData;
- 684:	ef e2       	ldi	r30, 0x2F	; 47
- 686:	f0 e0       	ldi	r31, 0x00	; 0
- 688:	89 81       	ldd	r24, Y+1	; 0x01
- 68a:	80 83       	st	Z, r24
+ 610:	ef e2       	ldi	r30, 0x2F	; 47
+ 612:	f0 e0       	ldi	r31, 0x00	; 0
+ 614:	89 81       	ldd	r24, Y+1	; 0x01
+ 616:	80 83       	st	Z, r24
 	/* Wait for transmission complete */
 	while(!(SPSR & (1<<SPIF)));
- 68c:	ee e2       	ldi	r30, 0x2E	; 46
- 68e:	f0 e0       	ldi	r31, 0x00	; 0
- 690:	80 81       	ld	r24, Z
- 692:	88 23       	and	r24, r24
- 694:	dc f7       	brge	.-10     	; 0x68c <SPI_MasterTransmit+0x14>
+ 618:	ee e2       	ldi	r30, 0x2E	; 46
+ 61a:	f0 e0       	ldi	r31, 0x00	; 0
+ 61c:	80 81       	ld	r24, Z
+ 61e:	88 23       	and	r24, r24
+ 620:	dc f7       	brge	.-10     	; 0x618 <SPI_MasterTransmit+0x14>
 }
- 696:	0f 90       	pop	r0
- 698:	cf 91       	pop	r28
- 69a:	df 91       	pop	r29
- 69c:	08 95       	ret
+ 622:	0f 90       	pop	r0
+ 624:	cf 91       	pop	r28
+ 626:	df 91       	pop	r29
+ 628:	08 95       	ret
 
-0000069e <SPI_MasterReceive>:
+0000062a <SPI_MasterReceive>:
 
 // Recieve char over SPI
 char SPI_MasterReceive(void)
 {
- 69e:	df 93       	push	r29
- 6a0:	cf 93       	push	r28
- 6a2:	cd b7       	in	r28, 0x3d	; 61
- 6a4:	de b7       	in	r29, 0x3e	; 62
+ 62a:	df 93       	push	r29
+ 62c:	cf 93       	push	r28
+ 62e:	cd b7       	in	r28, 0x3d	; 61
+ 630:	de b7       	in	r29, 0x3e	; 62
 	//send dummy char, to shift the SPDR
 	SPI_MasterTransmit('@');
- 6a6:	80 e4       	ldi	r24, 0x40	; 64
- 6a8:	0e 94 3c 03 	call	0x678	; 0x678 <SPI_MasterTransmit>
+ 632:	80 e4       	ldi	r24, 0x40	; 64
+ 634:	0e 94 02 03 	call	0x604	; 0x604 <SPI_MasterTransmit>
 	
 	/* Wait for reception complete */
 	while(!(SPSR & (1<<SPIF)));
- 6ac:	ee e2       	ldi	r30, 0x2E	; 46
- 6ae:	f0 e0       	ldi	r31, 0x00	; 0
- 6b0:	80 81       	ld	r24, Z
- 6b2:	88 23       	and	r24, r24
- 6b4:	dc f7       	brge	.-10     	; 0x6ac <SPI_MasterReceive+0xe>
+ 638:	ee e2       	ldi	r30, 0x2E	; 46
+ 63a:	f0 e0       	ldi	r31, 0x00	; 0
+ 63c:	80 81       	ld	r24, Z
+ 63e:	88 23       	and	r24, r24
+ 640:	dc f7       	brge	.-10     	; 0x638 <SPI_MasterReceive+0xe>
 	
 	
 
 	/* Return data register */
 	return SPDR;
- 6b6:	ef e2       	ldi	r30, 0x2F	; 47
- 6b8:	f0 e0       	ldi	r31, 0x00	; 0
- 6ba:	80 81       	ld	r24, Z
+ 642:	ef e2       	ldi	r30, 0x2F	; 47
+ 644:	f0 e0       	ldi	r31, 0x00	; 0
+ 646:	80 81       	ld	r24, Z
 }
- 6bc:	cf 91       	pop	r28
- 6be:	df 91       	pop	r29
- 6c0:	08 95       	ret
+ 648:	cf 91       	pop	r28
+ 64a:	df 91       	pop	r29
+ 64c:	08 95       	ret
 
-000006c2 <SPI_SelectSlave>:
+0000064e <SPI_SelectSlave>:
 
 // Select SPI slave to send data to
 void SPI_SelectSlave(char slave){ //remove argument!!
- 6c2:	df 93       	push	r29
- 6c4:	cf 93       	push	r28
- 6c6:	0f 92       	push	r0
- 6c8:	cd b7       	in	r28, 0x3d	; 61
- 6ca:	de b7       	in	r29, 0x3e	; 62
- 6cc:	89 83       	std	Y+1, r24	; 0x01
+ 64e:	df 93       	push	r29
+ 650:	cf 93       	push	r28
+ 652:	0f 92       	push	r0
+ 654:	cd b7       	in	r28, 0x3d	; 61
+ 656:	de b7       	in	r29, 0x3e	; 62
+ 658:	89 83       	std	Y+1, r24	; 0x01
 		PORTB = PORTB & ~(1<<DDB0) ; // set SS for CAN low 
- 6ce:	a8 e3       	ldi	r26, 0x38	; 56
- 6d0:	b0 e0       	ldi	r27, 0x00	; 0
- 6d2:	e8 e3       	ldi	r30, 0x38	; 56
- 6d4:	f0 e0       	ldi	r31, 0x00	; 0
- 6d6:	80 81       	ld	r24, Z
- 6d8:	8e 7f       	andi	r24, 0xFE	; 254
- 6da:	8c 93       	st	X, r24
+ 65a:	a8 e3       	ldi	r26, 0x38	; 56
+ 65c:	b0 e0       	ldi	r27, 0x00	; 0
+ 65e:	e8 e3       	ldi	r30, 0x38	; 56
+ 660:	f0 e0       	ldi	r31, 0x00	; 0
+ 662:	80 81       	ld	r24, Z
+ 664:	8e 7f       	andi	r24, 0xFE	; 254
+ 666:	8c 93       	st	X, r24
 }
- 6dc:	0f 90       	pop	r0
- 6de:	cf 91       	pop	r28
- 6e0:	df 91       	pop	r29
- 6e2:	08 95       	ret
+ 668:	0f 90       	pop	r0
+ 66a:	cf 91       	pop	r28
+ 66c:	df 91       	pop	r29
+ 66e:	08 95       	ret
 
-000006e4 <SPI_NoSlave>:
+00000670 <SPI_NoSlave>:
 
 // Disable chipselect on all SPI slaves (select no slave)
 void SPI_NoSlave(void){
- 6e4:	df 93       	push	r29
- 6e6:	cf 93       	push	r28
- 6e8:	cd b7       	in	r28, 0x3d	; 61
- 6ea:	de b7       	in	r29, 0x3e	; 62
+ 670:	df 93       	push	r29
+ 672:	cf 93       	push	r28
+ 674:	cd b7       	in	r28, 0x3d	; 61
+ 676:	de b7       	in	r29, 0x3e	; 62
 	/* Set SS high */	
 	PORTB = PORTB | (1<<DDB0);
- 6ec:	a8 e3       	ldi	r26, 0x38	; 56
- 6ee:	b0 e0       	ldi	r27, 0x00	; 0
- 6f0:	e8 e3       	ldi	r30, 0x38	; 56
- 6f2:	f0 e0       	ldi	r31, 0x00	; 0
- 6f4:	80 81       	ld	r24, Z
- 6f6:	81 60       	ori	r24, 0x01	; 1
- 6f8:	8c 93       	st	X, r24
+ 678:	a8 e3       	ldi	r26, 0x38	; 56
+ 67a:	b0 e0       	ldi	r27, 0x00	; 0
+ 67c:	e8 e3       	ldi	r30, 0x38	; 56
+ 67e:	f0 e0       	ldi	r31, 0x00	; 0
+ 680:	80 81       	ld	r24, Z
+ 682:	81 60       	ori	r24, 0x01	; 1
+ 684:	8c 93       	st	X, r24
 }
- 6fa:	cf 91       	pop	r28
- 6fc:	df 91       	pop	r29
- 6fe:	08 95       	ret
+ 686:	cf 91       	pop	r28
+ 688:	df 91       	pop	r29
+ 68a:	08 95       	ret
 
-00000700 <main>:
+0000068c <main>:
 #include "settings.h"
 #include "can.h"
 #include "spi.h"
+#include "servo.h"
 
 int main(void) {
- 700:	df 93       	push	r29
- 702:	cf 93       	push	r28
- 704:	cd b7       	in	r28, 0x3d	; 61
- 706:	de b7       	in	r29, 0x3e	; 62
+ 68c:	df 93       	push	r29
+ 68e:	cf 93       	push	r28
+ 690:	cd b7       	in	r28, 0x3d	; 61
+ 692:	de b7       	in	r29, 0x3e	; 62
 	SPI_NoSlave();
- 708:	0e 94 72 03 	call	0x6e4	; 0x6e4 <SPI_NoSlave>
+ 694:	0e 94 38 03 	call	0x670	; 0x670 <SPI_NoSlave>
 	SPI_MasterInit();	
- 70c:	0e 94 2b 03 	call	0x656	; 0x656 <SPI_MasterInit>
+ 698:	0e 94 f1 02 	call	0x5e2	; 0x5e2 <SPI_MasterInit>
 	CAN_init();
- 710:	0e 94 5f 00 	call	0xbe	; 0xbe <CAN_init>
+ 69c:	0e 94 67 00 	call	0xce	; 0xce <CAN_init>
+	servo_init();
+ 6a0:	0e 94 83 03 	call	0x706	; 0x706 <servo_init>
+ 6a4:	ff cf       	rjmp	.-2      	; 0x6a4 <main+0x18>
 
-	CAN_test();
- 714:	0e 94 94 00 	call	0x128	; 0x128 <CAN_test>
- 718:	ff cf       	rjmp	.-2      	; 0x718 <main+0x18>
+000006a6 <__vector_5>:
 
-0000071a <_exit>:
- 71a:	f8 94       	cli
+	return 0;	
+	
+}
 
-0000071c <__stop_program>:
- 71c:	ff cf       	rjmp	.-2      	; 0x71c <__stop_program>
+SIGNAL(SIG_INTERRUPT4) {	
+ 6a6:	1f 92       	push	r1
+ 6a8:	0f 92       	push	r0
+ 6aa:	0f b6       	in	r0, 0x3f	; 63
+ 6ac:	0f 92       	push	r0
+ 6ae:	00 90 5b 00 	lds	r0, 0x005B
+ 6b2:	0f 92       	push	r0
+ 6b4:	11 24       	eor	r1, r1
+ 6b6:	2f 93       	push	r18
+ 6b8:	3f 93       	push	r19
+ 6ba:	4f 93       	push	r20
+ 6bc:	5f 93       	push	r21
+ 6be:	6f 93       	push	r22
+ 6c0:	7f 93       	push	r23
+ 6c2:	8f 93       	push	r24
+ 6c4:	9f 93       	push	r25
+ 6c6:	af 93       	push	r26
+ 6c8:	bf 93       	push	r27
+ 6ca:	ef 93       	push	r30
+ 6cc:	ff 93       	push	r31
+ 6ce:	df 93       	push	r29
+ 6d0:	cf 93       	push	r28
+ 6d2:	cd b7       	in	r28, 0x3d	; 61
+ 6d4:	de b7       	in	r29, 0x3e	; 62
+	sig_interrupt4();
+ 6d6:	0e 94 07 04 	call	0x80e	; 0x80e <sig_interrupt4>
+}
+ 6da:	cf 91       	pop	r28
+ 6dc:	df 91       	pop	r29
+ 6de:	ff 91       	pop	r31
+ 6e0:	ef 91       	pop	r30
+ 6e2:	bf 91       	pop	r27
+ 6e4:	af 91       	pop	r26
+ 6e6:	9f 91       	pop	r25
+ 6e8:	8f 91       	pop	r24
+ 6ea:	7f 91       	pop	r23
+ 6ec:	6f 91       	pop	r22
+ 6ee:	5f 91       	pop	r21
+ 6f0:	4f 91       	pop	r20
+ 6f2:	3f 91       	pop	r19
+ 6f4:	2f 91       	pop	r18
+ 6f6:	0f 90       	pop	r0
+ 6f8:	00 92 5b 00 	sts	0x005B, r0
+ 6fc:	0f 90       	pop	r0
+ 6fe:	0f be       	out	0x3f, r0	; 63
+ 700:	0f 90       	pop	r0
+ 702:	1f 90       	pop	r1
+ 704:	18 95       	reti
+
+00000706 <servo_init>:
+
+#include "servo.h"
+#include "can.h"
+
+
+void servo_init(){
+ 706:	df 93       	push	r29
+ 708:	cf 93       	push	r28
+ 70a:	cd b7       	in	r28, 0x3d	; 61
+ 70c:	de b7       	in	r29, 0x3e	; 62
+	TCCR1A = 0b00100010; //clear output on compare match, fast PWM - count to OCR
+ 70e:	ef e4       	ldi	r30, 0x4F	; 79
+ 710:	f0 e0       	ldi	r31, 0x00	; 0
+ 712:	82 e2       	ldi	r24, 0x22	; 34
+ 714:	80 83       	st	Z, r24
+	TCCR1B = 0b00011010; //fast PWM - count to OCR, prescaler: divide FCLK by 8 (counter 1 MHz)
+ 716:	ee e4       	ldi	r30, 0x4E	; 78
+ 718:	f0 e0       	ldi	r31, 0x00	; 0
+ 71a:	8a e1       	ldi	r24, 0x1A	; 26
+ 71c:	80 83       	st	Z, r24
+	
+	OCR1B = 1500+55; //start in mid position
+ 71e:	e8 e4       	ldi	r30, 0x48	; 72
+ 720:	f0 e0       	ldi	r31, 0x00	; 0
+ 722:	83 e1       	ldi	r24, 0x13	; 19
+ 724:	96 e0       	ldi	r25, 0x06	; 6
+ 726:	91 83       	std	Z+1, r25	; 0x01
+ 728:	80 83       	st	Z, r24
+	ICR1 = 20000+700; //count to 20000 (20 ms)
+ 72a:	e6 e4       	ldi	r30, 0x46	; 70
+ 72c:	f0 e0       	ldi	r31, 0x00	; 0
+ 72e:	8c ed       	ldi	r24, 0xDC	; 220
+ 730:	90 e5       	ldi	r25, 0x50	; 80
+ 732:	91 83       	std	Z+1, r25	; 0x01
+ 734:	80 83       	st	Z, r24
+}
+ 736:	cf 91       	pop	r28
+ 738:	df 91       	pop	r29
+ 73a:	08 95       	ret
+
+0000073c <set_position>:
+
+void set_position(int8_t position) {
+ 73c:	df 93       	push	r29
+ 73e:	cf 93       	push	r28
+ 740:	00 d0       	rcall	.+0      	; 0x742 <set_position+0x6>
+ 742:	00 d0       	rcall	.+0      	; 0x744 <set_position+0x8>
+ 744:	0f 92       	push	r0
+ 746:	cd b7       	in	r28, 0x3d	; 61
+ 748:	de b7       	in	r29, 0x3e	; 62
+ 74a:	8d 83       	std	Y+5, r24	; 0x05
+	long int temp = ((long int)630*position)/128;
+ 74c:	8d 81       	ldd	r24, Y+5	; 0x05
+ 74e:	99 27       	eor	r25, r25
+ 750:	87 fd       	sbrc	r24, 7
+ 752:	90 95       	com	r25
+ 754:	a9 2f       	mov	r26, r25
+ 756:	b9 2f       	mov	r27, r25
+ 758:	26 e7       	ldi	r18, 0x76	; 118
+ 75a:	32 e0       	ldi	r19, 0x02	; 2
+ 75c:	40 e0       	ldi	r20, 0x00	; 0
+ 75e:	50 e0       	ldi	r21, 0x00	; 0
+ 760:	bc 01       	movw	r22, r24
+ 762:	cd 01       	movw	r24, r26
+ 764:	0e 94 69 04 	call	0x8d2	; 0x8d2 <__mulsi3>
+ 768:	dc 01       	movw	r26, r24
+ 76a:	cb 01       	movw	r24, r22
+ 76c:	20 e8       	ldi	r18, 0x80	; 128
+ 76e:	30 e0       	ldi	r19, 0x00	; 0
+ 770:	40 e0       	ldi	r20, 0x00	; 0
+ 772:	50 e0       	ldi	r21, 0x00	; 0
+ 774:	bc 01       	movw	r22, r24
+ 776:	cd 01       	movw	r24, r26
+ 778:	0e 94 88 04 	call	0x910	; 0x910 <__divmodsi4>
+ 77c:	da 01       	movw	r26, r20
+ 77e:	c9 01       	movw	r24, r18
+ 780:	89 83       	std	Y+1, r24	; 0x01
+ 782:	9a 83       	std	Y+2, r25	; 0x02
+ 784:	ab 83       	std	Y+3, r26	; 0x03
+ 786:	bc 83       	std	Y+4, r27	; 0x04
+	temp += 1500+55;
+ 788:	89 81       	ldd	r24, Y+1	; 0x01
+ 78a:	9a 81       	ldd	r25, Y+2	; 0x02
+ 78c:	ab 81       	ldd	r26, Y+3	; 0x03
+ 78e:	bc 81       	ldd	r27, Y+4	; 0x04
+ 790:	8d 5e       	subi	r24, 0xED	; 237
+ 792:	99 4f       	sbci	r25, 0xF9	; 249
+ 794:	af 4f       	sbci	r26, 0xFF	; 255
+ 796:	bf 4f       	sbci	r27, 0xFF	; 255
+ 798:	89 83       	std	Y+1, r24	; 0x01
+ 79a:	9a 83       	std	Y+2, r25	; 0x02
+ 79c:	ab 83       	std	Y+3, r26	; 0x03
+ 79e:	bc 83       	std	Y+4, r27	; 0x04
+	if(temp < 935)
+ 7a0:	89 81       	ldd	r24, Y+1	; 0x01
+ 7a2:	9a 81       	ldd	r25, Y+2	; 0x02
+ 7a4:	ab 81       	ldd	r26, Y+3	; 0x03
+ 7a6:	bc 81       	ldd	r27, Y+4	; 0x04
+ 7a8:	87 3a       	cpi	r24, 0xA7	; 167
+ 7aa:	23 e0       	ldi	r18, 0x03	; 3
+ 7ac:	92 07       	cpc	r25, r18
+ 7ae:	20 e0       	ldi	r18, 0x00	; 0
+ 7b0:	a2 07       	cpc	r26, r18
+ 7b2:	20 e0       	ldi	r18, 0x00	; 0
+ 7b4:	b2 07       	cpc	r27, r18
+ 7b6:	4c f4       	brge	.+18     	; 0x7ca <set_position+0x8e>
+		temp = 935;
+ 7b8:	87 ea       	ldi	r24, 0xA7	; 167
+ 7ba:	93 e0       	ldi	r25, 0x03	; 3
+ 7bc:	a0 e0       	ldi	r26, 0x00	; 0
+ 7be:	b0 e0       	ldi	r27, 0x00	; 0
+ 7c0:	89 83       	std	Y+1, r24	; 0x01
+ 7c2:	9a 83       	std	Y+2, r25	; 0x02
+ 7c4:	ab 83       	std	Y+3, r26	; 0x03
+ 7c6:	bc 83       	std	Y+4, r27	; 0x04
+ 7c8:	14 c0       	rjmp	.+40     	; 0x7f2 <set_position+0xb6>
+	else if (temp > 2180)
+ 7ca:	89 81       	ldd	r24, Y+1	; 0x01
+ 7cc:	9a 81       	ldd	r25, Y+2	; 0x02
+ 7ce:	ab 81       	ldd	r26, Y+3	; 0x03
+ 7d0:	bc 81       	ldd	r27, Y+4	; 0x04
+ 7d2:	85 38       	cpi	r24, 0x85	; 133
+ 7d4:	28 e0       	ldi	r18, 0x08	; 8
+ 7d6:	92 07       	cpc	r25, r18
+ 7d8:	20 e0       	ldi	r18, 0x00	; 0
+ 7da:	a2 07       	cpc	r26, r18
+ 7dc:	20 e0       	ldi	r18, 0x00	; 0
+ 7de:	b2 07       	cpc	r27, r18
+ 7e0:	44 f0       	brlt	.+16     	; 0x7f2 <set_position+0xb6>
+		temp = 2180;
+ 7e2:	84 e8       	ldi	r24, 0x84	; 132
+ 7e4:	98 e0       	ldi	r25, 0x08	; 8
+ 7e6:	a0 e0       	ldi	r26, 0x00	; 0
+ 7e8:	b0 e0       	ldi	r27, 0x00	; 0
+ 7ea:	89 83       	std	Y+1, r24	; 0x01
+ 7ec:	9a 83       	std	Y+2, r25	; 0x02
+ 7ee:	ab 83       	std	Y+3, r26	; 0x03
+ 7f0:	bc 83       	std	Y+4, r27	; 0x04
+
+	OCR1B = (int)temp;
+ 7f2:	e8 e4       	ldi	r30, 0x48	; 72
+ 7f4:	f0 e0       	ldi	r31, 0x00	; 0
+ 7f6:	89 81       	ldd	r24, Y+1	; 0x01
+ 7f8:	9a 81       	ldd	r25, Y+2	; 0x02
+ 7fa:	91 83       	std	Z+1, r25	; 0x01
+ 7fc:	80 83       	st	Z, r24
+}
+ 7fe:	0f 90       	pop	r0
+ 800:	0f 90       	pop	r0
+ 802:	0f 90       	pop	r0
+ 804:	0f 90       	pop	r0
+ 806:	0f 90       	pop	r0
+ 808:	cf 91       	pop	r28
+ 80a:	df 91       	pop	r29
+ 80c:	08 95       	ret
+
+0000080e <sig_interrupt4>:
+
+
+void sig_interrupt4() {
+ 80e:	df 93       	push	r29
+ 810:	cf 93       	push	r28
+ 812:	00 d0       	rcall	.+0      	; 0x814 <sig_interrupt4+0x6>
+ 814:	00 d0       	rcall	.+0      	; 0x816 <sig_interrupt4+0x8>
+ 816:	0f 92       	push	r0
+ 818:	cd b7       	in	r28, 0x3d	; 61
+ 81a:	de b7       	in	r29, 0x3e	; 62
+		
+
+	CAN_message received;
+	received.data = "\0\0\0\0\0\0\0\0";
+ 81c:	8a e0       	ldi	r24, 0x0A	; 10
+ 81e:	91 e0       	ldi	r25, 0x01	; 1
+ 820:	9d 83       	std	Y+5, r25	; 0x05
+ 822:	8c 83       	std	Y+4, r24	; 0x04
+
+    CAN_receive(&received, 0);
+ 824:	ce 01       	movw	r24, r28
+ 826:	01 96       	adiw	r24, 0x01	; 1
+ 828:	60 e0       	ldi	r22, 0x00	; 0
+ 82a:	70 e0       	ldi	r23, 0x00	; 0
+ 82c:	0e 94 3e 01 	call	0x27c	; 0x27c <CAN_receive>
+	if (received.data[0] == (int)15) {
+ 830:	ec 81       	ldd	r30, Y+4	; 0x04
+ 832:	fd 81       	ldd	r31, Y+5	; 0x05
+ 834:	80 81       	ld	r24, Z
+ 836:	8f 30       	cpi	r24, 0x0F	; 15
+ 838:	89 f4       	brne	.+34     	; 0x85c <sig_interrupt4+0x4e>
+	
+		switch (received.data[1]) {
+ 83a:	8c 81       	ldd	r24, Y+4	; 0x04
+ 83c:	9d 81       	ldd	r25, Y+5	; 0x05
+ 83e:	fc 01       	movw	r30, r24
+ 840:	31 96       	adiw	r30, 0x01	; 1
+ 842:	80 81       	ld	r24, Z
+ 844:	88 2f       	mov	r24, r24
+ 846:	90 e0       	ldi	r25, 0x00	; 0
+ 848:	88 37       	cpi	r24, 0x78	; 120
+ 84a:	91 05       	cpc	r25, r1
+ 84c:	39 f4       	brne	.+14     	; 0x85c <sig_interrupt4+0x4e>
+			case 'x':
+				set_position((int8_t) received.data[2]);
+ 84e:	8c 81       	ldd	r24, Y+4	; 0x04
+ 850:	9d 81       	ldd	r25, Y+5	; 0x05
+ 852:	fc 01       	movw	r30, r24
+ 854:	32 96       	adiw	r30, 0x02	; 2
+ 856:	80 81       	ld	r24, Z
+ 858:	0e 94 9e 03 	call	0x73c	; 0x73c <set_position>
+		}
+	
+	}
+
+
+}
+ 85c:	0f 90       	pop	r0
+ 85e:	0f 90       	pop	r0
+ 860:	0f 90       	pop	r0
+ 862:	0f 90       	pop	r0
+ 864:	0f 90       	pop	r0
+ 866:	cf 91       	pop	r28
+ 868:	df 91       	pop	r29
+ 86a:	08 95       	ret
+
+0000086c <putchar>:
+ 86c:	60 91 16 01 	lds	r22, 0x0116
+ 870:	70 91 17 01 	lds	r23, 0x0117
+ 874:	0e 94 3d 04 	call	0x87a	; 0x87a <fputc>
+ 878:	08 95       	ret
+
+0000087a <fputc>:
+ 87a:	0f 93       	push	r16
+ 87c:	1f 93       	push	r17
+ 87e:	cf 93       	push	r28
+ 880:	df 93       	push	r29
+ 882:	8c 01       	movw	r16, r24
+ 884:	eb 01       	movw	r28, r22
+ 886:	8b 81       	ldd	r24, Y+3	; 0x03
+ 888:	81 ff       	sbrs	r24, 1
+ 88a:	1b c0       	rjmp	.+54     	; 0x8c2 <fputc+0x48>
+ 88c:	82 ff       	sbrs	r24, 2
+ 88e:	0d c0       	rjmp	.+26     	; 0x8aa <fputc+0x30>
+ 890:	2e 81       	ldd	r18, Y+6	; 0x06
+ 892:	3f 81       	ldd	r19, Y+7	; 0x07
+ 894:	8c 81       	ldd	r24, Y+4	; 0x04
+ 896:	9d 81       	ldd	r25, Y+5	; 0x05
+ 898:	28 17       	cp	r18, r24
+ 89a:	39 07       	cpc	r19, r25
+ 89c:	64 f4       	brge	.+24     	; 0x8b6 <fputc+0x3c>
+ 89e:	e8 81       	ld	r30, Y
+ 8a0:	f9 81       	ldd	r31, Y+1	; 0x01
+ 8a2:	01 93       	st	Z+, r16
+ 8a4:	f9 83       	std	Y+1, r31	; 0x01
+ 8a6:	e8 83       	st	Y, r30
+ 8a8:	06 c0       	rjmp	.+12     	; 0x8b6 <fputc+0x3c>
+ 8aa:	e8 85       	ldd	r30, Y+8	; 0x08
+ 8ac:	f9 85       	ldd	r31, Y+9	; 0x09
+ 8ae:	80 2f       	mov	r24, r16
+ 8b0:	09 95       	icall
+ 8b2:	89 2b       	or	r24, r25
+ 8b4:	31 f4       	brne	.+12     	; 0x8c2 <fputc+0x48>
+ 8b6:	8e 81       	ldd	r24, Y+6	; 0x06
+ 8b8:	9f 81       	ldd	r25, Y+7	; 0x07
+ 8ba:	01 96       	adiw	r24, 0x01	; 1
+ 8bc:	9f 83       	std	Y+7, r25	; 0x07
+ 8be:	8e 83       	std	Y+6, r24	; 0x06
+ 8c0:	02 c0       	rjmp	.+4      	; 0x8c6 <fputc+0x4c>
+ 8c2:	0f ef       	ldi	r16, 0xFF	; 255
+ 8c4:	1f ef       	ldi	r17, 0xFF	; 255
+ 8c6:	c8 01       	movw	r24, r16
+ 8c8:	df 91       	pop	r29
+ 8ca:	cf 91       	pop	r28
+ 8cc:	1f 91       	pop	r17
+ 8ce:	0f 91       	pop	r16
+ 8d0:	08 95       	ret
+
+000008d2 <__mulsi3>:
+ 8d2:	62 9f       	mul	r22, r18
+ 8d4:	d0 01       	movw	r26, r0
+ 8d6:	73 9f       	mul	r23, r19
+ 8d8:	f0 01       	movw	r30, r0
+ 8da:	82 9f       	mul	r24, r18
+ 8dc:	e0 0d       	add	r30, r0
+ 8de:	f1 1d       	adc	r31, r1
+ 8e0:	64 9f       	mul	r22, r20
+ 8e2:	e0 0d       	add	r30, r0
+ 8e4:	f1 1d       	adc	r31, r1
+ 8e6:	92 9f       	mul	r25, r18
+ 8e8:	f0 0d       	add	r31, r0
+ 8ea:	83 9f       	mul	r24, r19
+ 8ec:	f0 0d       	add	r31, r0
+ 8ee:	74 9f       	mul	r23, r20
+ 8f0:	f0 0d       	add	r31, r0
+ 8f2:	65 9f       	mul	r22, r21
+ 8f4:	f0 0d       	add	r31, r0
+ 8f6:	99 27       	eor	r25, r25
+ 8f8:	72 9f       	mul	r23, r18
+ 8fa:	b0 0d       	add	r27, r0
+ 8fc:	e1 1d       	adc	r30, r1
+ 8fe:	f9 1f       	adc	r31, r25
+ 900:	63 9f       	mul	r22, r19
+ 902:	b0 0d       	add	r27, r0
+ 904:	e1 1d       	adc	r30, r1
+ 906:	f9 1f       	adc	r31, r25
+ 908:	bd 01       	movw	r22, r26
+ 90a:	cf 01       	movw	r24, r30
+ 90c:	11 24       	eor	r1, r1
+ 90e:	08 95       	ret
+
+00000910 <__divmodsi4>:
+ 910:	97 fb       	bst	r25, 7
+ 912:	09 2e       	mov	r0, r25
+ 914:	05 26       	eor	r0, r21
+ 916:	0e d0       	rcall	.+28     	; 0x934 <__divmodsi4_neg1>
+ 918:	57 fd       	sbrc	r21, 7
+ 91a:	04 d0       	rcall	.+8      	; 0x924 <__divmodsi4_neg2>
+ 91c:	14 d0       	rcall	.+40     	; 0x946 <__udivmodsi4>
+ 91e:	0a d0       	rcall	.+20     	; 0x934 <__divmodsi4_neg1>
+ 920:	00 1c       	adc	r0, r0
+ 922:	38 f4       	brcc	.+14     	; 0x932 <__divmodsi4_exit>
+
+00000924 <__divmodsi4_neg2>:
+ 924:	50 95       	com	r21
+ 926:	40 95       	com	r20
+ 928:	30 95       	com	r19
+ 92a:	21 95       	neg	r18
+ 92c:	3f 4f       	sbci	r19, 0xFF	; 255
+ 92e:	4f 4f       	sbci	r20, 0xFF	; 255
+ 930:	5f 4f       	sbci	r21, 0xFF	; 255
+
+00000932 <__divmodsi4_exit>:
+ 932:	08 95       	ret
+
+00000934 <__divmodsi4_neg1>:
+ 934:	f6 f7       	brtc	.-4      	; 0x932 <__divmodsi4_exit>
+ 936:	90 95       	com	r25
+ 938:	80 95       	com	r24
+ 93a:	70 95       	com	r23
+ 93c:	61 95       	neg	r22
+ 93e:	7f 4f       	sbci	r23, 0xFF	; 255
+ 940:	8f 4f       	sbci	r24, 0xFF	; 255
+ 942:	9f 4f       	sbci	r25, 0xFF	; 255
+ 944:	08 95       	ret
+
+00000946 <__udivmodsi4>:
+ 946:	a1 e2       	ldi	r26, 0x21	; 33
+ 948:	1a 2e       	mov	r1, r26
+ 94a:	aa 1b       	sub	r26, r26
+ 94c:	bb 1b       	sub	r27, r27
+ 94e:	fd 01       	movw	r30, r26
+ 950:	0d c0       	rjmp	.+26     	; 0x96c <__udivmodsi4_ep>
+
+00000952 <__udivmodsi4_loop>:
+ 952:	aa 1f       	adc	r26, r26
+ 954:	bb 1f       	adc	r27, r27
+ 956:	ee 1f       	adc	r30, r30
+ 958:	ff 1f       	adc	r31, r31
+ 95a:	a2 17       	cp	r26, r18
+ 95c:	b3 07       	cpc	r27, r19
+ 95e:	e4 07       	cpc	r30, r20
+ 960:	f5 07       	cpc	r31, r21
+ 962:	20 f0       	brcs	.+8      	; 0x96c <__udivmodsi4_ep>
+ 964:	a2 1b       	sub	r26, r18
+ 966:	b3 0b       	sbc	r27, r19
+ 968:	e4 0b       	sbc	r30, r20
+ 96a:	f5 0b       	sbc	r31, r21
+
+0000096c <__udivmodsi4_ep>:
+ 96c:	66 1f       	adc	r22, r22
+ 96e:	77 1f       	adc	r23, r23
+ 970:	88 1f       	adc	r24, r24
+ 972:	99 1f       	adc	r25, r25
+ 974:	1a 94       	dec	r1
+ 976:	69 f7       	brne	.-38     	; 0x952 <__udivmodsi4_loop>
+ 978:	60 95       	com	r22
+ 97a:	70 95       	com	r23
+ 97c:	80 95       	com	r24
+ 97e:	90 95       	com	r25
+ 980:	9b 01       	movw	r18, r22
+ 982:	ac 01       	movw	r20, r24
+ 984:	bd 01       	movw	r22, r26
+ 986:	cf 01       	movw	r24, r30
+ 988:	08 95       	ret
+
+0000098a <_exit>:
+ 98a:	f8 94       	cli
+
+0000098c <__stop_program>:
+ 98c:	ff cf       	rjmp	.-2      	; 0x98c <__stop_program>
