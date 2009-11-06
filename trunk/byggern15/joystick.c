@@ -10,20 +10,20 @@
 // Initialize the joystick
 void init_joystick(){
 	// set port B: in
-//	DDRB = 0x00; //inputs /////////////////////////////fixxxxx
-//	PORTB = 0xFF; //Pull-ups
+	DDRB = DDRB & 0b11111001; //inputs
+	PORTB = PORTB | 0b00000110; //Pull-ups
 
 	//initialize timer for joystick polling
 	//CTC mode, no output, 1024 prescaler
 	TCCR0 = 0b00001101;
 
 	//Number to count to (here 40 ms, max 40-something)
-	long long int count = 40*FOSC/(1000*1024);
+	long long int count = 10*FOSC/(1000*1024);
 
-	OCR0 = 200;//(uint8_t) count;
+	OCR0 = (uint8_t) count;
 	
 	//Enable interrupt on CTC
-	//TIMSK = TIMSK | (1<<OCIE0); feil når settes på
+	TIMSK = TIMSK | (1<<OCIE0); //feil når settes på
 
 }
 
@@ -56,9 +56,17 @@ inline uint8_t read_buttons(){
 		//	read_axis('x');
 		//	read_axis('y');	
 
-SIGNAL(SIG_OUTPUT_COMPARE0) {
-	//check joystick
 
-	printf("X");// axis: %d\n", read_axis('x'));
+void sig_output_compare0() {
+	//check joystick
+	char *str = "\0\0\0\0\0\0\0"; 
+
+	str[0] = (char)15; //group 15
+
+	str[1] = 'x'; //x axis
+
+	str[2] = (char)read_axis('x'); //data
+
+	CAN_send(str, 0x1F);
 }
 

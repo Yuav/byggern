@@ -164,9 +164,9 @@ int CAN_send(char* str, int id){
 	char *messg = "\0\0\0\0\0\0\0";
 	for(i = 0; i < 8; i++){
 		messg[i] = str[i];
-		if (messg[i] == '\0') {
+		/*if (messg[i] == '\0') {
 			break;
-		}
+		}*/
 	}
 
 	cli(); // disable interrupts, to protect SPI-communication 
@@ -231,42 +231,11 @@ int CAN_receive(CAN_message* msg, int rx){
 
 
 void CAN_init_interrupt(){
-//interrupt init
-	PORTE = PORTE | 0b00001000;
-	DDRE = DDRE & 	0b11110111;
+	//interrupt init
+	DDRE = DDRE & 	0b11101111;
+	PORTE = PORTE | 0b00010000;
 	EICRB = 0;// | (0<<ISC41) | (0<<ISC40); ////////////////fix: ikke or med 0
 	EIMSK = EIMSK | (1<<INT4);
 	sei();
 }
 
-
-/*void CAN_init_interrupt(){
-//interrupt init
-	PORTD = PORTD | 0b00001100;
-	DDRD = DDRD & 	0b11110011;
-	MCUCR = MCUCR | (0<<ISC01) | (0<<ISC00) | (0<<ISC11) | (0<<ISC10);
-	GICR = GICR | (1<<INT0) | (1<<INT1);
-	sei();
-}*/
-
-
-SIGNAL(SIG_INTERRUPT4) {
-		
-
-	CAN_message received;
-	received.data = "\0\0\0\0\0\0\0\0";
-
-    CAN_receive(&received, 0);
-	CAN_send(received.data, received.id);
-
-}
-
-/*SIGNAL(SIG_INTERRUPT1) {
-		
-	CAN_message received;
-	received.data = "\0\0\0\0\0\0\0\0";
-
-	printf("Received interrupt1: ");
-    CAN_receive(&received, 1);
-	printf("%s\n", received.data);
-}*/

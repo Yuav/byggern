@@ -17,9 +17,12 @@
 int main(void) {
 	SPI_NoSlave();
 	init_UART(BAUD);
+	
+	printf("test\n");	
+
 	init_SRAM();
 	SPI_MasterInit();	
-	//CAN_init();
+	CAN_init();
 
 	init_joystick();
 
@@ -41,5 +44,18 @@ int main(void) {
 }
 
 
+
+
+SIGNAL(SIG_INTERRUPT0) {
+	sig_interrupt0();
+}
+
+SIGNAL(SIG_INTERRUPT1) {
+	sig_interrupt1();
+}
+
+SIGNAL(SIG_OUTPUT_COMPARE0) {
+	sig_output_compare0();
+}
 
 
