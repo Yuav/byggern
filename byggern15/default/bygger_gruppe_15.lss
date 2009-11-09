@@ -1279,6 +1279,7 @@ void int_joystick_button(){
      78a:	00 d0       	rcall	.+0      	; 0x78c <int_joystick_button+0x6>
      78c:	cd b7       	in	r28, 0x3d	; 61
      78e:	de b7       	in	r29, 0x3e	; 62
+	
 	char *str = "\0\0\0\0\0\0\0";
      790:	84 e3       	ldi	r24, 0x34	; 52
      792:	91 e0       	ldi	r25, 0x01	; 1
@@ -1305,6 +1306,11 @@ void int_joystick_button(){
      7b0:	6f e1       	ldi	r22, 0x1F	; 31
      7b2:	70 e0       	ldi	r23, 0x00	; 0
      7b4:	0e 94 24 06 	call	0xc48	; 0xc48 <CAN_send>
+		//nada
+	}
+	//reset interrupt
+	GIFR |= (1<<INTF2);
+	sei();*/
 }
      7b8:	0f 90       	pop	r0
      7ba:	0f 90       	pop	r0

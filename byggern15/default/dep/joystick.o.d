@@ -12,6 +12,7 @@ joystick.o: ../joystick.c ../settings.h \
   ../joystick.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/eeprom.h \
   c:\program\ files\winavr\bin\../lib/gcc/avr/4.3.2/include/stddef.h \
+  c:/program\ files/winavr/lib/gcc/../../avr/include/avr/interrupt.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/util/delay.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/util/delay_basic.h
 
@@ -42,6 +43,8 @@ c:/program\ files/winavr/lib/gcc/../../avr/include/avr/lock.h:
 c:/program\ files/winavr/lib/gcc/../../avr/include/avr/eeprom.h:
 
 c:\program\ files\winavr\bin\../lib/gcc/avr/4.3.2/include/stddef.h:
+
+c:/program\ files/winavr/lib/gcc/../../avr/include/avr/interrupt.h:
 
 c:/program\ files/winavr/lib/gcc/../../avr/include/util/delay.h:
 

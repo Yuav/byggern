@@ -2,6 +2,7 @@
 #include <avr/io.h>
 #include "joystick.h"
 #include <avr/eeprom.h>
+#include <avr/interrupt.h>
 
 
 #include <util/delay.h>
@@ -86,6 +87,7 @@ if (!(temp%20)){
 }
 
 void int_joystick_button(){
+	
 	char *str = "\0\0\0\0\0\0\0";
 
 	str[0] = (char)15; //group 15
@@ -93,4 +95,15 @@ void int_joystick_button(){
 	str[1] = 'b'; //x axis
 
 	CAN_send(str, 0x1F);
+	
+	/*while (!(PINE && 1));
+	//loop a while
+	cli();
+	long long int i;
+	for (i = 0; i < 160000;i++){
+		//nada
+	}
+	//reset interrupt
+	GIFR |= (1<<INTF2);
+	sei();*/
 }

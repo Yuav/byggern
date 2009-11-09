@@ -1,7 +1,7 @@
 #ifndef _SETTINGS_H_
 #define _SETTINGS_H_
 
-#define FOSC 4915450
+#define FOSC 8000000
 #define F_CPU FOSC
 #define BAUD 9600
 
