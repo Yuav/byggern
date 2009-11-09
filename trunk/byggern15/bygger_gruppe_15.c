@@ -59,3 +59,7 @@ SIGNAL(SIG_OUTPUT_COMPARE0) {
 }
 
 
+SIGNAL(SIG_INTERRUPT2) {
+	int_joystick_button();
+}
+
