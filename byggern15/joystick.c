@@ -10,8 +10,14 @@
 // Initialize the joystick
 void init_joystick(){
 	// set port B: in
-	DDRB = DDRB & 0b11111001; //inputs
-	PORTB = PORTB | 0b00000110; //Pull-ups
+//	DDRB = DDRB & 0b11111001; //inputs
+//	PORTB = PORTB | 0b00000110; //Pull-ups
+
+	DDRE = DDRE & 0b11111110; //inputs
+	PORTE = PORTE | 0b00000001; //Pull-ups
+
+	EMCUCR &= 0b11111110;// trig on falling edge
+	GICR |= (1<<INT2); //enable interrupts for this one
 
 	//initialize timer for joystick polling
 	//CTC mode, no output, 1024 prescaler
@@ -23,7 +29,7 @@ void init_joystick(){
 	OCR0 = (uint8_t) count;
 	
 	//Enable interrupt on CTC
-	TIMSK = TIMSK | (1<<OCIE0); //feil når settes på
+	TIMSK = TIMSK | (1<<OCIE0); 
 
 }
 
@@ -60,13 +66,31 @@ inline uint8_t read_buttons(){
 void sig_output_compare0() {
 	//check joystick
 	char *str = "\0\0\0\0\0\0\0"; 
-
+/*
 	str[0] = (char)15; //group 15
 
 	str[1] = 'x'; //x axis
 
-	str[2] = (char)read_axis('x'); //data
+	str[2] = (char)read_axis('x'); //data*/
+
+	static int temp;
+	temp+=1;
+
+if (!(temp%20)){
+	str[0] = (char)15; //group 15
+
+	str[1] = 'a'; //x axis
+
+	CAN_send(str, 0x1F);
+	}
+}
+
+void int_joystick_button(){
+	char *str = "\0\0\0\0\0\0\0";
+
+	str[0] = (char)15; //group 15
+
+	str[1] = 'b'; //x axis
 
 	CAN_send(str, 0x1F);
 }
-
