@@ -10,7 +10,8 @@ node2.o: ../node2.c \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/version.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/fuse.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/lock.h \
-  ../settings.h ../can.h ../mcp2515.h ../spi.h ../servo.h ../ir.h
+  ../settings.h ../can.h ../mcp2515.h ../spi.h ../servo.h ../ir.h \
+  ../motor.h
 
 c:/program\ files/winavr/lib/gcc/../../avr/include/avr/interrupt.h:
 
@@ -45,3 +46,5 @@ c:/program\ files/winavr/lib/gcc/../../avr/include/avr/lock.h:
 ../servo.h:
 
 ../ir.h:
+
+../motor.h:

@@ -26,35 +26,3 @@ void set_position(int8_t position) {
 	value = value*A_SERVO_LP + temp*(1-A_SERVO_LP);
 	OCR1B = (int)value;
 }
-
-
-void sig_interrupt4() {
-
-	CAN_message received;
-	received.data = "\0\0\0\0\0\0\0\0";
-
-    CAN_receive(&received, 0);
-
-//	CAN_send(received.data, 0x1F);
-
-	if (received.data[0] == (int)15) { //receive packet starting with 15 (our group number)
-	
-		switch (received.data[1]) {
-			case 'x': //receive joystic x-axis data
-				set_position((int8_t) received.data[2]);
-				break;
-			case 'a': //read score
-				sprintf(received.data, "%d", get_score());
-				CAN_send(received.data, 0x1F);
-				break;
-			case 'b': //joystick button pressed
-				trig_solenoid();
-				break;
-			default:
-				break;
-		}
-	
-	}
-
-
-}
