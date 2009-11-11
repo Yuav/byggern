@@ -1,4 +1,4 @@
-can.o: ../can.c ../can.h ../mcp2515.h \
+motor.o: ../motor.c ../motor.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/io.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/sfr_defs.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/inttypes.h \
@@ -8,18 +8,13 @@ can.o: ../can.c ../can.h ../mcp2515.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/common.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/version.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/fuse.h \
-  c:/program\ files/winavr/lib/gcc/../../avr/include/avr/lock.h ../spi.h \
-  ../settings.h ../servo.h ../motor.h ../solenoid.h \
+  c:/program\ files/winavr/lib/gcc/../../avr/include/avr/lock.h \
+  ../settings.h ../can.h ../mcp2515.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/stdio.h \
   c:\program\ files\winavr\bin\../lib/gcc/avr/4.3.2/include/stdarg.h \
-  c:\program\ files\winavr\bin\../lib/gcc/avr/4.3.2/include/stddef.h \
-  c:/program\ files/winavr/lib/gcc/../../avr/include/util/delay.h \
-  c:/program\ files/winavr/lib/gcc/../../avr/include/util/delay_basic.h \
-  c:/program\ files/winavr/lib/gcc/../../avr/include/avr/interrupt.h
+  c:\program\ files\winavr\bin\../lib/gcc/avr/4.3.2/include/stddef.h
 
-../can.h:
-
-../mcp2515.h:
+../motor.h:
 
 c:/program\ files/winavr/lib/gcc/../../avr/include/avr/io.h:
 
@@ -41,24 +36,14 @@ c:/program\ files/winavr/lib/gcc/../../avr/include/avr/fuse.h:
 
 c:/program\ files/winavr/lib/gcc/../../avr/include/avr/lock.h:
 
-../spi.h:
-
 ../settings.h:
 
-../servo.h:
+../can.h:
 
-../motor.h:
-
-../solenoid.h:
+../mcp2515.h:
 
 c:/program\ files/winavr/lib/gcc/../../avr/include/stdio.h:
 
 c:\program\ files\winavr\bin\../lib/gcc/avr/4.3.2/include/stdarg.h:
 
 c:\program\ files\winavr\bin\../lib/gcc/avr/4.3.2/include/stddef.h:
-
-c:/program\ files/winavr/lib/gcc/../../avr/include/util/delay.h:
-
-c:/program\ files/winavr/lib/gcc/../../avr/include/util/delay_basic.h:
-
-c:/program\ files/winavr/lib/gcc/../../avr/include/avr/interrupt.h:

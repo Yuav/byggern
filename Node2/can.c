@@ -1,6 +1,9 @@
 #include "can.h"
 #include "spi.h"
 #include "settings.h"
+#include "servo.h"
+#include "motor.h"
+#include "solenoid.h"
 #include <stdio.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
@@ -237,5 +240,40 @@ void CAN_init_interrupt(){
 	EICRB = 0;// | (0<<ISC41) | (0<<ISC40); ////////////////fix: ikke or med 0
 	EIMSK = EIMSK | (1<<INT4);
 	sei();
+}
+
+
+void sig_interrupt4() {
+
+	CAN_message received;
+	received.data = "\0\0\0\0\0\0\0\0";
+
+    CAN_receive(&received, 0);
+
+//	CAN_send(received.data, 0x1F);
+
+	if (received.data[0] == (int)15) { //receive packet starting with 15 (our group number)
+	
+		switch (received.data[1]) {
+			case 'x': //receive joystic x-axis data
+				set_position((int8_t) received.data[2]);
+				break;
+			case 'y': //receive joystic y-axis data
+				motor_set_reference((int8_t) received.data[2]);
+				break;
+			case 'a': //read score
+				sprintf(received.data, "%d", get_score());
+				CAN_send(received.data, 0x1F);
+				break;
+			case 'b': //joystick button pressed
+				trig_solenoid();
+				break;
+			default:
+				break;
+		}
+	
+	}
+
+
 }
 

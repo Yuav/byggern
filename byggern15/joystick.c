@@ -67,22 +67,33 @@ inline uint8_t read_buttons(){
 void sig_output_compare0() {
 	//check joystick
 	char *str = "\0\0\0\0\0\0\0"; 
-/*
+
 	str[0] = (char)15; //group 15
 
 	str[1] = 'x'; //x axis
 
-	str[2] = (char)read_axis('x'); //data*/
+	str[2] = (char)read_axis('x'); //data
+	CAN_send(str, 0x1F);
+
+
+	//y-axis
+	str[1] = 'y'; //y axis
+
+	str[2] = (char)read_axis('y'); //data
+	CAN_send(str, 0x1F);
+
+
+	//read score
 
 	static int temp;
 	temp+=1;
 
-if (!(temp%20)){
-	str[0] = (char)15; //group 15
+	if (!(temp%20)){
+		str[0] = (char)15; //group 15
 
-	str[1] = 'a'; //x axis
+		str[1] = 'a'; //x axis
 
-	CAN_send(str, 0x1F);
+		CAN_send(str, 0x1F);
 	}
 }
 
