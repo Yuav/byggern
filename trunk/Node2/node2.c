@@ -6,6 +6,8 @@
 #include "servo.h"
 #include "ir.h"
 #include "motor.h"
+#include "TWI_master.h"
+
 
 
 int main(void) {
@@ -16,6 +18,8 @@ int main(void) {
 	ir_init();
 	solenoid_init();
 	motor_init();
+
+	sei();
 	
 	//CAN_test();
 
@@ -36,4 +40,8 @@ SIGNAL(SIG_ADC) {
 
 SIGNAL(SIG_OUTPUT_COMPARE3A) {
 	motor_regulator();
+}
+
+SIGNAL(SIG_2WIRE_SERIAL){ //////////////////////////////flytt tilbake hvis det virker
+	TWI_interrupt();
 }
