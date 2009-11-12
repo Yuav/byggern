@@ -57,6 +57,8 @@ void TWI_Start_Transceiver_With_Data( unsigned char * , unsigned char );
 void TWI_Start_Transceiver( void );
 unsigned char TWI_Get_Data_From_Transceiver( unsigned char *, unsigned char );
 
+void TWI_interrupt(void); //gruppe15 function
+
 /****************************************************************************
   Bit and byte definitions
 ****************************************************************************/
