@@ -6,10 +6,10 @@
 #include <stdio.h>
 
 #define P 1.
-#define I 0.01
+#define I 0.1
 #define ANTI_WIND_UP 127.
 
-int8_t position_ref = 0;
+int position_ref = 0;
 
 void motor_init(){
 	position_ref = 0;
@@ -33,8 +33,19 @@ void motor_init(){
 
 	//set up PortA/MJ1
 
-	PORTA = 0x0;
-	DDRA = 0xff;
+	
+	DDRA = 0xff;//output
+	PORTA |= (1<<KVAD_OE) | (1<<KVAD_RST); //active low variables set high
+	
+	//set up PortC/MJ2
+
+	DDRC = 0x0;//input
+	PORTC = 0x00;
+
+
+	//reset kvadraturteller
+	PORTA &= ~(1<<KVAD_RST); 
+	PORTA |= (1<<KVAD_RST);	
 
 }
 
@@ -45,7 +56,7 @@ void motor_reset(){
 void motor_set_input(int8_t output){
 	static int i = 0;
 	i++;
-// Har jeg can_send her, henger det bare av og til... :S
+	// can_send her, henger seg av og til
 
 	if (i>50){
 
@@ -58,28 +69,65 @@ void motor_set_input(int8_t output){
 	}
 
 	//enable motor
-	PORTA |= (1<<5);
+	PORTA |= (1<<MOTOR_EN);
 
 	char msg[3];
 	msg[0] = (char)0b01010000; //address: MAX520, ADC0, write
 	msg[1] = (char)0b00000000; //command: No reset, no power-down, ADC0
 	if(output >= 0){
 		msg[2] = (char)output*2;
-		PORTA &= ~(1<<6);
+		PORTA &= ~(1<<MOTOR_DIR);
 		}
 	else{
 		msg[2] = (char)(-output*2)-1;
-		PORTA |= (1<<6);
+		PORTA |= (1<<MOTOR_DIR);
 		}
+
 	TWI_Start_Transceiver_With_Data(msg, (unsigned char)3 );
 }
 
-int8_t motor_read_position(){
-	return 0;
+int8_t motor_get_position(){
+	static long long int position_12_bits = 0;
+	int value_read;
+
+	PORTA &= ~(1<<KVAD_OE);
+	PORTA &= ~(1<<KVAD_SEL); //!OE and SEL set low
+	
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	asm("nop");
+
+	value_read = ((int)PINC<<8); //read highest byte
+
+	PORTA |= (1<<KVAD_SEL); //SEL high
+
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	asm("nop");
+
+	//sign-extend value_read with the MSB of the 12-bit value
+	if ((value_read>>11) && 1){
+		value_read |= 0xF000; //negative value, fill with 1's
+		value_read -= (unsigned char)PINC; //read and add lowest byte
+	}else{
+		value_read &= 0x0FFF; //positive value, fill with 0's
+		value_read += (unsigned char)PINC; //read and add lowest byte
+	}	
+
+	//reset
+	PORTA &= ~(1<<KVAD_RST); 
+	PORTA |= (1<<KVAD_RST);		
+
+	PORTA |= (1<<KVAD_OE); //output disable
+	
+	//return (int)((position_12_bits += value_read)>>8);
+	return 0;		
 }
 
 void motor_set_reference(int8_t ref){
-	position_ref = ref;
+	position_ref = (int)ref; ////sign-extension?
 }
 
 void motor_regulator() {
@@ -87,14 +135,10 @@ void motor_regulator() {
 	static float q = 0;
 
 	//P-part:
-	p = ((int)position_ref - motor_read_position())*P;
+	p = (position_ref - motor_get_position())*P;
 	
 	//I-part
-	q += ((int)position_ref - motor_read_position())*I;
-
-	// sette på en can send her gjør at solenoiden henger seg... ved et punkt startet den rett etter 'run' også
-	//	char *aa = "\0\0\0\0\0\0\0";
-	//	sprintf(aa, "aa:%d", (int)q);
+	q += (position_ref - motor_get_position())*I;
 	//	CAN_send(aa, 0x1F);
 
 
@@ -104,12 +148,6 @@ void motor_regulator() {
 		q = -ANTI_WIND_UP-1-p;
 
 	motor_set_input((int8_t)(p + q));
-	
-//motor_set_input((int8_t)position_ref);
-
-
-	// Denne gjorde at UART slutta å printe noe som helst.. random
-	//motor_set_input((int)p);
 
 
 }

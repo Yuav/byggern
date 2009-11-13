@@ -23,7 +23,10 @@ int main(void) {
 	
 	//CAN_test();
 
-	while(1);
+	while(1){
+		//nada
+		asm("nop");
+	};
 
 	return 0;	
 	
