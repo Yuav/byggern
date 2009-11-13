@@ -244,6 +244,8 @@ void CAN_init_interrupt(){
 
 
 void sig_interrupt4() {
+char str[8];//////
+
 
 	CAN_message received;
 	received.data = "\0\0\0\0\0\0\0\0";
@@ -266,7 +268,12 @@ void sig_interrupt4() {
 				CAN_send(received.data, 0x1F);
 				break;
 			case 'b': //joystick button pressed
-				trig_solenoid();
+				
+				sprintf(str, "%d", (int)motor_get_position());
+				CAN_send(str, 0);
+				
+				
+				//trig_solenoid();
 				break;
 			default:
 				break;

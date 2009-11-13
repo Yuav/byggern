@@ -1,5 +1,6 @@
 #include <avr/io.h>
 #include <stdio.h>
+#include <avr/interrupt.h>
 
 #include "servo.h"
 #include "can.h"
@@ -15,7 +16,7 @@ void servo_init(){
 }
 
 void set_position(int8_t position) {
-	static float value = 0;
+/*	static float value = 0;
 	float temp = (630.*position)/128;
 	temp += 1500+55;
 	if(temp < 935)
@@ -24,5 +25,7 @@ void set_position(int8_t position) {
 		temp = 2180;
 
 	value = value*A_SERVO_LP + temp*(1-A_SERVO_LP);
+	
 	OCR1B = (int)value;
+*/
 }
