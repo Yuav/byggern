@@ -17,11 +17,15 @@
 int main(void) {
 	SPI_NoSlave();
 	init_UART(BAUD);
-	
-	printf("test\n");	
+		
+	printf("reset\n");
 
 	init_SRAM();
-	SPI_MasterInit();	
+
+	//SRAM_test();
+	SPI_MasterInit();
+	
+		
 	CAN_init();
 
 	init_joystick();
@@ -35,9 +39,17 @@ int main(void) {
 
 	*/
 	
-	
+	CAN_send("print", 0x0);
+
+	//_delay_ms(100);
+
+//	sig_interrupt0();
+//	sig_interrupt1();
+
 
 	butterfly_menu();
+	while(1)
+		asm("nop");
 
 	return 0;	
 	

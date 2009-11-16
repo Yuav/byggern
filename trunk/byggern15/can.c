@@ -70,6 +70,11 @@ void CAN_init(void){
 	CAN_bit_modify(CANCTRL, MASK_MODE, MODE_NORMAL); //set loopback mode
 	CAN_bit_modify(RXB0CTRL, MASK_RECEIVE_ID_TYPE, ID_TYPE_STANDARD); // set no filter, set to 01 to accept only standard, 00 to accept accordig to filters
 	CAN_bit_modify(BFPCTRL, 0x0f, 0xff);
+
+
+//	char *buf;
+//	CAN_read(buf, CANSTAT, 1);
+
 	CAN_init_interrupt();
 }
 
@@ -174,7 +179,7 @@ int CAN_send(char* str, int id){
 	CAN_rts(0); //request to send
 
 	//wait for send OK ()
-	for(i = 0; i < 0xffff; i++){
+	for(i = 0; i < 0xffff; i++){  //Henger her totalt plutselig..? 16.11.09
 		if((CAN_read_status() & MASK_TXREQ0) == 0) break;
 	}
 	sei(); // enable interrupts again
@@ -212,7 +217,7 @@ int CAN_receive(CAN_message* msg, int rx){
 	
 	while((CAN_read_status() & MASK_CANINTF_RX0IF+2*rx) == 0); // loop until data received
 
-	if (rx == 1 && ((uint8_t)CAN_rx_status & (uint8_t)0b10000000))
+	if (rx == 1 && (CAN_rx_status() & 0b01000000))
 		return -1;
 
 	CAN_read_rx(msg, rx);

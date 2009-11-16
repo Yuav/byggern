@@ -10,8 +10,8 @@ void solenoid_init(){
 }
 
 void trig_solenoid(){
-	/*PORTF &= 0b11111101;
+	PORTF &= 0b11111101;
 	//_delay_ms(3);
 	_delay_ms(15);
-	PORTF |= 0b00000010;*/
+	PORTF |= 0b00000010;
 }

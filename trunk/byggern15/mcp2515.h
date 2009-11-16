@@ -48,6 +48,8 @@
 #define BFPCTRL			0b00001100 //BFPCTRL
 #define CANINTE			0b00101011 //CAN interrupt enable register
 
+#define CANSTAT			0b00001110 /////////////////////////copy over to node2
+
 #define RXB0CTRL		0b01100000 //Receive buffer 0 control register
 
 

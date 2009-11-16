@@ -54,7 +54,7 @@ void motor_reset(){
 }
 
 void motor_set_input(int8_t output){
-	static int i = 0;
+/*	static int i = 0;
 	i++;
 	// can_send her, henger seg av og til
 
@@ -83,7 +83,7 @@ void motor_set_input(int8_t output){
 		PORTA |= (1<<MOTOR_DIR);
 		}
 
-	TWI_Start_Transceiver_With_Data(msg, (unsigned char)3 );
+	TWI_Start_Transceiver_With_Data(msg, (unsigned char)3 );*/
 }
 
 int8_t motor_get_position(){
