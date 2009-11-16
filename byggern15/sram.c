@@ -46,6 +46,4 @@ void SRAM_test(void)
 	}
 
 	printf("Finished!!!\n");
-	while(1)
-	{}
 }

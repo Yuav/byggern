@@ -17,7 +17,7 @@ int main(void) {
 	servo_init();
 	ir_init();
 	solenoid_init();
-	motor_init();
+	//motor_init(); //Henger uten motor tilkoblet
 
 	sei();
 	
@@ -25,7 +25,7 @@ int main(void) {
 
 	while(1){
 		//nada
-		asm("nop");
+//		asm("nop");
 	};
 
 	return 0;	
@@ -37,9 +37,11 @@ SIGNAL(SIG_INTERRUPT4) {
 
 }
 
-SIGNAL(SIG_ADC) {	
+
+SIGNAL(SIG_ADC) {	//diode for mål
 	adc_interrupt();
 }
+
 
 SIGNAL(SIG_OUTPUT_COMPARE3A) {
 	motor_regulator();

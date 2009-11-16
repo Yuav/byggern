@@ -252,9 +252,12 @@ char str[8];//////
 
     CAN_receive(&received, 0);
 
-//	CAN_send(received.data, 0x1F);
+//debug
+	//CAN_send(received.data, 0x1F);
 
-	if (received.data[0] == (int)15) { //receive packet starting with 15 (our group number)
+
+//feiler av en eller annen grunn :S
+	if (received.data[0] == (unsigned char)15) { //receive packet starting with 15 (our group number)
 	
 		switch (received.data[1]) {
 			case 'x': //receive joystic x-axis data
@@ -269,11 +272,11 @@ char str[8];//////
 				break;
 			case 'b': //joystick button pressed
 				
-				sprintf(str, "%d", (int)motor_get_position());
-				CAN_send(str, 0);
+				//sprintf(str, "%d", (int)motor_get_position());
+				//CAN_send(str, 0);
 				
 				
-				//trig_solenoid();
+				trig_solenoid();
 				break;
 			default:
 				break;

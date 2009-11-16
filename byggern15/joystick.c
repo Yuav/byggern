@@ -11,8 +11,8 @@
 // Initialize the joystick
 void init_joystick(){
 	// set port B: in
-//	DDRB = DDRB & 0b11111001; //inputs
-//	PORTB = PORTB | 0b00000110; //Pull-ups
+	DDRB &= 0b11111110; //inputs
+	PORTB |= 0b00000000; //Pull-ups (not on adc ready)
 
 	DDRE = DDRE & 0b11111110; //inputs
 	PORTE = PORTE | 0b00000001; //Pull-ups
@@ -31,6 +31,17 @@ void init_joystick(){
 	
 	//Enable interrupt on CTC
 	TIMSK = TIMSK | (1<<OCIE0); 
+/*
+char *str = "\0\0\0\0\0\0\0"; 
+
+	str[0] = (char)15; //group 15
+
+	str[1] = 'x'; //x axis
+
+	str[2] = (char)read_axis('x'); //data
+	CAN_send(str, 0x1F);*/
+
+
 
 }
 
@@ -38,16 +49,32 @@ void init_joystick(){
 int8_t read_axis(char axis) {
 	volatile uint8_t *adc_address = (uint8_t *) 0x1800;
 	
-	if(axis == 'x'){
+	switch (axis){
+		case 'x':
+			adc_address[0] = 0x04;
+			loop_until_bit_is_clear(PINB, 0);
+			return (int8_t)eeprom_read_byte((uint8_t*)*adc_address);
+			
+		case 'y':
+			adc_address[0] = 0x05;
+			loop_until_bit_is_clear(PINB, 0);
+			return (int8_t)eeprom_read_byte((uint8_t*)((*adc_address)+256));
+		default:
+			return 0;
+	}
+/*
+	if(axis == 'y'){
+		adc_address[0] = 0x05;
+	//	while(PINB && 1);
+
+		loop_until_bit_is_clear(PINB, 0);
+		return (int8_t)eeprom_read_byte((uint8_t*)((*adc_address)+256));
+	}
+	else if(axis == 'x'){
 		adc_address[0] = 0x04;
 		loop_until_bit_is_clear(PINB, 0);
 		return (int8_t)eeprom_read_byte((uint8_t*)*adc_address);
-	}
-	else if(axis == 'y'){
-		adc_address[0] = 0x06;
-		loop_until_bit_is_clear(PINB, 0);
-		return (int8_t)eeprom_read_byte((uint8_t*)(*adc_address+256));
-	}
+	}*/
 	return -1;
 	//evt. korrigering
 }
@@ -74,13 +101,18 @@ void sig_output_compare0() {
 
 	str[2] = (char)read_axis('x'); //data
 	CAN_send(str, 0x1F);
-
-
+/*	int i;
+	for (i = 0; i < 65000; i++)
+		asm("nop");*/
+	
 	//y-axis
-	str[1] = 'y'; //y axis
+
+
+	/////y-axis: henger på loop_until_bit_is_clear etter noen iterasjoner
+/*	str[1] = 'y'; //y axis
 
 	str[2] = (char)read_axis('y'); //data
-	CAN_send(str, 0x1F);
+	CAN_send(str, 0x1F);*/
 
 
 	//read score
