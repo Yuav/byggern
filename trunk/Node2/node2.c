@@ -11,22 +11,20 @@
 
 
 int main(void) {
+	cli();
 	SPI_NoSlave();
 	SPI_MasterInit();	
 	CAN_init();
 	servo_init();
 	ir_init();
 	solenoid_init();
-	//motor_init(); //Henger uten motor tilkoblet
+	motor_init(); //Henger uten motor tilkoblet
 
 	sei();
 	
 	//CAN_test();
 
-	while(1){
-		//nada
-//		asm("nop");
-	};
+	while(1);
 
 	return 0;	
 	
@@ -39,7 +37,7 @@ SIGNAL(SIG_INTERRUPT4) {
 
 
 SIGNAL(SIG_ADC) {	//diode for mål
-	adc_interrupt();
+	//adc_interrupt();
 }
 
 
@@ -48,5 +46,7 @@ SIGNAL(SIG_OUTPUT_COMPARE3A) {
 }
 
 SIGNAL(SIG_2WIRE_SERIAL){ //////////////////////////////flytt tilbake hvis det virker
+	
 	TWI_interrupt();
+
 }

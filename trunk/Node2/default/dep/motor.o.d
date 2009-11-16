@@ -10,6 +10,7 @@ motor.o: ../motor.c ../motor.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/fuse.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/lock.h \
   ../settings.h ../can.h ../mcp2515.h ../TWI_master.h \
+  c:/program\ files/winavr/lib/gcc/../../avr/include/avr/interrupt.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/stdio.h \
   c:\program\ files\winavr\bin\../lib/gcc/avr/4.3.2/include/stdarg.h \
   c:\program\ files\winavr\bin\../lib/gcc/avr/4.3.2/include/stddef.h
@@ -43,6 +44,8 @@ c:/program\ files/winavr/lib/gcc/../../avr/include/avr/lock.h:
 ../mcp2515.h:
 
 ../TWI_master.h:
+
+c:/program\ files/winavr/lib/gcc/../../avr/include/avr/interrupt.h:
 
 c:/program\ files/winavr/lib/gcc/../../avr/include/stdio.h:
 

@@ -4,6 +4,8 @@
 #include "servo.h"
 #include "motor.h"
 #include "solenoid.h"
+
+#include "TWI_master.h" //////////////
 #include <stdio.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
@@ -239,7 +241,6 @@ void CAN_init_interrupt(){
 	PORTE = PORTE | 0b00010000;
 	EICRB = 0;// | (0<<ISC41) | (0<<ISC40); ////////////////fix: ikke or med 0
 	EIMSK = EIMSK | (1<<INT4);
-	sei();
 }
 
 
@@ -254,7 +255,7 @@ char str[8];//////
 
 //debug
 	//CAN_send(received.data, 0x1F);
-
+char msg[3];/////////
 
 //feiler av en eller annen grunn :S
 	if (received.data[0] == (unsigned char)15) { //receive packet starting with 15 (our group number)
@@ -264,6 +265,16 @@ char str[8];//////
 				set_position((int8_t) received.data[2]);
 				break;
 			case 'y': //receive joystic y-axis data
+				/*
+				msg[0] = (char)0b01010000; //address: MAX520, ADC0, write
+				msg[1] = (char)0b00000000; //command: No reset, no power-down, ADC0
+				msg[2] = received.data[2];
+					
+
+				TWI_Start_Transceiver_With_Data(msg, (unsigned char)3 );
+				*/
+				
+				
 				motor_set_reference((int8_t) received.data[2]);
 				break;
 			case 'a': //read score

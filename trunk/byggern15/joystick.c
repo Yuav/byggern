@@ -97,7 +97,7 @@ void sig_output_compare0() {
 
 	str[0] = (char)15; //group 15
 
-	str[1] = 'x'; //x axis
+	str[1] = 'y'; //x axis ///////////////////////////
 
 	str[2] = (char)read_axis('x'); //data
 	CAN_send(str, 0x1F);

@@ -178,7 +178,7 @@ LOAD c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x2744
+.text           0x00000000     0x2786
  *(.vectors)
  .vectors       0x00000000       0x8c c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtm128.o
                 0x00000000                __vectors
@@ -265,123 +265,123 @@ LOAD c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a
                 0x000000ca                __vector_16
                 0x000000ca                __vector_18
                 0x000000ca                __vector_20
- .text          0x000000ce      0x34c can.o
+ .text          0x000000ce      0x34a can.o
                 0x00000138                CAN_test
                 0x0000027c                CAN_receive
                 0x00000172                CAN_send
-                0x00000314                sig_interrupt4
+                0x00000312                sig_interrupt4
                 0x000000ce                CAN_init
                 0x000002d4                CAN_init_interrupt
- .text          0x0000041a      0x2ce mcp2515.o
-                0x000004ba                CAN_read_rx
-                0x000006a8                CAN_bit_modify
-                0x0000041a                CAN_reset
-                0x0000060c                CAN_rts
-                0x00000654                CAN_read_status
-                0x0000067e                CAN_rx_status
-                0x00000438                CAN_read
-                0x00000550                CAN_write
-                0x0000058a                CAN_load_tx
- .text          0x000006e8       0xaa spi.o
-                0x00000754                SPI_SelectSlave
-                0x00000730                SPI_MasterReceive
-                0x000006e8                SPI_MasterInit
-                0x0000070a                SPI_MasterTransmit
-                0x00000776                SPI_NoSlave
- .text          0x00000792      0x1a4 node2.o
-                0x000007b6                __vector_5
-                0x000008d6                __vector_33
-                0x00000792                main
-                0x00000816                __vector_21
-                0x00000876                __vector_26
- .text          0x00000936      0x1a6 servo.o
-                0x00000936                servo_init
-                0x0000096c                set_position
- .text          0x00000adc      0x15c ir.o
-                0x00000afa                get_ir
-                0x00000b4e                adc_interrupt
-                0x00000b38                reset_score
-                0x00000adc                ir_init
-                0x00000b22                get_score
- .text          0x00000c38      0x150 solenoid.o
-                0x00000c38                solenoid_init
-                0x00000c62                trig_solenoid
- .text          0x00000d88      0x3ae motor.o
-                0x00000f6a                motor_regulator
-                0x00000e66                motor_get_position
-                0x00000d88                motor_init
-                0x00000e44                motor_reset
-                0x00000f46                motor_set_reference
-                0x00000e52                motor_set_input
- .text          0x00001136      0x2e6 TWI_Master.o
-                0x00001244                TWI_Get_Data_From_Transceiver
-                0x0000121c                TWI_Start_Transceiver
-                0x0000118c                TWI_Start_Transceiver_With_Data
-                0x000012ae                TWI_interrupt
-                0x00001172                TWI_Get_State_Info
-                0x0000115c                TWI_Transceiver_Busy
-                0x00001136                TWI_Master_Initialise
- .text          0x0000141c        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
- .text          0x0000141c        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clear_bss.o)
- .text          0x0000141c       0x58 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_fixunssfsi.o)
-                0x0000141c                __fixunssfsi
- .text          0x00001474      0x354 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_addsub_sf.o)
-                0x0000170c                __subsf3
-                0x0000176e                __addsf3
- .text          0x000017c8      0x1f4 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_mul_sf.o)
-                0x000017c8                __mulsf3
- .text          0x000019bc      0x158 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_div_sf.o)
-                0x000019bc                __divsf3
- .text          0x00001b14       0x60 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_gt_sf.o)
-                0x00001b14                __gtsf2
- .text          0x00001b74       0x60 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_ge_sf.o)
-                0x00001b74                __gesf2
- .text          0x00001bd4       0x60 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_lt_sf.o)
-                0x00001bd4                __ltsf2
- .text          0x00001c34       0xbc c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_si_to_sf.o)
-                0x00001c34                __floatsisf
- .text          0x00001cf0       0xa8 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_sf_to_si.o)
-                0x00001cf0                __fixsfsi
- .text          0x00001d98        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_thenan_sf.o)
- .text          0x00001d98        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_prologue.o)
- .text          0x00001d98        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_epilogue.o)
- .text          0x00001d98       0x9e c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clzsi2.o)
-                0x00001d98                __clzsi2
- .text          0x00001e36      0x1aa c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_pack_sf.o)
-                0x00001e36                __pack_f
- .text          0x00001fe0       0xf0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_unpack_sf.o)
-                0x00001fe0                __unpack_f
- .text          0x000020d0       0xb2 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_fpcmp_parts_sf.o)
-                0x000020d0                __fpcmp_parts_f
- .text          0x00002182        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clz.o)
- .text          0x00002182        0xe c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(putchar.o)
-                0x00002182                putchar
- .text          0x00002190       0x48 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(sprintf.o)
-                0x00002190                sprintf
- .text          0x000021d8      0x3ba c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
-                0x000021d8                vfprintf
- .text          0x00002592       0x16 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
-                0x00002592                strnlen_P
- .text          0x000025a8       0x16 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(strnlen.o)
-                0x000025a8                strnlen
- .text          0x000025be       0x58 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(fputc.o)
-                0x000025be                fputc
- .text          0x00002616        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(iob.o)
- .text          0x00002616       0xbc c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
-                0x00002616                __ultoa_invert
-                0x000026d2                . = ALIGN (0x2)
+ .text          0x00000418      0x2ce mcp2515.o
+                0x000004b8                CAN_read_rx
+                0x000006a6                CAN_bit_modify
+                0x00000418                CAN_reset
+                0x0000060a                CAN_rts
+                0x00000652                CAN_read_status
+                0x0000067c                CAN_rx_status
+                0x00000436                CAN_read
+                0x0000054e                CAN_write
+                0x00000588                CAN_load_tx
+ .text          0x000006e6       0xaa spi.o
+                0x00000752                SPI_SelectSlave
+                0x0000072e                SPI_MasterReceive
+                0x000006e6                SPI_MasterInit
+                0x00000708                SPI_MasterTransmit
+                0x00000774                SPI_NoSlave
+ .text          0x00000790      0x16a node2.o
+                0x000007ba                __vector_5
+                0x0000089a                __vector_33
+                0x00000790                main
+                0x0000081a                __vector_21
+                0x0000083a                __vector_26
+ .text          0x000008fa      0x1a6 servo.o
+                0x000008fa                servo_init
+                0x00000930                set_position
+ .text          0x00000aa0      0x15c ir.o
+                0x00000abe                get_ir
+                0x00000b12                adc_interrupt
+                0x00000afc                reset_score
+                0x00000aa0                ir_init
+                0x00000ae6                get_score
+ .text          0x00000bfc      0x150 solenoid.o
+                0x00000bfc                solenoid_init
+                0x00000c26                trig_solenoid
+ .text          0x00000d4c      0x42c motor.o
+                0x00000fac                motor_regulator
+                0x00000ea8                motor_get_position
+                0x00000d4c                motor_init
+                0x00000e08                motor_reset
+                0x00000f88                motor_set_reference
+                0x00000e16                motor_set_input
+ .text          0x00001178      0x2e6 TWI_Master.o
+                0x00001286                TWI_Get_Data_From_Transceiver
+                0x0000125e                TWI_Start_Transceiver
+                0x000011ce                TWI_Start_Transceiver_With_Data
+                0x000012f0                TWI_interrupt
+                0x000011b4                TWI_Get_State_Info
+                0x0000119e                TWI_Transceiver_Busy
+                0x00001178                TWI_Master_Initialise
+ .text          0x0000145e        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
+ .text          0x0000145e        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clear_bss.o)
+ .text          0x0000145e       0x58 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_fixunssfsi.o)
+                0x0000145e                __fixunssfsi
+ .text          0x000014b6      0x354 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_addsub_sf.o)
+                0x0000174e                __subsf3
+                0x000017b0                __addsf3
+ .text          0x0000180a      0x1f4 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_mul_sf.o)
+                0x0000180a                __mulsf3
+ .text          0x000019fe      0x158 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_div_sf.o)
+                0x000019fe                __divsf3
+ .text          0x00001b56       0x60 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_gt_sf.o)
+                0x00001b56                __gtsf2
+ .text          0x00001bb6       0x60 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_ge_sf.o)
+                0x00001bb6                __gesf2
+ .text          0x00001c16       0x60 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_lt_sf.o)
+                0x00001c16                __ltsf2
+ .text          0x00001c76       0xbc c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_si_to_sf.o)
+                0x00001c76                __floatsisf
+ .text          0x00001d32       0xa8 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_sf_to_si.o)
+                0x00001d32                __fixsfsi
+ .text          0x00001dda        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_thenan_sf.o)
+ .text          0x00001dda        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_prologue.o)
+ .text          0x00001dda        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_epilogue.o)
+ .text          0x00001dda       0x9e c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clzsi2.o)
+                0x00001dda                __clzsi2
+ .text          0x00001e78      0x1aa c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_pack_sf.o)
+                0x00001e78                __pack_f
+ .text          0x00002022       0xf0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_unpack_sf.o)
+                0x00002022                __unpack_f
+ .text          0x00002112       0xb2 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_fpcmp_parts_sf.o)
+                0x00002112                __fpcmp_parts_f
+ .text          0x000021c4        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clz.o)
+ .text          0x000021c4        0xe c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(putchar.o)
+                0x000021c4                putchar
+ .text          0x000021d2       0x48 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(sprintf.o)
+                0x000021d2                sprintf
+ .text          0x0000221a      0x3ba c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
+                0x0000221a                vfprintf
+ .text          0x000025d4       0x16 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
+                0x000025d4                strnlen_P
+ .text          0x000025ea       0x16 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(strnlen.o)
+                0x000025ea                strnlen
+ .text          0x00002600       0x58 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(fputc.o)
+                0x00002600                fputc
+ .text          0x00002658        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(iob.o)
+ .text          0x00002658       0xbc c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
+                0x00002658                __ultoa_invert
+                0x00002714                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x000026d2        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
- .text.libgcc   0x000026d2        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clear_bss.o)
- .text.libgcc   0x000026d2       0x38 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_prologue.o)
-                0x000026d2                __prologue_saves__
- .text.libgcc   0x0000270a       0x36 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_epilogue.o)
-                0x0000270a                __epilogue_restores__
-                0x00002740                . = ALIGN (0x2)
+ .text.libgcc   0x00002714        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
+ .text.libgcc   0x00002714        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00002714       0x38 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_prologue.o)
+                0x00002714                __prologue_saves__
+ .text.libgcc   0x0000274c       0x36 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_epilogue.o)
+                0x0000274c                __epilogue_restores__
+                0x00002782                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00002740        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
-                0x00002740                exit
-                0x00002740                _exit
+ .fini9         0x00002782        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
+                0x00002782                exit
+                0x00002782                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -400,11 +400,11 @@ LOAD c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00002740        0x4 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
+ .fini0         0x00002782        0x4 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
  *(.fini0)
-                0x00002744                _etext = .
+                0x00002786                _etext = .
 
-.data           0x00800100      0x122 load address 0x00002744
+.data           0x00800100      0x122 load address 0x00002786
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtm128.o
@@ -455,7 +455,7 @@ LOAD c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a
                 0x00800222                _edata = .
                 0x00800222                PROVIDE (__data_end, .)
 
-.bss            0x00800222       0x29
+.bss            0x00800222       0x2b
                 0x00800222                PROVIDE (__bss_start, .)
  *(.bss)
  .bss           0x00800222        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51/crtm128.o
@@ -469,51 +469,51 @@ LOAD c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a
                 0x00800228                score
                 0x0080022a                scoring_enabled
  .bss           0x00800230        0x0 solenoid.o
- .bss           0x00800230        0xe motor.o
+ .bss           0x00800230       0x10 motor.o
                 0x00800230                position_ref
- .bss           0x0080023e        0x7 TWI_Master.o
-                0x0080023e                TWI_statusReg
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clear_bss.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_fixunssfsi.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_addsub_sf.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_mul_sf.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_div_sf.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_gt_sf.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_ge_sf.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_lt_sf.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_si_to_sf.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_sf_to_si.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_thenan_sf.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_prologue.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_epilogue.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clzsi2.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_pack_sf.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_unpack_sf.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_fpcmp_parts_sf.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clz.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(putchar.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(sprintf.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(strnlen.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(fputc.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(iob.o)
- .bss           0x00800245        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
+ .bss           0x00800240        0x7 TWI_Master.o
+                0x00800240                TWI_statusReg
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_exit.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clear_bss.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_fixunssfsi.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_addsub_sf.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_mul_sf.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_div_sf.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_gt_sf.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_ge_sf.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_lt_sf.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_si_to_sf.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_sf_to_si.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_thenan_sf.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_prologue.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_epilogue.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clzsi2.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_pack_sf.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_unpack_sf.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_fpcmp_parts_sf.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a(_clz.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(putchar.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(sprintf.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(strnlen.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(fputc.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(iob.o)
+ .bss           0x00800247        0x0 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
  *(.bss*)
  *(COMMON)
- COMMON         0x00800245        0x6 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(iob.o)
-                0x00800245                __iob
-                0x0080024b                PROVIDE (__bss_end, .)
-                0x00002744                __data_load_start = LOADADDR (.data)
-                0x00002866                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800247        0x6 c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr51\libc.a(iob.o)
+                0x00800247                __iob
+                0x0080024d                PROVIDE (__bss_end, .)
+                0x00002786                __data_load_start = LOADADDR (.data)
+                0x000028a8                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080024b        0x0
-                0x0080024b                PROVIDE (__noinit_start, .)
+.noinit         0x0080024d        0x0
+                0x0080024d                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x0080024b                PROVIDE (__noinit_end, .)
-                0x0080024b                _end = .
-                0x0080024b                PROVIDE (__heap_start, .)
+                0x0080024d                PROVIDE (__noinit_end, .)
+                0x0080024d                _end = .
+                0x0080024d                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -607,42 +607,42 @@ LOAD c:/program files/winavr/bin/../lib/gcc/avr/4.3.2/avr51\libgcc.a
  .debug_pubnames
                 0x0000036a       0xe0 TWI_Master.o
 
-.debug_info     0x00000000      0xd48
+.debug_info     0x00000000      0xd97
  *(.debug_info)
- .debug_info    0x00000000      0x225 can.o
- .debug_info    0x00000225      0x298 mcp2515.o
- .debug_info    0x000004bd       0xf3 spi.o
- .debug_info    0x000005b0       0xcd node2.o
- .debug_info    0x0000067d       0xd1 servo.o
- .debug_info    0x0000074e      0x141 ir.o
- .debug_info    0x0000088f      0x129 solenoid.o
- .debug_info    0x000009b8      0x182 motor.o
- .debug_info    0x00000b3a      0x20e TWI_Master.o
+ .debug_info    0x00000000      0x244 can.o
+ .debug_info    0x00000244      0x298 mcp2515.o
+ .debug_info    0x000004dc       0xf3 spi.o
+ .debug_info    0x000005cf       0xcd node2.o
+ .debug_info    0x0000069c       0xd1 servo.o
+ .debug_info    0x0000076d      0x141 ir.o
+ .debug_info    0x000008ae      0x129 solenoid.o
+ .debug_info    0x000009d7      0x1b2 motor.o
+ .debug_info    0x00000b89      0x20e TWI_Master.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x6bd
+.debug_abbrev   0x00000000      0x6e7
  *(.debug_abbrev)
- .debug_abbrev  0x00000000       0xff can.o
- .debug_abbrev  0x000000ff      0x101 mcp2515.o
- .debug_abbrev  0x00000200       0x7c spi.o
- .debug_abbrev  0x0000027c       0x56 node2.o
- .debug_abbrev  0x000002d2       0x81 servo.o
- .debug_abbrev  0x00000353       0xa9 ir.o
- .debug_abbrev  0x000003fc       0xbc solenoid.o
- .debug_abbrev  0x000004b8       0xc9 motor.o
- .debug_abbrev  0x00000581      0x13c TWI_Master.o
+ .debug_abbrev  0x00000000      0x10e can.o
+ .debug_abbrev  0x0000010e      0x101 mcp2515.o
+ .debug_abbrev  0x0000020f       0x7c spi.o
+ .debug_abbrev  0x0000028b       0x56 node2.o
+ .debug_abbrev  0x000002e1       0x81 servo.o
+ .debug_abbrev  0x00000362       0xa9 ir.o
+ .debug_abbrev  0x0000040b       0xbc solenoid.o
+ .debug_abbrev  0x000004c7       0xe4 motor.o
+ .debug_abbrev  0x000005ab      0x13c TWI_Master.o
 
-.debug_line     0x00000000      0xfc6
+.debug_line     0x00000000     0x1016
  *(.debug_line)
- .debug_line    0x00000000      0x298 can.o
- .debug_line    0x00000298      0x2e4 mcp2515.o
- .debug_line    0x0000057c       0xed spi.o
- .debug_line    0x00000669       0xef node2.o
+ .debug_line    0x00000000      0x290 can.o
+ .debug_line    0x00000290      0x2e4 mcp2515.o
+ .debug_line    0x00000574       0xed spi.o
+ .debug_line    0x00000661       0xf7 node2.o
  .debug_line    0x00000758      0x10d servo.o
  .debug_line    0x00000865      0x162 ir.o
  .debug_line    0x000009c7      0x18e solenoid.o
- .debug_line    0x00000b55      0x245 motor.o
- .debug_line    0x00000d9a      0x22c TWI_Master.o
+ .debug_line    0x00000b55      0x295 motor.o
+ .debug_line    0x00000dea      0x22c TWI_Master.o
 
 .debug_frame    0x00000000      0x380
  *(.debug_frame)
