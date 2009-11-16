@@ -3,6 +3,7 @@
 #include "can.h"
 #include "TWI_master.h"
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include <stdio.h>
 
 #define P 1.
@@ -20,16 +21,17 @@ void motor_init(){
 	//no noise reduction or capturing, Fast PWN, top in OCR3A, FOSC/1024
 	TCCR3B = 0b00011101;
 
+	//set up TWI
+	TWI_Master_Initialise();
+
 	//Number to count to (here 40 ms, max 40-something)
 	long long int count = 40*FOSC/(1000*1024);
 
 	OCR3A = (uint8_t) count;
 	
+
 	//Enable interrupt on timer
 	ETIMSK |= (1<<OCIE3A);
-
-	//set up TWI
-	TWI_Master_Initialise();
 
 	//set up PortA/MJ1
 
@@ -54,11 +56,11 @@ void motor_reset(){
 }
 
 void motor_set_input(int8_t output){
-/*	static int i = 0;
+	static int i = 0;
 	i++;
 	// can_send her, henger seg av og til
 
-	if (i>50){
+	/*if (i>50){
 
 		char *sendbuf = "\0\0\0\0\0\0\0";
 		sprintf(sendbuf, "r:%d", (int)output);
@@ -66,7 +68,7 @@ void motor_set_input(int8_t output){
 
 	
 		i = 0;
-	}
+	}*/
 
 	//enable motor
 	PORTA |= (1<<MOTOR_EN);
@@ -82,8 +84,17 @@ void motor_set_input(int8_t output){
 		msg[2] = (char)(-output*2)-1;
 		PORTA |= (1<<MOTOR_DIR);
 		}
+	
+	/*int j, loop = 100;
+	for (j = 0; j < loop; j++) {
+		if(!TWI_Transceiver_Busy())
+			break;
+		else if(j == loop)
+			TWI_Master_Initialise();//force done
+	}
 
-	TWI_Start_Transceiver_With_Data(msg, (unsigned char)3 );*/
+	while(TWI_Transceiver_Busy()); /////returnerer ikke; TWI interrupt er altså enablet. sending av siste feilet?*/
+	TWI_Start_Transceiver_With_Data(msg, (unsigned char)3 );
 }
 
 int8_t motor_get_position(){
@@ -151,3 +162,13 @@ void motor_regulator() {
 
 
 }
+/*
+void motor_DAC_send_loop(){
+	while(1){
+		cli();
+		TWI_Start_Transceiver_With_Data(DAC_data, (unsigned char)3 );
+		sei();
+	}
+		
+}
+*/

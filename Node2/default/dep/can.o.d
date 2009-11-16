@@ -9,7 +9,7 @@ can.o: ../can.c ../can.h ../mcp2515.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/version.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/fuse.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/avr/lock.h ../spi.h \
-  ../settings.h ../servo.h ../motor.h ../solenoid.h \
+  ../settings.h ../servo.h ../motor.h ../solenoid.h ../TWI_master.h \
   c:/program\ files/winavr/lib/gcc/../../avr/include/stdio.h \
   c:\program\ files\winavr\bin\../lib/gcc/avr/4.3.2/include/stdarg.h \
   c:\program\ files\winavr\bin\../lib/gcc/avr/4.3.2/include/stddef.h \
@@ -50,6 +50,8 @@ c:/program\ files/winavr/lib/gcc/../../avr/include/avr/lock.h:
 ../motor.h:
 
 ../solenoid.h:
+
+../TWI_master.h:
 
 c:/program\ files/winavr/lib/gcc/../../avr/include/stdio.h:
 
