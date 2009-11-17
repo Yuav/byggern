@@ -32,17 +32,10 @@ void SRAM_test(void)
 		char c = (char)ram_address[i];
 		int j = (int)c;
 		
-		//printf("Adresse: 0x%x ", i);
-		//printf("Lest: 0x%x \n", j);
-		
 		if(ram_address[i] != (char)0x83)
 		{
 			printf("Error!!! RAM no. 0x%x ",i);
 		}
-		else{
-			//printf("Written OK\n");
-		}
-		//_delay_ms(2);
 	}
 
 	printf("OK!\n");

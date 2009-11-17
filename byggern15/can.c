@@ -65,9 +65,6 @@ void CAN_init(void){
 	CAN_bit_modify(RXB0CTRL, MASK_RECEIVE_ID_TYPE, ID_TYPE_STANDARD); // set no filter, set to 01 to accept only standard, 00 to accept accordig to filters
 	CAN_bit_modify(BFPCTRL, 0x0f, 0xff);
 
-//	char *buf;
-//	CAN_read(buf, CANSTAT, 1);
-
 	CAN_init_interrupt();
 }
 
@@ -82,15 +79,6 @@ int CAN_test(void){
 	message.length = 8;
 	message.data = " ";
 	
-
-	// Reset will move into configuration mode
-/*	CAN_reset();
-	CAN_bit_modify(CANCTRL, MASK_MODE, MODE_LOOPBACK); //set loopback mode
-	CAN_bit_modify(RXB0CTRL, MASK_RECEIVE_ID_TYPE, ID_TYPE_STANDARD);
-	CAN_bit_modify(BFPCTRL, 0x0f, 0xff);
-*/
-
-
 	for(i = 0; i < 10; i++){
 		switch (i) {
 			case 0:
@@ -155,52 +143,23 @@ int CAN_send(char* str, int id){
 	char *messg = "\0\0\0\0\0\0\0";
 	for(i = 0; i < 8; i++){
 		messg[i] = str[i];
-		/*if (messg[i] == '\0') { //////////////////husk å fikse i node2
-			break;
-		}*/
 	}
-
-	/////cli(); // disable interrupts, to protect SPI-communication 
 
 	CAN_bit_modify(TXB0SIDH, 0xFF, (id>>3)); //transmit buffer 0 id high
 	CAN_bit_modify(TXB0SIDL, MASK_SIDL, (id<<5));//transmit buffer 0 id low
 	//CAN_write((char)messg.length, TXB0DLC);	// data length
 	CAN_write((char)8, TXB0DLC);	// data length
 	CAN_load_tx(messg, 0); //load transmit buffer from channel 0
-	//printf("\n\n%s\n\n", messg.data);
-	//_delay_ms(1);
+
 	CAN_rts(0); //request to send
 
 	//wait for send OK ()
 	for(i = 0; i < 0xffff; i++){  //Henger her totalt plutselig..? 16.11.09
 		if((CAN_read_status() & MASK_TXREQ0) == 0) break;
 	}
-	////////sei(); // enable interrupts again
+
 	if(i == 0xffff) return -1;
-	
-	
-/*
-	for (i = 0; 1; i++){
-		messg.data[i%8] = str[i];
 		
-		if(i%8 == 7){
-			
-			CAN_bit_modify(TXB0SIDH, 0xFF, (messg.id<<13)); //transmit buffer 0 id high
-			CAN_bit_modify(TXB0SIDL, MASK_SIDL, (messg.id<<5));//transmit buffer 0 id low
-			CAN_write(messg.length, TXB0DLC, 1);	// data length
-			CAN_load_tx(&messg, 0); //load transmit buffer from channel 0
-			CAN_rts(0); //request to send
-	
-
-			//wait for send OK ()
-			for(i = 0; i < 0xffff; i++){
-				if((CAN_read_status() & MASK_TXREQ0) == 0) break;
-			}
-			if(i == 0xffff) return -1;
-		}
-
-		if(str[i] == '\0') break;
-*/
 	return 0;
 }
 
@@ -237,14 +196,12 @@ void sig_interrupt0() {
 }
 
 void sig_interrupt1() {
-//	static int i = 0;
-//	i++;
+
 	CAN_message received;
 	received.data = "\0\0\0\0\0\0\0\0";
 	
     if(CAN_receive(&received, 1) == 0)// && i > 100){
 		printf("CAN1: %s\n", received.data);
-	//	i = 0;
-	//}
+
 }
 
