@@ -31,17 +31,6 @@ void init_joystick(){
 	
 	//Enable interrupt on CTC
 	TIMSK = TIMSK | (1<<OCIE0); 
-/*
-char *str = "\0\0\0\0\0\0\0"; 
-
-	str[0] = (char)15; //group 15
-
-	str[1] = 'x'; //x axis
-
-	str[2] = (char)read_axis('x'); //data
-	CAN_send(str, 0x1F);*/
-
-
 
 }
 
@@ -62,27 +51,9 @@ int8_t read_axis(char axis) {
 		default:
 			return 0;
 	}
-/*
-	if(axis == 'y'){
-		adc_address[0] = 0x05;
-	//	while(PINB && 1);
 
-		loop_until_bit_is_clear(PINB, 0);
-		return (int8_t)eeprom_read_byte((uint8_t*)((*adc_address)+256));
-	}
-	else if(axis == 'x'){
-		adc_address[0] = 0x04;
-		loop_until_bit_is_clear(PINB, 0);
-		return (int8_t)eeprom_read_byte((uint8_t*)*adc_address);
-	}*/
 	return -1;
 	//evt. korrigering
-}
-
-
-// Read joystick buttons (Can be optimised with interrupt)
-inline uint8_t read_buttons(){
-	return (PINB & 0x6) >> 1;
 }
 
 	//printf("X-akse: %d Y-akse: %d Knapp1: %d knapp2: %d\n", read_axis('x'), read_axis('y'), (read_buttons()&1), ((read_buttons()>>1)&1));
@@ -90,63 +61,68 @@ inline uint8_t read_buttons(){
 		//	read_axis('x');
 		//	read_axis('y');	
 
-
 void sig_output_compare0() {
+
+	static int temp;
+	temp+=1;
+
 	//check joystick
 	char *str = "\0\0\0\0\0\0\0"; 
 
 	str[0] = (char)15; //group 15
 
-	str[1] = 'y'; //x axis ///////////////////////////
+//Ved å sette x = y her henger det ikke uten printf...
+	str[1] = 'x'; //x axis ///////////////////////////
 
 	str[2] = (char)read_axis('x'); //data
+
+//Printf her henger på SPI, og kretsen ser ut til å resette en del.. men kun ved bevegelse på joystick!
+
+//Følgende printf resetter kretsen etter NØYAKTIG 11 printf
+//	printf("X-Akse: %d",str[2]);
+
 	CAN_send(str, 0x1F);
-/*	int i;
-	for (i = 0; i < 65000; i++)
-		asm("nop");*/
+
 	
+	if (!(temp%20)){
+		printf("x: %d\n", str[2]);
+	}
+
 	//y-axis
 
 
-	/////y-axis: henger på loop_until_bit_is_clear etter noen iterasjoner
-/*	str[1] = 'y'; //y axis
+	/////y-axis: henger på loop_until_bit_is_clear etter noen iterasjoner (350-400)
+	str[1] = 'y'; //y axis
 
 	str[2] = (char)read_axis('y'); //data
-	CAN_send(str, 0x1F);*/
+
+	CAN_send(str, 0x1F);
+	
+	
+	if (!(temp%20)){
+		printf("y: %d\n", str[2]);
+	}
+	
+	
+	
+	
+
+
 
 
 	//read score
 
-	static int temp;
-	temp+=1;
+//ved å kommentere ut det under henger den etter NØYAKTIG 10 (ikke noe loop) printf
 
-	if (!(temp%20)){
-		str[0] = (char)15; //group 15
-
-		str[1] = 'a'; //x axis
-
-		CAN_send(str, 0x1F);
-	}
+	
+	
 }
 
 void int_joystick_button(){
-	
+	printf("Joystick knapp\n");
 	char *str = "\0\0\0\0\0\0\0";
-
 	str[0] = (char)15; //group 15
-
-	str[1] = 'b'; //x axis
-
+	str[1] = 'b'; //button
 	CAN_send(str, 0x1F);
 	
-	/*while (!(PINE && 1));
-	//loop a while
-	cli();
-	long long int i;
-	for (i = 0; i < 160000;i++){
-		//nada
-	}
-	//reset interrupt
-	GIFR |= (1<<INTF2);
-	sei();*/
 }

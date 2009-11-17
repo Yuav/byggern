@@ -14,12 +14,10 @@ void CAN_init(void){
 	uint8_t data[2];
 
 	//Acceptance mask for RXB0 (all 11 bits counts)
-	//dette filteret blokkerer alt?!?
 	data[0] = 0b11111111;
 	data[1] = 0b11100000;
 	CAN_write(data[0], MASK_RXF0);
 	CAN_write(data[1], MASK_RXF0+1);
-
 
 	//RXF0
 	//Receive filter 0 hits when id = 0x1F (exactly)	
@@ -27,10 +25,6 @@ void CAN_init(void){
 	data[1] = 0b11100000;
 	CAN_write(data[0], RXF0);
 	CAN_write(data[1], RXF0+1);
-
-
-
-
 
 	//Acceptance mask for RXB1 - accepts 0 1 2 3 only
 	data[0] = 0b11111111;
@@ -70,7 +64,6 @@ void CAN_init(void){
 	CAN_bit_modify(CANCTRL, MASK_MODE, MODE_NORMAL); //set loopback mode
 	CAN_bit_modify(RXB0CTRL, MASK_RECEIVE_ID_TYPE, ID_TYPE_STANDARD); // set no filter, set to 01 to accept only standard, 00 to accept accordig to filters
 	CAN_bit_modify(BFPCTRL, 0x0f, 0xff);
-
 
 //	char *buf;
 //	CAN_read(buf, CANSTAT, 1);
@@ -167,7 +160,7 @@ int CAN_send(char* str, int id){
 		}*/
 	}
 
-	cli(); // disable interrupts, to protect SPI-communication 
+	/////cli(); // disable interrupts, to protect SPI-communication 
 
 	CAN_bit_modify(TXB0SIDH, 0xFF, (id>>3)); //transmit buffer 0 id high
 	CAN_bit_modify(TXB0SIDL, MASK_SIDL, (id<<5));//transmit buffer 0 id low
@@ -182,7 +175,7 @@ int CAN_send(char* str, int id){
 	for(i = 0; i < 0xffff; i++){  //Henger her totalt plutselig..? 16.11.09
 		if((CAN_read_status() & MASK_TXREQ0) == 0) break;
 	}
-	sei(); // enable interrupts again
+	////////sei(); // enable interrupts again
 	if(i == 0xffff) return -1;
 	
 	
@@ -225,31 +218,13 @@ int CAN_receive(CAN_message* msg, int rx){
 
 }
 
-
-
-
-
-/*void CAN_init_interrupt(){
-//interrupt init
-	DDRD = DDRD & 	0b11111011;
-	PORTD = PORTD | 0b00000100;
-	MCUCR = MCUCR | (0<<ISC01) | (0<<ISC00);
-	GICR = GICR | (1<<INT0);
-	sei();
-}*/
-
-
 void CAN_init_interrupt(){
 //interrupt init
 	DDRD = DDRD & 	0b11110011;
 	PORTD = PORTD | 0b00001100;
 	MCUCR = MCUCR | (0<<ISC01) | (0<<ISC00) | (0<<ISC11) | (0<<ISC10);
 	GICR = GICR | (1<<INT0) | (1<<INT1);
-	sei();
 }
-
-
-
 
 void sig_interrupt0() {
 		
@@ -257,16 +232,19 @@ void sig_interrupt0() {
 	received.data = "\0\0\0\0\0\0\0\0";
 
     if(CAN_receive(&received, 0) == 0)
-		printf("Received interrupt0: %s\n", received.data);
+		printf("CAN0: %s\n", received.data);
 
 }
 
 void sig_interrupt1() {
-		
+//	static int i = 0;
+//	i++;
 	CAN_message received;
 	received.data = "\0\0\0\0\0\0\0\0";
-
-    if(CAN_receive(&received, 1) == 0)
-		printf("Received interrupt1: %s\n", received.data);
+	
+    if(CAN_receive(&received, 1) == 0)// && i > 100){
+		printf("CAN1: %s\n", received.data);
+	//	i = 0;
+	//}
 }
 

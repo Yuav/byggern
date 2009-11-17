@@ -24,7 +24,7 @@ void butterfly_menu(){
 		button = butterfly_poll_joystick();
 
 		if(button != last_button){
-			printf("state for: %d\n", menu_state);
+//			printf("menustate for: %d\n", menu_state);
 			switch(button) {
 				case 'l': 					
 				case 'r': 							continue;
@@ -34,14 +34,14 @@ void butterfly_menu(){
 				case '0': 							continue;
 				default:  butterfly_print("error");	break;
 			}
-			printf("state etter: %d\n", menu_state);
+			printf("menustate: %d\n", menu_state);
 			if (menu_state <= OVER_THE_TOP) menu_state = BELOW_THE_BOTTOM-1;
 			if (menu_state >= BELOW_THE_BOTTOM) menu_state = OVER_THE_TOP+1;
 			switch(menu_state) {
-				case START_SP_POINTS: 	butterfly_print("1 Start enspiller poeng");		break;
-				case START_SP_ETERNAL: 	butterfly_print("2 Start enspiller evig");		break;
-				case START_MP_POINTS: 	butterfly_print("3 Start flersp poeng");		break;
-				case START_MP_ETERNAL: 	butterfly_print("4 Start flersp evig");		break;
+				case START_SP_POINTS: 	butterfly_print("1 Enspiller poeng");		break;
+				case START_SP_ETERNAL: 	butterfly_print("2 Enspiller evig");		break;
+				case START_MP_POINTS: 	butterfly_print("3 Flerspiller poeng");		break;
+				case START_MP_ETERNAL: 	butterfly_print("4 Flerspiller evig");		break;
 				default:			menu_state = OVER_THE_TOP+1;
 			}
 		}

@@ -12,6 +12,10 @@
 #include <avr/io.h>
 
 //Initialize the CAN bus
+
+extern unsigned char trig, read_score;
+extern int8_t motor_reference, servo;
+
 void CAN_init(void){
 
 	CAN_reset();
@@ -174,7 +178,7 @@ int CAN_send(char* str, int id){
 		}*/
 	}
 
-	cli(); // disable interrupts, to protect SPI-communication 
+	//cli(); // disable interrupts, to protect SPI-communication 
 
 	CAN_bit_modify(TXB0SIDH, 0xFF, (id>>3)); //transmit buffer 0 id high
 	CAN_bit_modify(TXB0SIDL, MASK_SIDL, (id<<5));//transmit buffer 0 id low
@@ -189,7 +193,7 @@ int CAN_send(char* str, int id){
 	for(i = 0; i < 0xffff; i++){
 		if((CAN_read_status() & MASK_TXREQ0) == 0) break;
 	}
-	sei(); // enable interrupts again
+	//sei(); // enable interrupts again
 	if(i == 0xffff) return -1;
 	
 	
@@ -254,7 +258,7 @@ char str[8];//////
     CAN_receive(&received, 0);
 
 //debug
-	//CAN_send(received.data, 0x1F);
+//	CAN_send(received.data, 0x1F);
 char msg[3];/////////
 
 //feiler av en eller annen grunn :S
@@ -262,7 +266,8 @@ char msg[3];/////////
 	
 		switch (received.data[1]) {
 			case 'x': //receive joystic x-axis data
-				set_position((int8_t) received.data[2]);
+				servo = (int8_t) received.data[2];
+			//	set_position((int8_t) received.data[2]);
 				break;
 			case 'y': //receive joystic y-axis data
 				/*
@@ -274,20 +279,20 @@ char msg[3];/////////
 				TWI_Start_Transceiver_With_Data(msg, (unsigned char)3 );
 				*/
 				
-				
-				motor_set_reference((int8_t) received.data[2]);
+				//sprintf(str, "%d", (unsigned char)received.data[2]);
+				//CAN_send(str, 0);
+			//	set_position((int8_t) received.data[2]);
+				motor_reference = (int8_t) received.data[2];
 				break;
 			case 'a': //read score
-				sprintf(received.data, "%d", get_score());
-				CAN_send(received.data, 0x1F);
+			
+				read_score = 1;
 				break;
 			case 'b': //joystick button pressed
-				
-				//sprintf(str, "%d", (int)motor_get_position());
-				//CAN_send(str, 0);
+				trig = 1;
 				
 				
-				trig_solenoid();
+				
 				break;
 			default:
 				break;

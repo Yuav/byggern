@@ -142,6 +142,8 @@ void motor_set_reference(int8_t ref){
 }
 
 void motor_regulator() {
+	static int8_t i = 0;
+	i++;
 	float p = 0;
 	static float q = 0;
 
@@ -158,7 +160,7 @@ void motor_regulator() {
 	else if(p+q < -ANTI_WIND_UP-1)
 		q = -ANTI_WIND_UP-1-p;
 
-	motor_set_input((int8_t)(p + q));
+	motor_set_input(i);//(int8_t)(p + q));
 
 
 }

@@ -15,7 +15,7 @@ unsigned char buffer_used;
 int init_UART(unsigned int baud){
 	
 	//Enable Interrupts. Macro.
-	//sei();
+	
 
 	unsigned long ubrr0 = baud;
 	ubrr0 = (FOSC/(16*ubrr0)) - 1;

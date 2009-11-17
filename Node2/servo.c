@@ -8,6 +8,8 @@
 #include "solenoid.h"
 
 void servo_init(){
+	DDRB |= (1<<PB6);
+
 	TCCR1A = 0b00100010; //clear output on compare match, fast PWM - count to OCR
 	TCCR1B = 0b00011010; //fast PWM - count to OCR, prescaler: divide FCLK by 8 (counter 1 MHz)
 	
