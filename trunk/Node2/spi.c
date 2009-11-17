@@ -6,7 +6,7 @@
 void SPI_MasterInit(void)
 {
 	/* Set MISO input, other pins output */
-	DDRB = (0b11110111);;
+	DDRB = (0b11110111);
 	/* Enable SPI, Master, set clock rate fck/16 */
 	SPCR = (1<<SPE)|(1<<MSTR)|(1<<SPR0);
 	SPI_NoSlave();

@@ -21,8 +21,8 @@ int main(void) {
 	printf("reset\n");
 
 	init_SRAM();
+	SRAM_test();
 
-	//SRAM_test();
 	SPI_MasterInit();
 	
 		
@@ -30,13 +30,11 @@ int main(void) {
 
 	init_joystick();
 
-/*
+
 	printf("Initialization complete\n");
-
-
+	sei();
+/*
 	printf("CAN_test: %d", CAN_test());
-
-
 	*/
 	
 	CAN_send("print", 0x0);

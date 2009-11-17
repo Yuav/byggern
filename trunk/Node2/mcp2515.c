@@ -65,7 +65,6 @@ void CAN_load_tx(char* msg, uint8_t tx){
 	}
 
 	SPI_NoSlave();
-	printf("\n");
 }
 
 void CAN_rts(uint8_t tx){

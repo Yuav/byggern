@@ -26,10 +26,6 @@ void reset_score(){
 	score = 0;
 }
 
-/*void enable_scoring(){
-	scoring_enabled = 1;
-}*/
-
 //method called from interrupt routine whenever an ADC-sample is ready
 void adc_interrupt(){
 	

@@ -17,13 +17,13 @@ void init_SRAM(void)
 void SRAM_test(void)
 {
 	unsigned char *ram_address = (unsigned char *) 0x1000;
-	printf("Starting...\n");
+	printf("Testing ram...");
 
 	int i;
 	for(i=0;i<0x800;i++)
 	{
 		ram_address[i] = (char)0x83;
-		_delay_ms(2);
+	//	_delay_ms(1);
 	//	printf("skriver RAM no. 0x%x \n", i);
 	}
 
@@ -45,5 +45,5 @@ void SRAM_test(void)
 		//_delay_ms(2);
 	}
 
-	printf("Finished!!!\n");
+	printf("OK!\n");
 }
