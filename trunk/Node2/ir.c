@@ -43,9 +43,7 @@ void adc_interrupt(){
 		}
 		else if ((ir_blocked == 0) && (value < 2*mean)){
 			ir_blocked = 1;
-			//if (scoring_enabled)
-				score++;
-			//scoring_enabled = 0;
+			score++;
 		}
 
 		value = 0;

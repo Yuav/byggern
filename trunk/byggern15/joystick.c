@@ -71,14 +71,11 @@ void sig_output_compare0() {
 
 	str[0] = (char)15; //group 15
 
-//Ved å sette x = y her henger det ikke uten printf...
 	str[1] = 'x'; //x axis ///////////////////////////
 
 	str[2] = (char)read_axis('x'); //data
 
-//Printf her henger på SPI, og kretsen ser ut til å resette en del.. men kun ved bevegelse på joystick!
 
-//Følgende printf resetter kretsen etter NØYAKTIG 11 printf
 //	printf("X-Akse: %d",str[2]);
 
 	CAN_send(str, 0x1F);
@@ -91,7 +88,6 @@ void sig_output_compare0() {
 	//y-axis
 
 
-	/////y-axis: henger på loop_until_bit_is_clear etter noen iterasjoner (350-400)
 	str[1] = 'y'; //y axis
 
 	str[2] = (char)read_axis('y'); //data
@@ -101,20 +97,16 @@ void sig_output_compare0() {
 	
 	if (!(temp%20)){
 		printf("y: %d\n", str[2]);
+	
+	
+		str[1] = 'a'; //read score
+		str[2] = 'a'; //dummy data
+		CAN_send(str, 0x1F);
+
 	}
 	
 	
-	
-	
 
-
-
-
-	//read score
-
-//ved å kommentere ut det under henger den etter NØYAKTIG 10 (ikke noe loop) printf
-
-	
 	
 }
 

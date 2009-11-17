@@ -15,6 +15,9 @@
 #include "butterfly_interface.h"
 
 int main(void) {
+
+//diode dekektor = flate side mot gul!
+
 	SPI_NoSlave();
 	init_UART(BAUD);
 		
